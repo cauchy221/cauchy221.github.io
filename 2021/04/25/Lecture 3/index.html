@@ -68,7 +68,7 @@
 
 
 
-  <meta name="keywords" content="test," />
+  <meta name="keywords" content="Linear Classification,Loss Function,Regularization," />
 
 
 
@@ -79,17 +79,19 @@
 
 
 
-<meta name="description" content="这是一个测试">
+<meta name="description" content="Lecture 3: Linear Classification1 Linear Classifier Algebraic Viewpoint: f(x, W) &#x3D; Wx + b Visual Viewpoint: linear classifier has one “template” per category Geometric Viewpoint: hyperplanes carving u">
 <meta property="og:type" content="article">
-<meta property="og:title" content="test">
-<meta property="og:url" content="https://cauchy221.github.io/2021/04/25/1/index.html">
+<meta property="og:title" content="Lecture 3:Linear Classification">
+<meta property="og:url" content="https://cauchy221.github.io/2021/04/25/Lecture%203/index.html">
 <meta property="og:site_name" content="kc的笔记本">
-<meta property="og:description" content="这是一个测试">
+<meta property="og:description" content="Lecture 3: Linear Classification1 Linear Classifier Algebraic Viewpoint: f(x, W) &#x3D; Wx + b Visual Viewpoint: linear classifier has one “template” per category Geometric Viewpoint: hyperplanes carving u">
 <meta property="og:locale" content="en_US">
-<meta property="article:published_time" content="2021-04-25T09:35:35.000Z">
-<meta property="article:modified_time" content="2021-04-25T09:43:49.030Z">
+<meta property="article:published_time" content="2021-04-25T11:04:04.000Z">
+<meta property="article:modified_time" content="2021-04-25T11:35:45.036Z">
 <meta property="article:author" content="kc">
-<meta property="article:tag" content="test">
+<meta property="article:tag" content="Linear Classification">
+<meta property="article:tag" content="Loss Function">
+<meta property="article:tag" content="Regularization">
 <meta name="twitter:card" content="summary">
 
 
@@ -120,13 +122,13 @@
 
 
 
-  <link rel="canonical" href="https://cauchy221.github.io/2021/04/25/1/"/>
+  <link rel="canonical" href="https://cauchy221.github.io/2021/04/25/Lecture 3/"/>
 
 
 
 
 
-  <title>test | kc的笔记本</title>
+  <title>Lecture 3:Linear Classification | kc的笔记本</title>
   
 
 
@@ -263,7 +265,7 @@
   
   
   <div class="post-block">
-    <link itemprop="mainEntityOfPage" href="https://cauchy221.github.io/2021/04/25/1/">
+    <link itemprop="mainEntityOfPage" href="https://cauchy221.github.io/2021/04/25/Lecture%203/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="name" content="">
@@ -280,7 +282,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">test</h1>
+          <h1 class="post-title" itemprop="name headline">Lecture 3:Linear Classification</h1>
         
 
         <div class="post-meta">
@@ -292,7 +294,7 @@
               
                 <span class="post-meta-item-text">Posted on</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-25T17:35:35+08:00">
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-25T19:04:04+08:00">
                 2021-04-25
               </time>
             
@@ -302,6 +304,50 @@
             
           </span>
 
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/UMich/" itemprop="url" rel="index">
+                    <span itemprop="name">UMich</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/UMich/Lecture-Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Lecture Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
           
 
           
@@ -330,7 +376,35 @@
       
 
       
-        <p>这是一个测试</p>
+        <h1 id="Lecture-3-Linear-Classification"><a href="#Lecture-3-Linear-Classification" class="headerlink" title="Lecture 3: Linear Classification"></a>Lecture 3: Linear Classification</h1><h2 id="1-Linear-Classifier"><a href="#1-Linear-Classifier" class="headerlink" title="1 Linear Classifier"></a>1 Linear Classifier</h2><ul>
+<li><strong>Algebraic Viewpoint</strong>: <code>f(x, W) = Wx + b</code></li>
+<li><strong>Visual Viewpoint</strong>: linear classifier has one “template” per category</li>
+<li><strong>Geometric Viewpoint</strong>: hyperplanes carving up a high-dimensional space</li>
+</ul>
+<h2 id="2-Loss-Function"><a href="#2-Loss-Function" class="headerlink" title="2 Loss Function"></a>2 Loss Function</h2><p>It tells how good our current classifier is (low = good, high = bad)</p>
+<h3 id="2-1-Multiclass-SVM-Loss"><a href="#2-1-Multiclass-SVM-Loss" class="headerlink" title="2.1 Multiclass SVM Loss"></a>2.1 Multiclass SVM Loss</h3><p>![](../images/Lecture 3/2.1.png)</p>
+<h4 id="2-1-1-Some-questions"><a href="#2-1-1-Some-questions" class="headerlink" title="2.1.1 Some questions"></a>2.1.1 Some questions</h4><ul>
+<li>Once that an example is correctly classified, than changing the predicted scores of that examples just a little bit don’t really effect the loss</li>
+<li>min possible loss: 0; max possible loss: infinite</li>
+<li>The classifier was randomly initialized, what loss would we expect: <code>C - 1</code>, C is the number of categories (Li = C - 1, L = N * Li / N = C - 1)</li>
+<li>What would happen if the sum were over all classes: add 1</li>
+<li>What if the loss used a mean instead of a sum: losses multiplied a factor <code>1/(c-1)</code></li>
+</ul>
+<h4 id="2-1-2-Regularization"><a href="#2-1-2-Regularization" class="headerlink" title="2.1.2 Regularization"></a>2.1.2 Regularization</h4><p>![](../images/Lecture 3/2.1.2.png)</p>
+<ul>
+<li>Express preferences in among models beyond ”minimize training error”</li>
+<li>Avoid <strong>overfitting</strong>: Prefer simple models that generalize better</li>
+<li>Improve optimization by adding curvature</li>
+</ul>
+<h3 id="2-2-Cross-Entropy-Loss-Multinomial-Logistic-Regression"><a href="#2-2-Cross-Entropy-Loss-Multinomial-Logistic-Regression" class="headerlink" title="2.2 Cross-Entropy Loss (Multinomial Logistic Regression)"></a>2.2 Cross-Entropy Loss (Multinomial Logistic Regression)</h3><p>![](../images/Lecture 3/2.2.png)</p>
+<h4 id="2-2-1-Functions-to-measure-difference-between-probability-distributions"><a href="#2-2-1-Functions-to-measure-difference-between-probability-distributions" class="headerlink" title="2.2.1 Functions to measure difference between probability distributions"></a>2.2.1 Functions to measure difference between probability distributions</h4><ul>
+<li>Kullback-Leibler Divergence</li>
+<li>Cross Entropy</li>
+</ul>
+<h4 id="2-2-2-Some-questions"><a href="#2-2-2-Some-questions" class="headerlink" title="2.2.2 Some questions"></a>2.2.2 Some questions</h4><ul>
+<li>min loss = 0 (can never achieve); max loss = infinity</li>
+<li>If W is all random values: <code>L = -log(C)</code></li>
+</ul>
 
       
     </div>
@@ -348,7 +422,11 @@
       
         <div class="post-tags">
           
-            <a href="/tags/test/" rel="tag"># test</a>
+            <a href="/tags/Linear-Classification/" rel="tag"># Linear Classification</a>
+          
+            <a href="/tags/Loss-Function/" rel="tag"># Loss Function</a>
+          
+            <a href="/tags/Regularization/" rel="tag"># Regularization</a>
           
         </div>
       
@@ -361,15 +439,15 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
+              <a href="/2021/04/25/Lecture%202/" rel="next" title="Lecture 2:Classification">
+                <i class="fa fa-chevron-left"></i> Lecture 2:Classification
+              </a>
+            
           </div>
 
           <span class="post-nav-divider"></span>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2021/04/25/python%E4%B8%8E%E5%B8%B8%E8%A7%81%E5%BA%93/" rel="prev" title="Colab, Python与常见库">
-                Colab, Python与常见库 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -421,8 +499,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
 
-      <section class="site-overview-wrap sidebar-panel sidebar-panel-active">
+      <section class="site-overview-wrap sidebar-panel">
         <div class="site-overview">
           <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
             
@@ -482,6 +569,22 @@
         </div>
       </section>
 
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-3-Linear-Classification"><span class="nav-number">1.</span> <span class="nav-text">Lecture 3: Linear Classification</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Linear-Classifier"><span class="nav-number">1.1.</span> <span class="nav-text">1 Linear Classifier</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Loss-Function"><span class="nav-number">1.2.</span> <span class="nav-text">2 Loss Function</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-Multiclass-SVM-Loss"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 Multiclass SVM Loss</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-1-Some-questions"><span class="nav-number">1.2.1.1.</span> <span class="nav-text">2.1.1 Some questions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-2-Regularization"><span class="nav-number">1.2.1.2.</span> <span class="nav-text">2.1.2 Regularization</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Cross-Entropy-Loss-Multinomial-Logistic-Regression"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Cross-Entropy Loss (Multinomial Logistic Regression)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-Functions-to-measure-difference-between-probability-distributions"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.2.1 Functions to measure difference between probability distributions</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-Some-questions"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.2.2 Some questions</span></a></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
       
 
       
