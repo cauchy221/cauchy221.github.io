@@ -380,7 +380,7 @@
 <li><strong>Geometric Viewpoint</strong>: hyperplanes carving up a high-dimensional space</li>
 </ul>
 <h2 id="2-Loss-Function"><a href="#2-Loss-Function" class="headerlink" title="2 Loss Function"></a>2 Loss Function</h2><p>It tells how good our current classifier is (low = good, high = bad)</p>
-<h3 id="2-1-Multiclass-SVM-Loss"><a href="#2-1-Multiclass-SVM-Loss" class="headerlink" title="2.1 Multiclass SVM Loss"></a>2.1 Multiclass SVM Loss</h3><p>![](../images/Lecture 3/2.1.png)</p>
+<h3 id="2-1-Multiclass-SVM-Loss"><a href="#2-1-Multiclass-SVM-Loss" class="headerlink" title="2.1 Multiclass SVM Loss"></a>2.1 Multiclass SVM Loss</h3><p><img src="/2021/04/25/Lecture%203/04/25/Lecture%203/2.1.png"></p>
 <h4 id="2-1-1-Some-questions"><a href="#2-1-1-Some-questions" class="headerlink" title="2.1.1 Some questions"></a>2.1.1 Some questions</h4><ul>
 <li>Once that an example is correctly classified, than changing the predicted scores of that examples just a little bit don’t really effect the loss</li>
 <li>min possible loss: 0; max possible loss: infinite</li>
@@ -388,13 +388,13 @@
 <li>What would happen if the sum were over all classes: add 1</li>
 <li>What if the loss used a mean instead of a sum: losses multiplied a factor <code>1/(c-1)</code></li>
 </ul>
-<h4 id="2-1-2-Regularization"><a href="#2-1-2-Regularization" class="headerlink" title="2.1.2 Regularization"></a>2.1.2 Regularization</h4><p>![](../images/Lecture 3/2.1.2.png)</p>
+<h4 id="2-1-2-Regularization"><a href="#2-1-2-Regularization" class="headerlink" title="2.1.2 Regularization"></a>2.1.2 Regularization</h4><p><img src="/2021/04/25/Lecture%203/04/25/Lecture%203/2.1.2.png"></p>
 <ul>
 <li>Express preferences in among models beyond ”minimize training error”</li>
 <li>Avoid <strong>overfitting</strong>: Prefer simple models that generalize better</li>
 <li>Improve optimization by adding curvature</li>
 </ul>
-<h3 id="2-2-Cross-Entropy-Loss-Multinomial-Logistic-Regression"><a href="#2-2-Cross-Entropy-Loss-Multinomial-Logistic-Regression" class="headerlink" title="2.2 Cross-Entropy Loss (Multinomial Logistic Regression)"></a>2.2 Cross-Entropy Loss (Multinomial Logistic Regression)</h3><p>![](../images/Lecture 3/2.2.png)</p>
+<h3 id="2-2-Cross-Entropy-Loss-Multinomial-Logistic-Regression"><a href="#2-2-Cross-Entropy-Loss-Multinomial-Logistic-Regression" class="headerlink" title="2.2 Cross-Entropy Loss (Multinomial Logistic Regression)"></a>2.2 Cross-Entropy Loss (Multinomial Logistic Regression)</h3><p><img src="/2021/04/25/Lecture%203/04/25/Lecture%203/2.2.png"></p>
 <h4 id="2-2-1-Functions-to-measure-difference-between-probability-distributions"><a href="#2-2-1-Functions-to-measure-difference-between-probability-distributions" class="headerlink" title="2.2.1 Functions to measure difference between probability distributions"></a>2.2.1 Functions to measure difference between probability distributions</h4><ul>
 <li>Kullback-Leibler Divergence</li>
 <li>Cross Entropy</li>
