@@ -1,0 +1,854 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.svg?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Optimization,SGD," />
+
+
+
+
+
+
+
+
+
+
+<meta name="description" content="Lecture 4: (First-Order)Optimization1 Main idea 如何找到让loss function最小的W 一个总结的还不错的blog：https:&#x2F;&#x2F;blog.csdn.net&#x2F;brucewong0516&#x2F;article&#x2F;details&#x2F;78838124  2 Gradient2.1 What is gradient梯度gradient: 一个向量，表示某一函数">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Lecture 4:(First-Order)Optimization">
+<meta property="og:url" content="https://cauchy221.github.io/2021/04/26/Lecture%204/index.html">
+<meta property="og:site_name" content="kc的笔记本">
+<meta property="og:description" content="Lecture 4: (First-Order)Optimization1 Main idea 如何找到让loss function最小的W 一个总结的还不错的blog：https:&#x2F;&#x2F;blog.csdn.net&#x2F;brucewong0516&#x2F;article&#x2F;details&#x2F;78838124  2 Gradient2.1 What is gradient梯度gradient: 一个向量，表示某一函数">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.2.1-1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.2.1-2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.2.2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.3.1-1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.3.1-2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.3.1-3.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.4.1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.5.1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.6.1-1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.6.1-2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.7.1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.7.3-1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.7.3-2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/4.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/5.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/6.png">
+<meta property="article:published_time" content="2021-04-26T13:58:20.000Z">
+<meta property="article:modified_time" content="2021-04-26T14:09:35.778Z">
+<meta property="article:author" content="kc">
+<meta property="article:tag" content="Optimization">
+<meta property="article:tag" content="SGD">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauchy221.github.io/2021/04/26/Lecture%204/3.2.1-1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Muse',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":false,"scrollpercent":false,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cauchy221.github.io/2021/04/26/Lecture 4/"/>
+
+
+
+
+
+  <title>Lecture 4:(First-Order)Optimization | kc的笔记本</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kc的笔记本</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">可爱小猪</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cauchy221.github.io/2021/04/26/Lecture%204/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/avatar.gif">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kc的笔记本">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">Lecture 4:(First-Order)Optimization</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-26T21:58:20+08:00">
+                2021-04-26
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/UMich/" itemprop="url" rel="index">
+                    <span itemprop="name">UMich</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/UMich/Lecture-Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Lecture Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="Lecture-4-First-Order-Optimization"><a href="#Lecture-4-First-Order-Optimization" class="headerlink" title="Lecture 4: (First-Order)Optimization"></a>Lecture 4: (First-Order)Optimization</h1><h2 id="1-Main-idea"><a href="#1-Main-idea" class="headerlink" title="1 Main idea"></a>1 Main idea</h2><ul>
+<li>如何找到让loss function最小的W</li>
+<li>一个总结的还不错的blog：<a target="_blank" rel="noopener" href="https://blog.csdn.net/brucewong0516/article/details/78838124">https://blog.csdn.net/brucewong0516/article/details/78838124</a></li>
+</ul>
+<h2 id="2-Gradient"><a href="#2-Gradient" class="headerlink" title="2 Gradient"></a>2 Gradient</h2><h3 id="2-1-What-is-gradient"><a href="#2-1-What-is-gradient" class="headerlink" title="2.1 What is gradient"></a>2.1 What is gradient</h3><p>梯度gradient: 一个向量，表示某一函数在该点的方向导数沿着该方向取得最大值，即函数在该点沿着该方向变化最快，变化率最大（为该梯度的模）</p>
+<h3 id="2-2-Computing-Gradient"><a href="#2-2-Computing-Gradient" class="headerlink" title="2.2 Computing Gradient"></a>2.2 Computing Gradient</h3><h4 id="2-2-1-Numerical-gradient"><a href="#2-2-1-Numerical-gradient" class="headerlink" title="2.2.1 Numerical gradient"></a>2.2.1 Numerical gradient</h4><p>就是自己取一个极小的dx，利用公式 ( f(x+dx)-f(x) )/dx计算</p>
+<h4 id="2-2-2-Analytic-gradient"><a href="#2-2-2-Analytic-gradient" class="headerlink" title="2.2.2 Analytic gradient"></a>2.2.2 Analytic gradient</h4><p>使用微积分中的梯度计算公式</p>
+
+
+<h4 id="2-2-3-Gradient-check"><a href="#2-2-3-Gradient-check" class="headerlink" title="2.2.3 Gradient check"></a>2.2.3 Gradient check</h4><ul>
+<li>实际训练中，我们使用第二种方法计算，但是可以用第一种方法check (debugging tool);</li>
+<li>Pytorch提供一个类似的方法: grad check</li>
+</ul>
+<h2 id="3-Gradient-Descent"><a href="#3-Gradient-Descent" class="headerlink" title="3 Gradient Descent"></a>3 Gradient Descent</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">w = initialize_weights()</span><br><span class="line"><span class="keyword">for</span> t <span class="keyword">in</span> rangr(num_steps):</span><br><span class="line">	dw = compute_gradient(loss_fn, data, w)</span><br><span class="line">	w -= learning_rate * dw</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-1-Hyperparameters"><a href="#3-1-Hyperparameters" class="headerlink" title="3.1 Hyperparameters"></a>3.1 Hyperparameters</h3><ul>
+<li>Weight initialization method: 虽然通常认为随机选取初始的W就行，但实际上发现，初始W的选取对训练有不小的影响；</li>
+<li>Number of steps</li>
+<li>Learning rate: how big a step do we want to take</li>
+</ul>
+<h3 id="3-2-Vanilla-Stochastic-Gradient-Descent-SGD"><a href="#3-2-Vanilla-Stochastic-Gradient-Descent-SGD" class="headerlink" title="3.2 Vanilla Stochastic Gradient Descent (SGD)"></a>3.2 Vanilla Stochastic Gradient Descent (SGD)</h3><p>在N很大的时候可以使用这种方法简化运算。相当于用一个minibatch-loss上的梯度去近似original-loss</p>
+<h4 id="3-2-1-Main-idea"><a href="#3-2-1-Main-idea" class="headerlink" title="3.2.1 Main idea"></a>3.2.1 Main idea</h4><img src="/2021/04/26/Lecture%204/3.2.1-1.png" class>
+
+<img src="/2021/04/26/Lecture%204/3.2.1-2.png" class>
+
+<h4 id="3-2-2-Problems-with-SGD"><a href="#3-2-2-Problems-with-SGD" class="headerlink" title="3.2.2 Problems with SGD"></a>3.2.2 Problems with SGD</h4><ul>
+<li>step size (learning rate) 的设置：难以权衡，较大可能会overshooting，较小训练较慢;</li>
+<li>有 local minimum or saddle point（后者对于 high dimension 更常见）;</li>
+<li>Our gradients come from minibatches so they can be noisy</li>
+</ul>
+<img src="/2021/04/26/Lecture%204/3.2.2.png" class>
+
+<h3 id="3-3-Smarter-SGD-SGD-Momentum（动量）"><a href="#3-3-Smarter-SGD-SGD-Momentum（动量）" class="headerlink" title="3.3 Smarter SGD: SGD+Momentum（动量）"></a>3.3 Smarter SGD: SGD+Momentum（动量）</h3><h4 id="3-3-1-Main-idea"><a href="#3-3-1-Main-idea" class="headerlink" title="3.3.1 Main idea"></a>3.3.1 Main idea</h4><img src="/2021/04/26/Lecture%204/3.3.1-1.png" class>
+
+<img src="/2021/04/26/Lecture%204/3.3.1-2.png" class>
+
+<ul>
+<li>Momentum会保留之前步子的趋势这里的 v 可以看成是小球在曲线上摆动的速度，当曲线越陡峭时，下滑速度越大，vice versa;</li>
+<li>后面两种方法其实是完全一样的；</li>
+<li>这种方法可以解决上面提到的普通SGD不能解决的问题</li>
+</ul>
+<img src="/2021/04/26/Lecture%204/3.3.1-3.png" class>
+
+<h3 id="3-4-SGD-Nesterov-Momentum（牛顿动量）"><a href="#3-4-SGD-Nesterov-Momentum（牛顿动量）" class="headerlink" title="3.4 SGD+Nesterov Momentum（牛顿动量）"></a>3.4 SGD+Nesterov Momentum（牛顿动量）</h3><h4 id="3-4-1-Main-idea"><a href="#3-4-1-Main-idea" class="headerlink" title="3.4.1 Main idea"></a>3.4.1 Main idea</h4><img src="/2021/04/26/Lecture%204/3.4.1.png" class>
+
+<ul>
+<li>它先走到你<strong>下一步</strong>将要到的那个点，然后把那个 “未来的点” 的梯度计算出来（取代当前点的地位），直接<strong>更新动量和x</strong>；</li>
+<li>优点：学习率合适，如果下一步趋势不变，可以看做等价替换（不会产生放大效应，不会double位移）；如果下一步有加速、减速或者掉头的趋势，又能提前实现（因为能提前找到下一步的点，提前往正确的方向拉回来）;</li>
+</ul>
+<h3 id="3-5-AdaGrad"><a href="#3-5-AdaGrad" class="headerlink" title="3.5 AdaGrad"></a>3.5 AdaGrad</h3><h4 id="3-5-1-Main-idea"><a href="#3-5-1-Main-idea" class="headerlink" title="3.5.1 Main idea"></a>3.5.1 Main idea</h4><img src="/2021/04/26/Lecture%204/3.5.1.png" class>
+
+<p>这里1e-7是为了防止出现分母为零的情况；</p>
+<h4 id="3-5-2-Problem"><a href="#3-5-2-Problem" class="headerlink" title="3.5.2 Problem"></a>3.5.2 Problem</h4><p>当我们一直运行AdaGrad方法时，grad_square会变得非常大，导致我们的w最终变化很小，学习速率逐渐变慢，在深度学习中甚至会造成训练提前结束；</p>
+<h3 id="3-6-RMSProp-AdaGrad的改进"><a href="#3-6-RMSProp-AdaGrad的改进" class="headerlink" title="3.6 RMSProp: AdaGrad的改进"></a>3.6 RMSProp: AdaGrad的改进</h3><h4 id="3-6-1-Main-idea"><a href="#3-6-1-Main-idea" class="headerlink" title="3.6.1 Main idea"></a>3.6.1 Main idea</h4><img src="/2021/04/26/Lecture%204/3.6.1-1.png" class>
+
+<p>RMSProp通过引入一个衰减系数，<strong>让r每回合都衰减一定比例</strong>，类似于Momentum中的做法，是对AdaGrad算法的改进；</p>
+<img src="/2021/04/26/Lecture%204/3.6.1-2.png" class>
+
+<h3 id="3-7-Adam-almost-RMSProp-Momentum"><a href="#3-7-Adam-almost-RMSProp-Momentum" class="headerlink" title="3.7 Adam (almost): RMSProp + Momentum"></a>3.7 Adam (almost): RMSProp + Momentum</h3><h4 id="3-7-1-Main-idea"><a href="#3-7-1-Main-idea" class="headerlink" title="3.7.1 Main idea"></a>3.7.1 Main idea</h4><img src="/2021/04/26/Lecture%204/3.7.1.png" class>
+
+<h4 id="3-7-2-Problem"><a href="#3-7-2-Problem" class="headerlink" title="3.7.2 Problem"></a>3.7.2 Problem</h4><p>假设一开始 beta = 0.999, 最开始 (t = 0) 的时候，w的改变会非常大 (a very large step). 因此我们考虑做出一点改进：增加一个 bias correction.</p>
+<h4 id="3-7-3-再增加一个bias来解决上述问题"><a href="#3-7-3-再增加一个bias来解决上述问题" class="headerlink" title="3.7.3 再增加一个bias来解决上述问题"></a>3.7.3 再增加一个bias来解决上述问题</h4><img src="/2021/04/26/Lecture%204/3.7.3-1.png" class>
+
+<img src="/2021/04/26/Lecture%204/3.7.3-2.png" class>
+
+
+
+<h2 id="4-Summary"><a href="#4-Summary" class="headerlink" title="4 Summary"></a>4 Summary</h2><img src="/2021/04/26/Lecture%204/4.png" class>
+
+
+
+<h2 id="5-Second-Order-Optimization"><a href="#5-Second-Order-Optimization" class="headerlink" title="5 Second-Order Optimization"></a>5 Second-Order Optimization</h2><p>不太实用</p>
+<img src="/2021/04/26/Lecture%204/5.png" class>
+
+
+
+<h2 id="6-In-Practice"><a href="#6-In-Practice" class="headerlink" title="6 In Practice"></a>6 In Practice</h2><ul>
+<li>Adam is a good default choice in many cases;</li>
+<li>SGD+Momentum can outperform Adam but may require more tuning（调整）;</li>
+<li>If you can afford to do full batch updates (low dimensional or don’t use stochastic) than try out L-BGFS (and don’t forget to disable all sources of noise)</li>
+</ul>
+<img src="/2021/04/26/Lecture%204/6.png" class>
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Optimization/" rel="tag"># Optimization</a>
+          
+            <a href="/tags/SGD/" rel="tag"># SGD</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/26/hexo-images/" rel="next" title="hexo-images搭建hexo插入图片时遇到的坑">
+                <i class="fa fa-chevron-left"></i> hexo-images搭建hexo插入图片时遇到的坑
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">6</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">5</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Lecture-4-First-Order-Optimization"><span class="nav-number">1.</span> <span class="nav-text">Lecture 4: (First-Order)Optimization</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-Main-idea"><span class="nav-number">1.1.</span> <span class="nav-text">1 Main idea</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-Gradient"><span class="nav-number">1.2.</span> <span class="nav-text">2 Gradient</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-1-What-is-gradient"><span class="nav-number">1.2.1.</span> <span class="nav-text">2.1 What is gradient</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-2-Computing-Gradient"><span class="nav-number">1.2.2.</span> <span class="nav-text">2.2 Computing Gradient</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-1-Numerical-gradient"><span class="nav-number">1.2.2.1.</span> <span class="nav-text">2.2.1 Numerical gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-2-Analytic-gradient"><span class="nav-number">1.2.2.2.</span> <span class="nav-text">2.2.2 Analytic gradient</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-3-Gradient-check"><span class="nav-number">1.2.2.3.</span> <span class="nav-text">2.2.3 Gradient check</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-Gradient-Descent"><span class="nav-number">1.3.</span> <span class="nav-text">3 Gradient Descent</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-Hyperparameters"><span class="nav-number">1.3.1.</span> <span class="nav-text">3.1 Hyperparameters</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-Vanilla-Stochastic-Gradient-Descent-SGD"><span class="nav-number">1.3.2.</span> <span class="nav-text">3.2 Vanilla Stochastic Gradient Descent (SGD)</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-1-Main-idea"><span class="nav-number">1.3.2.1.</span> <span class="nav-text">3.2.1 Main idea</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-2-Problems-with-SGD"><span class="nav-number">1.3.2.2.</span> <span class="nav-text">3.2.2 Problems with SGD</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-3-Smarter-SGD-SGD-Momentum%EF%BC%88%E5%8A%A8%E9%87%8F%EF%BC%89"><span class="nav-number">1.3.3.</span> <span class="nav-text">3.3 Smarter SGD: SGD+Momentum（动量）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-3-1-Main-idea"><span class="nav-number">1.3.3.1.</span> <span class="nav-text">3.3.1 Main idea</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-4-SGD-Nesterov-Momentum%EF%BC%88%E7%89%9B%E9%A1%BF%E5%8A%A8%E9%87%8F%EF%BC%89"><span class="nav-number">1.3.4.</span> <span class="nav-text">3.4 SGD+Nesterov Momentum（牛顿动量）</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-4-1-Main-idea"><span class="nav-number">1.3.4.1.</span> <span class="nav-text">3.4.1 Main idea</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-5-AdaGrad"><span class="nav-number">1.3.5.</span> <span class="nav-text">3.5 AdaGrad</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-1-Main-idea"><span class="nav-number">1.3.5.1.</span> <span class="nav-text">3.5.1 Main idea</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-5-2-Problem"><span class="nav-number">1.3.5.2.</span> <span class="nav-text">3.5.2 Problem</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-6-RMSProp-AdaGrad%E7%9A%84%E6%94%B9%E8%BF%9B"><span class="nav-number">1.3.6.</span> <span class="nav-text">3.6 RMSProp: AdaGrad的改进</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-6-1-Main-idea"><span class="nav-number">1.3.6.1.</span> <span class="nav-text">3.6.1 Main idea</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-7-Adam-almost-RMSProp-Momentum"><span class="nav-number">1.3.7.</span> <span class="nav-text">3.7 Adam (almost): RMSProp + Momentum</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-1-Main-idea"><span class="nav-number">1.3.7.1.</span> <span class="nav-text">3.7.1 Main idea</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-2-Problem"><span class="nav-number">1.3.7.2.</span> <span class="nav-text">3.7.2 Problem</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-7-3-%E5%86%8D%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AAbias%E6%9D%A5%E8%A7%A3%E5%86%B3%E4%B8%8A%E8%BF%B0%E9%97%AE%E9%A2%98"><span class="nav-number">1.3.7.3.</span> <span class="nav-text">3.7.3 再增加一个bias来解决上述问题</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-Summary"><span class="nav-number">1.4.</span> <span class="nav-text">4 Summary</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-Second-Order-Optimization"><span class="nav-number">1.5.</span> <span class="nav-text">5 Second-Order Optimization</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-In-Practice"><span class="nav-number">1.6.</span> <span class="nav-text">6 In Practice</span></a></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kc</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+  <span class="post-meta-divider">|</span>
+
+
+
+  <div class="theme-info">Theme &mdash; <a class="theme-link" target="_blank" href="https://github.com/iissnan/hexo-theme-next">NexT.Muse</a> v5.1.4</div>
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+      <div class="back-to-top">
+        <i class="fa fa-arrow-up"></i>
+        
+      </div>
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
