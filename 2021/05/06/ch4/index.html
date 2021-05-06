@@ -1,0 +1,842 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kc的笔记本" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="第四章 MAC 子层6. 下列情况下，求CSMA&#x2F;CD 的竞争时隙：a.  一个 2km 长的平行双芯电缆（单向的传播速率是真空中光速的 82%）；b.  一个 40km 的多模光纤线路（单个的传播速率是真空中光速的 65%）解题思路：本题考查对于竞争时隙（2τ）的理解。采用 CSMA&#x2F;CD 的网络中，一个站点在开始发送数据后，最多需要经过 2τ 的时间才能发现冲突，因此 2τ称为竞争时隙（或争用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ch4 MAC子层">
+<meta property="og:url" content="https://cauchy221.github.io/2021/05/06/ch4/index.html">
+<meta property="og:site_name" content="kc的笔记本">
+<meta property="og:description" content="第四章 MAC 子层6. 下列情况下，求CSMA&#x2F;CD 的竞争时隙：a.  一个 2km 长的平行双芯电缆（单向的传播速率是真空中光速的 82%）；b.  一个 40km 的多模光纤线路（单个的传播速率是真空中光速的 65%）解题思路：本题考查对于竞争时隙（2τ）的理解。采用 CSMA&#x2F;CD 的网络中，一个站点在开始发送数据后，最多需要经过 2τ 的时间才能发现冲突，因此 2τ称为竞争时隙（或争用">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch4/1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch4/2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch4/3.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch4/4.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch4/5.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch4/6.png">
+<meta property="article:published_time" content="2021-05-06T06:01:19.000Z">
+<meta property="article:modified_time" content="2021-05-06T06:03:44.698Z">
+<meta property="article:author" content="kc">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauchy221.github.io/2021/05/06/ch4/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cauchy221.github.io/2021/05/06/ch4/"/>
+
+
+
+
+
+  <title>ch4 MAC子层 | kc的笔记本</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kc的笔记本</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">可爱小猪</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cauchy221.github.io/2021/05/06/ch4/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kc的笔记本">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ch4 MAC子层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-05-06T14:01:19+08:00">
+                2021-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">作业整理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第四章-MAC-子层"><a href="#第四章-MAC-子层" class="headerlink" title="第四章 MAC 子层"></a>第四章 MAC 子层</h1><h3 id="6-下列情况下，求CSMA-CD-的竞争时隙：a-一个-2km-长的平行双芯电缆（单向的传播速率是真空中光速的-82-）；b-一个-40km-的多模光纤线路（单个的传播速率是真空中光速的-65-）"><a href="#6-下列情况下，求CSMA-CD-的竞争时隙：a-一个-2km-长的平行双芯电缆（单向的传播速率是真空中光速的-82-）；b-一个-40km-的多模光纤线路（单个的传播速率是真空中光速的-65-）" class="headerlink" title="6. 下列情况下，求CSMA/CD 的竞争时隙：a.  一个 2km 长的平行双芯电缆（单向的传播速率是真空中光速的 82%）；b.  一个 40km 的多模光纤线路（单个的传播速率是真空中光速的 65%）"></a>6. 下列情况下，求CSMA/CD 的竞争时隙：a.  一个 2km 长的平行双芯电缆（单向的传播速率是真空中光速的 82%）；b.  一个 40km 的多模光纤线路（单个的传播速率是真空中光速的 65%）</h3><h5 id="解题思路：本题考查对于竞争时隙（2τ）的理解。采用-CSMA-CD-的网络中，一个站点在开始发送数据后，最多需要经过-2τ-的时间才能发现冲突，因此-2τ称为竞争时隙（或争用期）。"><a href="#解题思路：本题考查对于竞争时隙（2τ）的理解。采用-CSMA-CD-的网络中，一个站点在开始发送数据后，最多需要经过-2τ-的时间才能发现冲突，因此-2τ称为竞争时隙（或争用期）。" class="headerlink" title="解题思路：本题考查对于竞争时隙（2τ）的理解。采用 CSMA/CD 的网络中，一个站点在开始发送数据后，最多需要经过 2τ 的时间才能发现冲突，因此 2τ称为竞争时隙（或争用期）。"></a>解题思路：本题考查对于竞争时隙（2τ）的理解。采用 CSMA/CD 的网络中，一个站点在开始发送数据后，最多需要经过 2τ 的时间才能发现冲突，因此 2τ称为竞争时隙（或争用期）。</h5><p>答：（a）信号在平行双芯电缆上的传播速率为 3×108×82%= 2.46×108 米/秒，长度为 2km的电缆传播时延τ=8.13μs，2τ=16.26μs<br>（b）信号在多模光纤电缆上的传播速率为 3×108×65%=1.95×108 米/秒，长度为 40km 的电缆传播延迟是τ=205.13μs，2τ=410.26μs</p>
+<h3 id="11-6-个站点（从A-到-F）使用-MACA-协议通信，是否存在可能同时发生两个传输？-给出你的解释。"><a href="#11-6-个站点（从A-到-F）使用-MACA-协议通信，是否存在可能同时发生两个传输？-给出你的解释。" class="headerlink" title="11. 6 个站点（从A 到 F）使用 MACA 协议通信，是否存在可能同时发生两个传输？ 给出你的解释。"></a>11. 6 个站点（从A 到 F）使用 MACA 协议通信，是否存在可能同时发生两个传输？ 给出你的解释。</h3><h5 id="解题思路：此题考查对于-MACA-协议解决暴露站问题的理解。"><a href="#解题思路：此题考查对于-MACA-协议解决暴露站问题的理解。" class="headerlink" title="解题思路：此题考查对于 MACA 协议解决暴露站问题的理解。"></a>解题思路：此题考查对于 MACA 协议解决暴露站问题的理解。</h5><p>答：可能。发送 RTS 的站点只要收到 CTS，就可以无冲突发送。假设从 A 到 F 各个站点依次排列在一条直线上，其信号覆盖范围只到自己的邻居站点，即 A 的信号只有 B 能收到，B 的信号只有 A 和 C 能收到，以此类推。若 A 要发送数据给 B，E 要发送数据给 F，由于 A 和 E 通过 RTS 和CTS 都检测出没有冲突，这两个传输可以同时发生。</p>
+<h3 id="13-标准的-10Mbps-以太网的波特率是多少？"><a href="#13-标准的-10Mbps-以太网的波特率是多少？" class="headerlink" title="13. 标准的 10Mbps 以太网的波特率是多少？"></a>13. 标准的 10Mbps 以太网的波特率是多少？</h3><h5 id="解题思路：此题考查对于曼彻斯特编码原理的理解。"><a href="#解题思路：此题考查对于曼彻斯特编码原理的理解。" class="headerlink" title="解题思路：此题考查对于曼彻斯特编码原理的理解。"></a>解题思路：此题考查对于曼彻斯特编码原理的理解。</h5><p>答：传统的 10Mbps 以太网使用曼彻斯特编码，它发送的每一位都有两个信号周期，即信号频率是数据率的 2 倍。数据率为 10 Mbps，因此信号速率是 20M 波特。</p>
+<h3 id="14-画出位流-0001110101-的曼彻斯特编码。"><a href="#14-画出位流-0001110101-的曼彻斯特编码。" class="headerlink" title="14. 画出位流 0001110101 的曼彻斯特编码。"></a>14. 画出位流 0001110101 的曼彻斯特编码。</h3><h5 id="解题思路：此题考查对于曼彻斯特编码原理的掌握。"><a href="#解题思路：此题考查对于曼彻斯特编码原理的掌握。" class="headerlink" title="解题思路：此题考查对于曼彻斯特编码原理的掌握。"></a>解题思路：此题考查对于曼彻斯特编码原理的掌握。</h5><p>答：假设按照书上的规定，码元中间的上跳变表示 0，下跳变表示 1。</p>
+<img src="/2021/05/06/ch4/1.png" class>
+
+
+
+
+
+<h3 id="15-一个使用CSMA-CD（非-IEEE802-3）的-LAN，电缆长度为-1-公里，带宽为-10Mbps，传播速度为-200-米-微秒，网络中不允许使用中继器。数据帧长-256-位，其中包括帧头、校验码和其他开销共-32-位。成功发送之后的第一个位时隙保留给接收站，以捕获信道并发送32-位确认帧。假定没有冲突，信道的有效数据率是多少？"><a href="#15-一个使用CSMA-CD（非-IEEE802-3）的-LAN，电缆长度为-1-公里，带宽为-10Mbps，传播速度为-200-米-微秒，网络中不允许使用中继器。数据帧长-256-位，其中包括帧头、校验码和其他开销共-32-位。成功发送之后的第一个位时隙保留给接收站，以捕获信道并发送32-位确认帧。假定没有冲突，信道的有效数据率是多少？" class="headerlink" title="15. 一个使用CSMA/CD（非 IEEE802.3）的 LAN，电缆长度为 1 公里，带宽为 10Mbps，传播速度为 200 米/微秒，网络中不允许使用中继器。数据帧长 256 位，其中包括帧头、校验码和其他开销共 32 位。成功发送之后的第一个位时隙保留给接收站，以捕获信道并发送32 位确认帧。假定没有冲突，信道的有效数据率是多少？"></a>15. 一个使用CSMA/CD（非 IEEE802.3）的 LAN，电缆长度为 1 公里，带宽为 10Mbps，传播速度为 200 米/微秒，网络中不允许使用中继器。数据帧长 256 位，其中包括帧头、校验码和其他开销共 32 位。成功发送之后的第一个位时隙保留给接收站，以捕获信道并发送32 位确认帧。假定没有冲突，信道的有效数据率是多少？</h3><h5 id="解题思路：此题考查对于带确认的-CSMA-CD-协议工作原理的理解。根据题意，发送一个数据帧之后，需要保留一个时隙（2τ）的时间，以便接收站点从接收模式转成发送模式，并捕获信道。有效数据率定义为有效的数据（不包含帧头和帧尾的开销）除以总传输时间（包含发送时延、传播时延和确认需要的时间）。"><a href="#解题思路：此题考查对于带确认的-CSMA-CD-协议工作原理的理解。根据题意，发送一个数据帧之后，需要保留一个时隙（2τ）的时间，以便接收站点从接收模式转成发送模式，并捕获信道。有效数据率定义为有效的数据（不包含帧头和帧尾的开销）除以总传输时间（包含发送时延、传播时延和确认需要的时间）。" class="headerlink" title="解题思路：此题考查对于带确认的 CSMA/CD 协议工作原理的理解。根据题意，发送一个数据帧之后，需要保留一个时隙（2τ）的时间，以便接收站点从接收模式转成发送模式，并捕获信道。有效数据率定义为有效的数据（不包含帧头和帧尾的开销）除以总传输时间（包含发送时延、传播时延和确认需要的时间）。"></a>解题思路：此题考查对于带确认的 CSMA/CD 协议工作原理的理解。根据题意，发送一个数据帧之后，需要保留一个时隙（2τ）的时间，以便接收站点从接收模式转成发送模式，并捕获信道。有效数据率定义为有效的数据（不包含帧头和帧尾的开销）除以总传输时间（包含发送时延、传播时延和确认需要的时间）。</h5><p>答：单程传播时延τ=1000/200=5μs。在没有冲突的情况下，一次成功传输包含下列过程：</p>
+<ol>
+<li> 发送站发出一帧，发送时间为 256/10M=25.6μs；该数据帧经过 5μs 后到达接收站；</li>
+<li>接收站占用 10μs 捕获信道，发送 ACK 帧，发送时间=32/10M=3.2μs，ACK 经过 5μ s 后到达发送站。<br> 因此传输总时间=25.6+5+10+3.2+5=48.8μs 有效数据率=（256-32）/48.8= 4.59Mbps</li>
+</ol>
+<h3 id="16-在一个-1-公里长的电缆上，不使用中继器的情况下，考虑构建一个速率在-1-Gbps的-CSMA-CD-网络。在电缆上的信号传播速率是-200-000-km-sec。最小帧的长度是多少？"><a href="#16-在一个-1-公里长的电缆上，不使用中继器的情况下，考虑构建一个速率在-1-Gbps的-CSMA-CD-网络。在电缆上的信号传播速率是-200-000-km-sec。最小帧的长度是多少？" class="headerlink" title="16. 在一个 1 公里长的电缆上，不使用中继器的情况下，考虑构建一个速率在 1 Gbps的 CSMA/CD 网络。在电缆上的信号传播速率是 200,000 km/sec。最小帧的长度是多少？"></a>16. 在一个 1 公里长的电缆上，不使用中继器的情况下，考虑构建一个速率在 1 Gbps的 CSMA/CD 网络。在电缆上的信号传播速率是 200,000 km/sec。最小帧的长度是多少？</h3><h5 id="解题思路：此题考查对于以太网最短帧长的原理的掌握。以太网有最短帧长的原因是，保证帧的发送时间不少于-2τ，以便发送站点能够在发送完毕之前检测到冲突。"><a href="#解题思路：此题考查对于以太网最短帧长的原理的掌握。以太网有最短帧长的原因是，保证帧的发送时间不少于-2τ，以便发送站点能够在发送完毕之前检测到冲突。" class="headerlink" title="解题思路：此题考查对于以太网最短帧长的原理的掌握。以太网有最短帧长的原因是，保证帧的发送时间不少于 2τ，以便发送站点能够在发送完毕之前检测到冲突。"></a>解题思路：此题考查对于以太网最短帧长的原理的掌握。以太网有最短帧长的原因是，保证帧的发送时间不少于 2τ，以便发送站点能够在发送完毕之前检测到冲突。</h5><p>答：对于 1km 电缆，单程传播时延τ=1/200000=5μs，往返时延为 2τ=10μs，即最短帧的发送时间不能小于 10μs。对于 1Gbps 的发送速率，10μs 可以发送的比特数为 10×10^(-6)×10^9=10^4 位.因此最短帧长是 10000 位，即 1250 字节。</p>
+<h3 id="17-一个长度为-60-字节的-IP-包（包含了头部）将通过一个以太网进行传输。如果没有使用-LLC，则在以太网中传输需要填充字节吗？如果需要，填充多少？"><a href="#17-一个长度为-60-字节的-IP-包（包含了头部）将通过一个以太网进行传输。如果没有使用-LLC，则在以太网中传输需要填充字节吗？如果需要，填充多少？" class="headerlink" title="17. 一个长度为 60 字节的 IP 包（包含了头部）将通过一个以太网进行传输。如果没有使用 LLC，则在以太网中传输需要填充字节吗？如果需要，填充多少？"></a>17. 一个长度为 60 字节的 IP 包（包含了头部）将通过一个以太网进行传输。如果没有使用 LLC，则在以太网中传输需要填充字节吗？如果需要，填充多少？</h3><h5 id="解题思路：此题考查对于以太网最短帧长的掌握。"><a href="#解题思路：此题考查对于以太网最短帧长的掌握。" class="headerlink" title="解题思路：此题考查对于以太网最短帧长的掌握。"></a>解题思路：此题考查对于以太网最短帧长的掌握。</h5><p>答：<strong>以太网的最短以太帧有 64 字节长，其中帧头的目的地址、源地址、类型/长度字段和帧尾的校验和字段一共是 18 字节，数据部分最少为 46 字节</strong>，如果不足 46 字节则需要填充。题目中的 IP 包为 60 字节，超过了 46 字节。因此不需要填充。</p>
+<h3 id="18-以太网帧必须在-64-字节以上，这样做的理由是：当电缆的另一端发生冲突的时候，传送方仍然还在发送过程中。快速以太网也有同样的-64-字节最小帧的限制，但它可以以快10-倍的速度发送数据。请问它如何维持同样的最小帧长度限制的？"><a href="#18-以太网帧必须在-64-字节以上，这样做的理由是：当电缆的另一端发生冲突的时候，传送方仍然还在发送过程中。快速以太网也有同样的-64-字节最小帧的限制，但它可以以快10-倍的速度发送数据。请问它如何维持同样的最小帧长度限制的？" class="headerlink" title="18. 以太网帧必须在 64 字节以上，这样做的理由是：当电缆的另一端发生冲突的时候，传送方仍然还在发送过程中。快速以太网也有同样的 64 字节最小帧的限制，但它可以以快10 倍的速度发送数据。请问它如何维持同样的最小帧长度限制的？"></a>18. 以太网帧必须在 64 字节以上，这样做的理由是：当电缆的另一端发生冲突的时候，传送方仍然还在发送过程中。快速以太网也有同样的 64 字节最小帧的限制，但它可以以快10 倍的速度发送数据。请问它如何维持同样的最小帧长度限制的？</h3><h5 id="解题思路：此题考查快速以太网与传统以太网的相同点与不同点。"><a href="#解题思路：此题考查快速以太网与传统以太网的相同点与不同点。" class="headerlink" title="解题思路：此题考查快速以太网与传统以太网的相同点与不同点。"></a>解题思路：此题考查快速以太网与传统以太网的相同点与不同点。</h5><p>答：快速以太网的速率是传统以太网的 10 倍，但保留了传统以太网的最短帧长的规定，这是通过限制电缆最大长度来实现的，快速以太网的最大电缆长度是传统以太网的 1/10。</p>
+<h3 id="20-千兆以太网每秒钟能够处理多少帧？请仔细想一下：并考虑所有有关的情形。提示：-请考虑千兆以太网的实质。"><a href="#20-千兆以太网每秒钟能够处理多少帧？请仔细想一下：并考虑所有有关的情形。提示：-请考虑千兆以太网的实质。" class="headerlink" title="20. 千兆以太网每秒钟能够处理多少帧？请仔细想一下：并考虑所有有关的情形。提示： 请考虑千兆以太网的实质。"></a>20. 千兆以太网每秒钟能够处理多少帧？请仔细想一下：并考虑所有有关的情形。提示： 请考虑千兆以太网的实质。</h3><h5 id="解题思路：此题考查千兆以太网的主要原理，包括帧突发和载波扩展的概念。"><a href="#解题思路：此题考查千兆以太网的主要原理，包括帧突发和载波扩展的概念。" class="headerlink" title="解题思路：此题考查千兆以太网的主要原理，包括帧突发和载波扩展的概念。"></a>解题思路：此题考查千兆以太网的主要原理，包括帧突发和载波扩展的概念。</h5><p>答：千兆以太网的最短帧长为 512 位（即 64 字节），信息传输速率为 1Gbps。当帧是以一串短帧（<strong>帧突发</strong>）的形式发送时，则千兆以太网每秒可以处理 109/512=1953125 比特≈2 百万个帧。当最短帧则以<strong>载波扩展</strong>的形式发送，即每个帧被填充到 4096 位，则千兆以太网每秒可以处理的帧的个数是：109/4096≈244140 个帧。对于发送最大帧（1518×8=12144 位）的情形，则每秒可处理的帧的个数为 82345 个。</p>
+<h5 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h5><p>（1）载波扩充：硬件通过填充将帧长度扩展为512字节</p>
+<p>（2）帧突发：允许发送方将多个待发 发送的帧级联，一次性传输出去，若级联的突发仍小于512字节，硬件依然会填充</p>
+<p>（3）以太网最短帧长64字节，最长为1518字节</p>
+<h3 id="22-在图-4-27-中（即下图）显示了-4-个站点A、B、C-和D。你认为后两个站点中（C和-D）哪一个最接近A？为什么？"><a href="#22-在图-4-27-中（即下图）显示了-4-个站点A、B、C-和D。你认为后两个站点中（C和-D）哪一个最接近A？为什么？" class="headerlink" title="22. 在图 4-27 中（即下图）显示了 4 个站点A、B、C 和D。你认为后两个站点中（C和 D）哪一个最接近A？为什么？"></a>22. 在图 4-27 中（即下图）显示了 4 个站点A、B、C 和D。你认为后两个站点中（C和 D）哪一个最接近A？为什么？</h3><img src="/2021/05/06/ch4/2.png" class>
+
+<h5 id="解题思路：此题考查对于网络分配向量-NAV-概念的理解。"><a href="#解题思路：此题考查对于网络分配向量-NAV-概念的理解。" class="headerlink" title="解题思路：此题考查对于网络分配向量 NAV 概念的理解。"></a>解题思路：此题考查对于网络分配向量 NAV 概念的理解。</h5><p>答：站点 C 离 A 更近。因为 C 能收到 A 的 RTS 帧，并且通过 NAV（网络分配向量）做出响应。D 的 NAV 不包括 RTS 的时间，说明 D 没有收到 RTS 帧，即D 位于 A 的无线信号覆盖范围之外。</p>
+<h3 id="23-举例说明在-802-11-协议中的RTS-CTS-与-MACA-协议中的RTS-CTS-的区别。"><a href="#23-举例说明在-802-11-协议中的RTS-CTS-与-MACA-协议中的RTS-CTS-的区别。" class="headerlink" title="23. 举例说明在 802.11 协议中的RTS/CTS 与 MACA 协议中的RTS/CTS 的区别。"></a>23. 举例说明在 802.11 协议中的RTS/CTS 与 MACA 协议中的RTS/CTS 的区别。</h3><h5 id="解题思路：此题考查对于-802-11-协议原理的理解。"><a href="#解题思路：此题考查对于-802-11-协议原理的理解。" class="headerlink" title="解题思路：此题考查对于 802.11 协议原理的理解。"></a>解题思路：此题考查对于 802.11 协议原理的理解。</h5><p>答：由于 NAV，802.11 的 RTS/CTS 不能解决暴露站的问题。例如，在教材图 4-11 的情景（B）， MACA 协议将允许两对主机同时通信，即 B 发送给到 A 和 C 发送给 D；但 802.11 中，C 收到B 发送的 RTS，根据 NAV，它将在 B 的数据帧传输的整个过程中（包括传输 ACK）退避，而不能发送给 D。</p>
+<h3 id="24-某带-AP-的无线-LAN-有-10-个站点，其中-4-个站点的数据率为-6Mbps，4-个站点的数据率为-18Mbps，另外-2-个站点的数据率为-54Mbps。如果-10-个站点同时发送数据，在下列情况下，每个站点得到的数据率分别是多少？-1-不使用-TXOP-2-使用TXOP"><a href="#24-某带-AP-的无线-LAN-有-10-个站点，其中-4-个站点的数据率为-6Mbps，4-个站点的数据率为-18Mbps，另外-2-个站点的数据率为-54Mbps。如果-10-个站点同时发送数据，在下列情况下，每个站点得到的数据率分别是多少？-1-不使用-TXOP-2-使用TXOP" class="headerlink" title="24. 某带 AP 的无线 LAN 有 10 个站点，其中 4 个站点的数据率为 6Mbps，4 个站点的数据率为 18Mbps，另外 2 个站点的数据率为 54Mbps。如果 10 个站点同时发送数据，在下列情况下，每个站点得到的数据率分别是多少？(1) 不使用 TXOP(2) 使用TXOP"></a>24. 某带 AP 的无线 LAN 有 10 个站点，其中 4 个站点的数据率为 6Mbps，4 个站点的数据率为 18Mbps，另外 2 个站点的数据率为 54Mbps。如果 10 个站点同时发送数据，在下列情况下，每个站点得到的数据率分别是多少？(1) 不使用 TXOP(2) 使用TXOP</h3><h5 id="解题思路：此题考查对于速率异常问题和-TXOP-原理的理解。"><a href="#解题思路：此题考查对于速率异常问题和-TXOP-原理的理解。" class="headerlink" title="解题思路：此题考查对于速率异常问题和 TXOP 原理的理解。"></a>解题思路：此题考查对于速率异常问题和 TXOP 原理的理解。</h5><img src="/2021/05/06/ch4/3.png" class>
+
+<h5 id="知识点：-1"><a href="#知识点：-1" class="headerlink" title="知识点："></a>知识点：</h5><p>（1）不使用TXOP时，假设两个站分别为6MBps和54MBps，则真正的平均发送速率为5.4MBps；</p>
+<p>（2）使用TXOP，每个站分配到等量的时间而不是帧数，此时每个站点的数据率=原数据率/站点总数</p>
+<h3 id="38-如书图-4-41（b）（即下图）所示，使用网桥-B1-和-B2-扩展局域网。假设两个网桥的初始转发表（Hash-Table）都是空的。请按照下列发送顺序，给出每个帧所经过的网桥及其端口。a-A-发送一个包给-C；b-E-发送一个包给-F-；c-F-发送一个包给-E-；d-G-发送一个包给E-；e-D-发送一个包给-A-；f-B-发送一个包给-F"><a href="#38-如书图-4-41（b）（即下图）所示，使用网桥-B1-和-B2-扩展局域网。假设两个网桥的初始转发表（Hash-Table）都是空的。请按照下列发送顺序，给出每个帧所经过的网桥及其端口。a-A-发送一个包给-C；b-E-发送一个包给-F-；c-F-发送一个包给-E-；d-G-发送一个包给E-；e-D-发送一个包给-A-；f-B-发送一个包给-F" class="headerlink" title="38. 如书图 4-41（b）（即下图）所示，使用网桥 B1 和 B2 扩展局域网。假设两个网桥的初始转发表（Hash Table）都是空的。请按照下列发送顺序，给出每个帧所经过的网桥及其端口。a.  A 发送一个包给 C；b.  E 发送一个包给 F.；c.  F 发送一个包给 E.；d.  G 发送一个包给E.；e.  D 发送一个包给 A.；f.  B 发送一个包给 F."></a>38. 如书图 4-41（b）（即下图）所示，使用网桥 B1 和 B2 扩展局域网。假设两个网桥的初始转发表（Hash Table）都是空的。请按照下列发送顺序，给出每个帧所经过的网桥及其端口。a.  A 发送一个包给 C；b.  E 发送一个包给 F.；c.  F 发送一个包给 E.；d.  G 发送一个包给E.；e.  D 发送一个包给 A.；f.  B 发送一个包给 F.</h3><img src="/2021/05/06/ch4/4.png" class>
+
+<h5 id="解题思路：此题考查对于网桥工作原理（如何转发帧、如何生成转发表）的理解。网桥收到一帧后，根据帧中的目的地址检查转发表，如果查到的输出端口与输入端口一致，则不转发；-如果输出端口与输入端口不一致，则转发到相应端口；如果查不到，则洪泛转发到除输入端口之外的所有端口。转发表采用“逆向学习”的方法生成，即检查收到的帧中的源地址，将源地址和输入端口加入转发表。"><a href="#解题思路：此题考查对于网桥工作原理（如何转发帧、如何生成转发表）的理解。网桥收到一帧后，根据帧中的目的地址检查转发表，如果查到的输出端口与输入端口一致，则不转发；-如果输出端口与输入端口不一致，则转发到相应端口；如果查不到，则洪泛转发到除输入端口之外的所有端口。转发表采用“逆向学习”的方法生成，即检查收到的帧中的源地址，将源地址和输入端口加入转发表。" class="headerlink" title="解题思路：此题考查对于网桥工作原理（如何转发帧、如何生成转发表）的理解。网桥收到一帧后，根据帧中的目的地址检查转发表，如果查到的输出端口与输入端口一致，则不转发； 如果输出端口与输入端口不一致，则转发到相应端口；如果查不到，则洪泛转发到除输入端口之外的所有端口。转发表采用“逆向学习”的方法生成，即检查收到的帧中的源地址，将源地址和输入端口加入转发表。"></a>解题思路：此题考查对于网桥工作原理（如何转发帧、如何生成转发表）的理解。网桥收到一帧后，根据帧中的目的地址检查转发表，如果查到的输出端口与输入端口一致，则不转发； 如果输出端口与输入端口不一致，则转发到相应端口；如果查不到，则洪泛转发到除输入端口之外的所有端口。转发表采用“逆向学习”的方法生成，即检查收到的帧中的源地址，将源地址和输入端口加入转发表。</h5><p>答：(a) B1 将这个数据帧转发到端口 2、3 和 4，B2 将转发到端口 1、2 和 3。</p>
+<p>(b) B2 将这个数据帧转发到端口 1、3 和 4， B1 将转发到端口 1、2 和 3。</p>
+<p>(c) B2 不转发该帧，因此 B1 不会收到这个帧。</p>
+<p>(d) B2 将这个数据帧转发到端口 2，B1 不会收到这个帧。</p>
+<p>(e) B2 将这个数据帧转发到端口 4，B1 将转发到端口 1。</p>
+<p>(f) B1 将这个数据帧转发到端口 1、3 和 4，B2 将转发到端口 2。</p>
+<h5 id="知识点：-2"><a href="#知识点：-2" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、转发表的填写方法</strong></p>
+<p>（1）先看源地址，源地址不在的将（MAC地址，端口）存进表中</p>
+<p>（2）再看目的地址是否在表中，在表中的目的地址和源地址端口是否一致</p>
+<h3 id="39-从损坏帧的角度看，存储－转发型交换机比直通型交换机更有优势。请说明这种优势。"><a href="#39-从损坏帧的角度看，存储－转发型交换机比直通型交换机更有优势。请说明这种优势。" class="headerlink" title="39. 从损坏帧的角度看，存储－转发型交换机比直通型交换机更有优势。请说明这种优势。"></a>39. 从损坏帧的角度看，存储－转发型交换机比直通型交换机更有优势。请说明这种优势。</h3><h5 id="解题思路：本题考查对于存储-转发型交换机和直通型交换机的原理的理解。"><a href="#解题思路：本题考查对于存储-转发型交换机和直通型交换机的原理的理解。" class="headerlink" title="解题思路：本题考查对于存储-转发型交换机和直通型交换机的原理的理解。"></a>解题思路：本题考查对于存储-转发型交换机和直通型交换机的原理的理解。</h5><p>答：存储-转发型交换机首先要接收完整的数据帧，进行校验，然后再转发。如果校验出错， 就立即丢弃这个数据帧而不进行转发。对于直通型方式，交换机在收到帧头的目的地址之后，即开始转发该帧，边转发边校验， 因而即使发现了校验错误，也为时晚矣，损坏帧将无法丢弃，依然在网络中传输。</p>
+<h3 id="41-要支持-VLAN，网桥（或交换机）中需要增加配置表。在图-4-47（即下图）中，网桥能否换成-HUB？HUB-也需要配置表吗？为什么？"><a href="#41-要支持-VLAN，网桥（或交换机）中需要增加配置表。在图-4-47（即下图）中，网桥能否换成-HUB？HUB-也需要配置表吗？为什么？" class="headerlink" title="41. 要支持 VLAN，网桥（或交换机）中需要增加配置表。在图 4-47（即下图）中，网桥能否换成 HUB？HUB 也需要配置表吗？为什么？"></a>41. 要支持 VLAN，网桥（或交换机）中需要增加配置表。在图 4-47（即下图）中，网桥能否换成 HUB？HUB 也需要配置表吗？为什么？</h3><img src="/2021/05/06/ch4/5.png" class>
+
+<h5 id="解题思路：本题考查对于-VLAN-原理和-HUB-工作原理的理解。"><a href="#解题思路：本题考查对于-VLAN-原理和-HUB-工作原理的理解。" class="headerlink" title="解题思路：本题考查对于 VLAN 原理和 HUB 工作原理的理解。"></a>解题思路：本题考查对于 VLAN 原理和 HUB 工作原理的理解。</h5><p>答：如果把网桥换成 HUB，将不能支持 VLAN。因为 HUB 是物理层设备，不能识别 LAN 帧中的VLAN ID，HUB会广播式发送给所有端口，不会选择。</p>
+<h3 id="42-在图-4-48（即下图）中，在右侧的传统域中的交换机（即B5）是一个支持VLAN-的交换机，有可能使用传统的交换机吗？如果可能，请问将如何工作？如果不可能，原因是什么？"><a href="#42-在图-4-48（即下图）中，在右侧的传统域中的交换机（即B5）是一个支持VLAN-的交换机，有可能使用传统的交换机吗？如果可能，请问将如何工作？如果不可能，原因是什么？" class="headerlink" title="42. 在图 4-48（即下图）中，在右侧的传统域中的交换机（即B5）是一个支持VLAN 的交换机，有可能使用传统的交换机吗？如果可能，请问将如何工作？如果不可能，原因是什么？"></a>42. 在图 4-48（即下图）中，在右侧的传统域中的交换机（即B5）是一个支持VLAN 的交换机，有可能使用传统的交换机吗？如果可能，请问将如何工作？如果不可能，原因是什么？</h3><img src="/2021/05/06/ch4/6.png" class>
+
+<h5 id="解题思路：本题考查对于-VLAN-原理的理解。"><a href="#解题思路：本题考查对于-VLAN-原理的理解。" class="headerlink" title="解题思路：本题考查对于 VLAN 原理的理解。"></a>解题思路：本题考查对于 VLAN 原理的理解。</h5><p>答：B5 可以使用传统的不支持 VLAN 的交换机。传统帧要进入主干（VLAN）域里，需要依靠第一个支持 VLAN 的交换机对它们打上标签(tag)。类似地，在从 VLAN 区域输出的方向上，连接 VLAN 域和传统域的主干交换机必须把输出帧里加的标签再去除掉。因此，如果把 B5 换成传统交换机，增减标签的工作将由 B3 完成。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 感谢阅读-------------</div>
+    
+</div>
+
+    
+  </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"><i class="fa fa-tag"></i> 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/06/ch3/" rel="next" title="ch3 数据链路层">
+                <i class="fa fa-chevron-left"></i> ch3 数据链路层
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/author.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cauchy221" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="liuxinyue@bupt.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E5%9B%9B%E7%AB%A0-MAC-%E5%AD%90%E5%B1%82"><span class="nav-text">第四章 MAC 子层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E4%B8%8B%E5%88%97%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E6%B1%82CSMA-CD-%E7%9A%84%E7%AB%9E%E4%BA%89%E6%97%B6%E9%9A%99%EF%BC%9Aa-%E4%B8%80%E4%B8%AA-2km-%E9%95%BF%E7%9A%84%E5%B9%B3%E8%A1%8C%E5%8F%8C%E8%8A%AF%E7%94%B5%E7%BC%86%EF%BC%88%E5%8D%95%E5%90%91%E7%9A%84%E4%BC%A0%E6%92%AD%E9%80%9F%E7%8E%87%E6%98%AF%E7%9C%9F%E7%A9%BA%E4%B8%AD%E5%85%89%E9%80%9F%E7%9A%84-82-%EF%BC%89%EF%BC%9Bb-%E4%B8%80%E4%B8%AA-40km-%E7%9A%84%E5%A4%9A%E6%A8%A1%E5%85%89%E7%BA%A4%E7%BA%BF%E8%B7%AF%EF%BC%88%E5%8D%95%E4%B8%AA%E7%9A%84%E4%BC%A0%E6%92%AD%E9%80%9F%E7%8E%87%E6%98%AF%E7%9C%9F%E7%A9%BA%E4%B8%AD%E5%85%89%E9%80%9F%E7%9A%84-65-%EF%BC%89"><span class="nav-text">6. 下列情况下，求CSMA&#x2F;CD 的竞争时隙：a.  一个 2km 长的平行双芯电缆（单向的传播速率是真空中光速的 82%）；b.  一个 40km 的多模光纤线路（单个的传播速率是真空中光速的 65%）</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E7%AB%9E%E4%BA%89%E6%97%B6%E9%9A%99%EF%BC%882%CF%84%EF%BC%89%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82%E9%87%87%E7%94%A8-CSMA-CD-%E7%9A%84%E7%BD%91%E7%BB%9C%E4%B8%AD%EF%BC%8C%E4%B8%80%E4%B8%AA%E7%AB%99%E7%82%B9%E5%9C%A8%E5%BC%80%E5%A7%8B%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E5%90%8E%EF%BC%8C%E6%9C%80%E5%A4%9A%E9%9C%80%E8%A6%81%E7%BB%8F%E8%BF%87-2%CF%84-%E7%9A%84%E6%97%B6%E9%97%B4%E6%89%8D%E8%83%BD%E5%8F%91%E7%8E%B0%E5%86%B2%E7%AA%81%EF%BC%8C%E5%9B%A0%E6%AD%A4-2%CF%84%E7%A7%B0%E4%B8%BA%E7%AB%9E%E4%BA%89%E6%97%B6%E9%9A%99%EF%BC%88%E6%88%96%E4%BA%89%E7%94%A8%E6%9C%9F%EF%BC%89%E3%80%82"><span class="nav-text">解题思路：本题考查对于竞争时隙（2τ）的理解。采用 CSMA&#x2F;CD 的网络中，一个站点在开始发送数据后，最多需要经过 2τ 的时间才能发现冲突，因此 2τ称为竞争时隙（或争用期）。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-6-%E4%B8%AA%E7%AB%99%E7%82%B9%EF%BC%88%E4%BB%8EA-%E5%88%B0-F%EF%BC%89%E4%BD%BF%E7%94%A8-MACA-%E5%8D%8F%E8%AE%AE%E9%80%9A%E4%BF%A1%EF%BC%8C%E6%98%AF%E5%90%A6%E5%AD%98%E5%9C%A8%E5%8F%AF%E8%83%BD%E5%90%8C%E6%97%B6%E5%8F%91%E7%94%9F%E4%B8%A4%E4%B8%AA%E4%BC%A0%E8%BE%93%EF%BC%9F-%E7%BB%99%E5%87%BA%E4%BD%A0%E7%9A%84%E8%A7%A3%E9%87%8A%E3%80%82"><span class="nav-text">11. 6 个站点（从A 到 F）使用 MACA 协议通信，是否存在可能同时发生两个传输？ 给出你的解释。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E-MACA-%E5%8D%8F%E8%AE%AE%E8%A7%A3%E5%86%B3%E6%9A%B4%E9%9C%B2%E7%AB%99%E9%97%AE%E9%A2%98%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：此题考查对于 MACA 协议解决暴露站问题的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#13-%E6%A0%87%E5%87%86%E7%9A%84-10Mbps-%E4%BB%A5%E5%A4%AA%E7%BD%91%E7%9A%84%E6%B3%A2%E7%89%B9%E7%8E%87%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-text">13. 标准的 10Mbps 以太网的波特率是多少？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E6%9B%BC%E5%BD%BB%E6%96%AF%E7%89%B9%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：此题考查对于曼彻斯特编码原理的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#14-%E7%94%BB%E5%87%BA%E4%BD%8D%E6%B5%81-0001110101-%E7%9A%84%E6%9B%BC%E5%BD%BB%E6%96%AF%E7%89%B9%E7%BC%96%E7%A0%81%E3%80%82"><span class="nav-text">14. 画出位流 0001110101 的曼彻斯特编码。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E6%9B%BC%E5%BD%BB%E6%96%AF%E7%89%B9%E7%BC%96%E7%A0%81%E5%8E%9F%E7%90%86%E7%9A%84%E6%8E%8C%E6%8F%A1%E3%80%82"><span class="nav-text">解题思路：此题考查对于曼彻斯特编码原理的掌握。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E4%B8%80%E4%B8%AA%E4%BD%BF%E7%94%A8CSMA-CD%EF%BC%88%E9%9D%9E-IEEE802-3%EF%BC%89%E7%9A%84-LAN%EF%BC%8C%E7%94%B5%E7%BC%86%E9%95%BF%E5%BA%A6%E4%B8%BA-1-%E5%85%AC%E9%87%8C%EF%BC%8C%E5%B8%A6%E5%AE%BD%E4%B8%BA-10Mbps%EF%BC%8C%E4%BC%A0%E6%92%AD%E9%80%9F%E5%BA%A6%E4%B8%BA-200-%E7%B1%B3-%E5%BE%AE%E7%A7%92%EF%BC%8C%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%8D%E5%85%81%E8%AE%B8%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%BB%A7%E5%99%A8%E3%80%82%E6%95%B0%E6%8D%AE%E5%B8%A7%E9%95%BF-256-%E4%BD%8D%EF%BC%8C%E5%85%B6%E4%B8%AD%E5%8C%85%E6%8B%AC%E5%B8%A7%E5%A4%B4%E3%80%81%E6%A0%A1%E9%AA%8C%E7%A0%81%E5%92%8C%E5%85%B6%E4%BB%96%E5%BC%80%E9%94%80%E5%85%B1-32-%E4%BD%8D%E3%80%82%E6%88%90%E5%8A%9F%E5%8F%91%E9%80%81%E4%B9%8B%E5%90%8E%E7%9A%84%E7%AC%AC%E4%B8%80%E4%B8%AA%E4%BD%8D%E6%97%B6%E9%9A%99%E4%BF%9D%E7%95%99%E7%BB%99%E6%8E%A5%E6%94%B6%E7%AB%99%EF%BC%8C%E4%BB%A5%E6%8D%95%E8%8E%B7%E4%BF%A1%E9%81%93%E5%B9%B6%E5%8F%91%E9%80%8132-%E4%BD%8D%E7%A1%AE%E8%AE%A4%E5%B8%A7%E3%80%82%E5%81%87%E5%AE%9A%E6%B2%A1%E6%9C%89%E5%86%B2%E7%AA%81%EF%BC%8C%E4%BF%A1%E9%81%93%E7%9A%84%E6%9C%89%E6%95%88%E6%95%B0%E6%8D%AE%E7%8E%87%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-text">15. 一个使用CSMA&#x2F;CD（非 IEEE802.3）的 LAN，电缆长度为 1 公里，带宽为 10Mbps，传播速度为 200 米&#x2F;微秒，网络中不允许使用中继器。数据帧长 256 位，其中包括帧头、校验码和其他开销共 32 位。成功发送之后的第一个位时隙保留给接收站，以捕获信道并发送32 位确认帧。假定没有冲突，信道的有效数据率是多少？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E5%B8%A6%E7%A1%AE%E8%AE%A4%E7%9A%84-CSMA-CD-%E5%8D%8F%E8%AE%AE%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82%E6%A0%B9%E6%8D%AE%E9%A2%98%E6%84%8F%EF%BC%8C%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E6%95%B0%E6%8D%AE%E5%B8%A7%E4%B9%8B%E5%90%8E%EF%BC%8C%E9%9C%80%E8%A6%81%E4%BF%9D%E7%95%99%E4%B8%80%E4%B8%AA%E6%97%B6%E9%9A%99%EF%BC%882%CF%84%EF%BC%89%E7%9A%84%E6%97%B6%E9%97%B4%EF%BC%8C%E4%BB%A5%E4%BE%BF%E6%8E%A5%E6%94%B6%E7%AB%99%E7%82%B9%E4%BB%8E%E6%8E%A5%E6%94%B6%E6%A8%A1%E5%BC%8F%E8%BD%AC%E6%88%90%E5%8F%91%E9%80%81%E6%A8%A1%E5%BC%8F%EF%BC%8C%E5%B9%B6%E6%8D%95%E8%8E%B7%E4%BF%A1%E9%81%93%E3%80%82%E6%9C%89%E6%95%88%E6%95%B0%E6%8D%AE%E7%8E%87%E5%AE%9A%E4%B9%89%E4%B8%BA%E6%9C%89%E6%95%88%E7%9A%84%E6%95%B0%E6%8D%AE%EF%BC%88%E4%B8%8D%E5%8C%85%E5%90%AB%E5%B8%A7%E5%A4%B4%E5%92%8C%E5%B8%A7%E5%B0%BE%E7%9A%84%E5%BC%80%E9%94%80%EF%BC%89%E9%99%A4%E4%BB%A5%E6%80%BB%E4%BC%A0%E8%BE%93%E6%97%B6%E9%97%B4%EF%BC%88%E5%8C%85%E5%90%AB%E5%8F%91%E9%80%81%E6%97%B6%E5%BB%B6%E3%80%81%E4%BC%A0%E6%92%AD%E6%97%B6%E5%BB%B6%E5%92%8C%E7%A1%AE%E8%AE%A4%E9%9C%80%E8%A6%81%E7%9A%84%E6%97%B6%E9%97%B4%EF%BC%89%E3%80%82"><span class="nav-text">解题思路：此题考查对于带确认的 CSMA&#x2F;CD 协议工作原理的理解。根据题意，发送一个数据帧之后，需要保留一个时隙（2τ）的时间，以便接收站点从接收模式转成发送模式，并捕获信道。有效数据率定义为有效的数据（不包含帧头和帧尾的开销）除以总传输时间（包含发送时延、传播时延和确认需要的时间）。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-%E5%9C%A8%E4%B8%80%E4%B8%AA-1-%E5%85%AC%E9%87%8C%E9%95%BF%E7%9A%84%E7%94%B5%E7%BC%86%E4%B8%8A%EF%BC%8C%E4%B8%8D%E4%BD%BF%E7%94%A8%E4%B8%AD%E7%BB%A7%E5%99%A8%E7%9A%84%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E8%80%83%E8%99%91%E6%9E%84%E5%BB%BA%E4%B8%80%E4%B8%AA%E9%80%9F%E7%8E%87%E5%9C%A8-1-Gbps%E7%9A%84-CSMA-CD-%E7%BD%91%E7%BB%9C%E3%80%82%E5%9C%A8%E7%94%B5%E7%BC%86%E4%B8%8A%E7%9A%84%E4%BF%A1%E5%8F%B7%E4%BC%A0%E6%92%AD%E9%80%9F%E7%8E%87%E6%98%AF-200-000-km-sec%E3%80%82%E6%9C%80%E5%B0%8F%E5%B8%A7%E7%9A%84%E9%95%BF%E5%BA%A6%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-text">16. 在一个 1 公里长的电缆上，不使用中继器的情况下，考虑构建一个速率在 1 Gbps的 CSMA&#x2F;CD 网络。在电缆上的信号传播速率是 200,000 km&#x2F;sec。最小帧的长度是多少？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%9C%80%E7%9F%AD%E5%B8%A7%E9%95%BF%E7%9A%84%E5%8E%9F%E7%90%86%E7%9A%84%E6%8E%8C%E6%8F%A1%E3%80%82%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%9C%89%E6%9C%80%E7%9F%AD%E5%B8%A7%E9%95%BF%E7%9A%84%E5%8E%9F%E5%9B%A0%E6%98%AF%EF%BC%8C%E4%BF%9D%E8%AF%81%E5%B8%A7%E7%9A%84%E5%8F%91%E9%80%81%E6%97%B6%E9%97%B4%E4%B8%8D%E5%B0%91%E4%BA%8E-2%CF%84%EF%BC%8C%E4%BB%A5%E4%BE%BF%E5%8F%91%E9%80%81%E7%AB%99%E7%82%B9%E8%83%BD%E5%A4%9F%E5%9C%A8%E5%8F%91%E9%80%81%E5%AE%8C%E6%AF%95%E4%B9%8B%E5%89%8D%E6%A3%80%E6%B5%8B%E5%88%B0%E5%86%B2%E7%AA%81%E3%80%82"><span class="nav-text">解题思路：此题考查对于以太网最短帧长的原理的掌握。以太网有最短帧长的原因是，保证帧的发送时间不少于 2τ，以便发送站点能够在发送完毕之前检测到冲突。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-%E4%B8%80%E4%B8%AA%E9%95%BF%E5%BA%A6%E4%B8%BA-60-%E5%AD%97%E8%8A%82%E7%9A%84-IP-%E5%8C%85%EF%BC%88%E5%8C%85%E5%90%AB%E4%BA%86%E5%A4%B4%E9%83%A8%EF%BC%89%E5%B0%86%E9%80%9A%E8%BF%87%E4%B8%80%E4%B8%AA%E4%BB%A5%E5%A4%AA%E7%BD%91%E8%BF%9B%E8%A1%8C%E4%BC%A0%E8%BE%93%E3%80%82%E5%A6%82%E6%9E%9C%E6%B2%A1%E6%9C%89%E4%BD%BF%E7%94%A8-LLC%EF%BC%8C%E5%88%99%E5%9C%A8%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%B8%AD%E4%BC%A0%E8%BE%93%E9%9C%80%E8%A6%81%E5%A1%AB%E5%85%85%E5%AD%97%E8%8A%82%E5%90%97%EF%BC%9F%E5%A6%82%E6%9E%9C%E9%9C%80%E8%A6%81%EF%BC%8C%E5%A1%AB%E5%85%85%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-text">17. 一个长度为 60 字节的 IP 包（包含了头部）将通过一个以太网进行传输。如果没有使用 LLC，则在以太网中传输需要填充字节吗？如果需要，填充多少？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%9C%80%E7%9F%AD%E5%B8%A7%E9%95%BF%E7%9A%84%E6%8E%8C%E6%8F%A1%E3%80%82"><span class="nav-text">解题思路：此题考查对于以太网最短帧长的掌握。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-%E4%BB%A5%E5%A4%AA%E7%BD%91%E5%B8%A7%E5%BF%85%E9%A1%BB%E5%9C%A8-64-%E5%AD%97%E8%8A%82%E4%BB%A5%E4%B8%8A%EF%BC%8C%E8%BF%99%E6%A0%B7%E5%81%9A%E7%9A%84%E7%90%86%E7%94%B1%E6%98%AF%EF%BC%9A%E5%BD%93%E7%94%B5%E7%BC%86%E7%9A%84%E5%8F%A6%E4%B8%80%E7%AB%AF%E5%8F%91%E7%94%9F%E5%86%B2%E7%AA%81%E7%9A%84%E6%97%B6%E5%80%99%EF%BC%8C%E4%BC%A0%E9%80%81%E6%96%B9%E4%BB%8D%E7%84%B6%E8%BF%98%E5%9C%A8%E5%8F%91%E9%80%81%E8%BF%87%E7%A8%8B%E4%B8%AD%E3%80%82%E5%BF%AB%E9%80%9F%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%B9%9F%E6%9C%89%E5%90%8C%E6%A0%B7%E7%9A%84-64-%E5%AD%97%E8%8A%82%E6%9C%80%E5%B0%8F%E5%B8%A7%E7%9A%84%E9%99%90%E5%88%B6%EF%BC%8C%E4%BD%86%E5%AE%83%E5%8F%AF%E4%BB%A5%E4%BB%A5%E5%BF%AB10-%E5%80%8D%E7%9A%84%E9%80%9F%E5%BA%A6%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%E3%80%82%E8%AF%B7%E9%97%AE%E5%AE%83%E5%A6%82%E4%BD%95%E7%BB%B4%E6%8C%81%E5%90%8C%E6%A0%B7%E7%9A%84%E6%9C%80%E5%B0%8F%E5%B8%A7%E9%95%BF%E5%BA%A6%E9%99%90%E5%88%B6%E7%9A%84%EF%BC%9F"><span class="nav-text">18. 以太网帧必须在 64 字节以上，这样做的理由是：当电缆的另一端发生冲突的时候，传送方仍然还在发送过程中。快速以太网也有同样的 64 字节最小帧的限制，但它可以以快10 倍的速度发送数据。请问它如何维持同样的最小帧长度限制的？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%BF%AB%E9%80%9F%E4%BB%A5%E5%A4%AA%E7%BD%91%E4%B8%8E%E4%BC%A0%E7%BB%9F%E4%BB%A5%E5%A4%AA%E7%BD%91%E7%9A%84%E7%9B%B8%E5%90%8C%E7%82%B9%E4%B8%8E%E4%B8%8D%E5%90%8C%E7%82%B9%E3%80%82"><span class="nav-text">解题思路：此题考查快速以太网与传统以太网的相同点与不同点。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-%E5%8D%83%E5%85%86%E4%BB%A5%E5%A4%AA%E7%BD%91%E6%AF%8F%E7%A7%92%E9%92%9F%E8%83%BD%E5%A4%9F%E5%A4%84%E7%90%86%E5%A4%9A%E5%B0%91%E5%B8%A7%EF%BC%9F%E8%AF%B7%E4%BB%94%E7%BB%86%E6%83%B3%E4%B8%80%E4%B8%8B%EF%BC%9A%E5%B9%B6%E8%80%83%E8%99%91%E6%89%80%E6%9C%89%E6%9C%89%E5%85%B3%E7%9A%84%E6%83%85%E5%BD%A2%E3%80%82%E6%8F%90%E7%A4%BA%EF%BC%9A-%E8%AF%B7%E8%80%83%E8%99%91%E5%8D%83%E5%85%86%E4%BB%A5%E5%A4%AA%E7%BD%91%E7%9A%84%E5%AE%9E%E8%B4%A8%E3%80%82"><span class="nav-text">20. 千兆以太网每秒钟能够处理多少帧？请仔细想一下：并考虑所有有关的情形。提示： 请考虑千兆以太网的实质。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%8D%83%E5%85%86%E4%BB%A5%E5%A4%AA%E7%BD%91%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8E%9F%E7%90%86%EF%BC%8C%E5%8C%85%E6%8B%AC%E5%B8%A7%E7%AA%81%E5%8F%91%E5%92%8C%E8%BD%BD%E6%B3%A2%E6%89%A9%E5%B1%95%E7%9A%84%E6%A6%82%E5%BF%B5%E3%80%82"><span class="nav-text">解题思路：此题考查千兆以太网的主要原理，包括帧突发和载波扩展的概念。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-%E5%9C%A8%E5%9B%BE-4-27-%E4%B8%AD%EF%BC%88%E5%8D%B3%E4%B8%8B%E5%9B%BE%EF%BC%89%E6%98%BE%E7%A4%BA%E4%BA%86-4-%E4%B8%AA%E7%AB%99%E7%82%B9A%E3%80%81B%E3%80%81C-%E5%92%8CD%E3%80%82%E4%BD%A0%E8%AE%A4%E4%B8%BA%E5%90%8E%E4%B8%A4%E4%B8%AA%E7%AB%99%E7%82%B9%E4%B8%AD%EF%BC%88C%E5%92%8C-D%EF%BC%89%E5%93%AA%E4%B8%80%E4%B8%AA%E6%9C%80%E6%8E%A5%E8%BF%91A%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">22. 在图 4-27 中（即下图）显示了 4 个站点A、B、C 和D。你认为后两个站点中（C和 D）哪一个最接近A？为什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E7%BD%91%E7%BB%9C%E5%88%86%E9%85%8D%E5%90%91%E9%87%8F-NAV-%E6%A6%82%E5%BF%B5%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：此题考查对于网络分配向量 NAV 概念的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#23-%E4%B8%BE%E4%BE%8B%E8%AF%B4%E6%98%8E%E5%9C%A8-802-11-%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%84RTS-CTS-%E4%B8%8E-MACA-%E5%8D%8F%E8%AE%AE%E4%B8%AD%E7%9A%84RTS-CTS-%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82"><span class="nav-text">23. 举例说明在 802.11 协议中的RTS&#x2F;CTS 与 MACA 协议中的RTS&#x2F;CTS 的区别。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E-802-11-%E5%8D%8F%E8%AE%AE%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：此题考查对于 802.11 协议原理的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-%E6%9F%90%E5%B8%A6-AP-%E7%9A%84%E6%97%A0%E7%BA%BF-LAN-%E6%9C%89-10-%E4%B8%AA%E7%AB%99%E7%82%B9%EF%BC%8C%E5%85%B6%E4%B8%AD-4-%E4%B8%AA%E7%AB%99%E7%82%B9%E7%9A%84%E6%95%B0%E6%8D%AE%E7%8E%87%E4%B8%BA-6Mbps%EF%BC%8C4-%E4%B8%AA%E7%AB%99%E7%82%B9%E7%9A%84%E6%95%B0%E6%8D%AE%E7%8E%87%E4%B8%BA-18Mbps%EF%BC%8C%E5%8F%A6%E5%A4%96-2-%E4%B8%AA%E7%AB%99%E7%82%B9%E7%9A%84%E6%95%B0%E6%8D%AE%E7%8E%87%E4%B8%BA-54Mbps%E3%80%82%E5%A6%82%E6%9E%9C-10-%E4%B8%AA%E7%AB%99%E7%82%B9%E5%90%8C%E6%97%B6%E5%8F%91%E9%80%81%E6%95%B0%E6%8D%AE%EF%BC%8C%E5%9C%A8%E4%B8%8B%E5%88%97%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E6%AF%8F%E4%B8%AA%E7%AB%99%E7%82%B9%E5%BE%97%E5%88%B0%E7%9A%84%E6%95%B0%E6%8D%AE%E7%8E%87%E5%88%86%E5%88%AB%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F-1-%E4%B8%8D%E4%BD%BF%E7%94%A8-TXOP-2-%E4%BD%BF%E7%94%A8TXOP"><span class="nav-text">24. 某带 AP 的无线 LAN 有 10 个站点，其中 4 个站点的数据率为 6Mbps，4 个站点的数据率为 18Mbps，另外 2 个站点的数据率为 54Mbps。如果 10 个站点同时发送数据，在下列情况下，每个站点得到的数据率分别是多少？(1) 不使用 TXOP(2) 使用TXOP</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E9%80%9F%E7%8E%87%E5%BC%82%E5%B8%B8%E9%97%AE%E9%A2%98%E5%92%8C-TXOP-%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：此题考查对于速率异常问题和 TXOP 原理的理解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-1"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#38-%E5%A6%82%E4%B9%A6%E5%9B%BE-4-41%EF%BC%88b%EF%BC%89%EF%BC%88%E5%8D%B3%E4%B8%8B%E5%9B%BE%EF%BC%89%E6%89%80%E7%A4%BA%EF%BC%8C%E4%BD%BF%E7%94%A8%E7%BD%91%E6%A1%A5-B1-%E5%92%8C-B2-%E6%89%A9%E5%B1%95%E5%B1%80%E5%9F%9F%E7%BD%91%E3%80%82%E5%81%87%E8%AE%BE%E4%B8%A4%E4%B8%AA%E7%BD%91%E6%A1%A5%E7%9A%84%E5%88%9D%E5%A7%8B%E8%BD%AC%E5%8F%91%E8%A1%A8%EF%BC%88Hash-Table%EF%BC%89%E9%83%BD%E6%98%AF%E7%A9%BA%E7%9A%84%E3%80%82%E8%AF%B7%E6%8C%89%E7%85%A7%E4%B8%8B%E5%88%97%E5%8F%91%E9%80%81%E9%A1%BA%E5%BA%8F%EF%BC%8C%E7%BB%99%E5%87%BA%E6%AF%8F%E4%B8%AA%E5%B8%A7%E6%89%80%E7%BB%8F%E8%BF%87%E7%9A%84%E7%BD%91%E6%A1%A5%E5%8F%8A%E5%85%B6%E7%AB%AF%E5%8F%A3%E3%80%82a-A-%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E5%8C%85%E7%BB%99-C%EF%BC%9Bb-E-%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E5%8C%85%E7%BB%99-F-%EF%BC%9Bc-F-%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E5%8C%85%E7%BB%99-E-%EF%BC%9Bd-G-%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E5%8C%85%E7%BB%99E-%EF%BC%9Be-D-%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E5%8C%85%E7%BB%99-A-%EF%BC%9Bf-B-%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA%E5%8C%85%E7%BB%99-F"><span class="nav-text">38. 如书图 4-41（b）（即下图）所示，使用网桥 B1 和 B2 扩展局域网。假设两个网桥的初始转发表（Hash Table）都是空的。请按照下列发送顺序，给出每个帧所经过的网桥及其端口。a.  A 发送一个包给 C；b.  E 发送一个包给 F.；c.  F 发送一个包给 E.；d.  G 发送一个包给E.；e.  D 发送一个包给 A.；f.  B 发送一个包给 F.</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%AD%A4%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E7%BD%91%E6%A1%A5%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%EF%BC%88%E5%A6%82%E4%BD%95%E8%BD%AC%E5%8F%91%E5%B8%A7%E3%80%81%E5%A6%82%E4%BD%95%E7%94%9F%E6%88%90%E8%BD%AC%E5%8F%91%E8%A1%A8%EF%BC%89%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82%E7%BD%91%E6%A1%A5%E6%94%B6%E5%88%B0%E4%B8%80%E5%B8%A7%E5%90%8E%EF%BC%8C%E6%A0%B9%E6%8D%AE%E5%B8%A7%E4%B8%AD%E7%9A%84%E7%9B%AE%E7%9A%84%E5%9C%B0%E5%9D%80%E6%A3%80%E6%9F%A5%E8%BD%AC%E5%8F%91%E8%A1%A8%EF%BC%8C%E5%A6%82%E6%9E%9C%E6%9F%A5%E5%88%B0%E7%9A%84%E8%BE%93%E5%87%BA%E7%AB%AF%E5%8F%A3%E4%B8%8E%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3%E4%B8%80%E8%87%B4%EF%BC%8C%E5%88%99%E4%B8%8D%E8%BD%AC%E5%8F%91%EF%BC%9B-%E5%A6%82%E6%9E%9C%E8%BE%93%E5%87%BA%E7%AB%AF%E5%8F%A3%E4%B8%8E%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3%E4%B8%8D%E4%B8%80%E8%87%B4%EF%BC%8C%E5%88%99%E8%BD%AC%E5%8F%91%E5%88%B0%E7%9B%B8%E5%BA%94%E7%AB%AF%E5%8F%A3%EF%BC%9B%E5%A6%82%E6%9E%9C%E6%9F%A5%E4%B8%8D%E5%88%B0%EF%BC%8C%E5%88%99%E6%B4%AA%E6%B3%9B%E8%BD%AC%E5%8F%91%E5%88%B0%E9%99%A4%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3%E4%B9%8B%E5%A4%96%E7%9A%84%E6%89%80%E6%9C%89%E7%AB%AF%E5%8F%A3%E3%80%82%E8%BD%AC%E5%8F%91%E8%A1%A8%E9%87%87%E7%94%A8%E2%80%9C%E9%80%86%E5%90%91%E5%AD%A6%E4%B9%A0%E2%80%9D%E7%9A%84%E6%96%B9%E6%B3%95%E7%94%9F%E6%88%90%EF%BC%8C%E5%8D%B3%E6%A3%80%E6%9F%A5%E6%94%B6%E5%88%B0%E7%9A%84%E5%B8%A7%E4%B8%AD%E7%9A%84%E6%BA%90%E5%9C%B0%E5%9D%80%EF%BC%8C%E5%B0%86%E6%BA%90%E5%9C%B0%E5%9D%80%E5%92%8C%E8%BE%93%E5%85%A5%E7%AB%AF%E5%8F%A3%E5%8A%A0%E5%85%A5%E8%BD%AC%E5%8F%91%E8%A1%A8%E3%80%82"><span class="nav-text">解题思路：此题考查对于网桥工作原理（如何转发帧、如何生成转发表）的理解。网桥收到一帧后，根据帧中的目的地址检查转发表，如果查到的输出端口与输入端口一致，则不转发； 如果输出端口与输入端口不一致，则转发到相应端口；如果查不到，则洪泛转发到除输入端口之外的所有端口。转发表采用“逆向学习”的方法生成，即检查收到的帧中的源地址，将源地址和输入端口加入转发表。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-2"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#39-%E4%BB%8E%E6%8D%9F%E5%9D%8F%E5%B8%A7%E7%9A%84%E8%A7%92%E5%BA%A6%E7%9C%8B%EF%BC%8C%E5%AD%98%E5%82%A8%EF%BC%8D%E8%BD%AC%E5%8F%91%E5%9E%8B%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%AF%94%E7%9B%B4%E9%80%9A%E5%9E%8B%E4%BA%A4%E6%8D%A2%E6%9C%BA%E6%9B%B4%E6%9C%89%E4%BC%98%E5%8A%BF%E3%80%82%E8%AF%B7%E8%AF%B4%E6%98%8E%E8%BF%99%E7%A7%8D%E4%BC%98%E5%8A%BF%E3%80%82"><span class="nav-text">39. 从损坏帧的角度看，存储－转发型交换机比直通型交换机更有优势。请说明这种优势。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E5%AD%98%E5%82%A8-%E8%BD%AC%E5%8F%91%E5%9E%8B%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%92%8C%E7%9B%B4%E9%80%9A%E5%9E%8B%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于存储-转发型交换机和直通型交换机的原理的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#41-%E8%A6%81%E6%94%AF%E6%8C%81-VLAN%EF%BC%8C%E7%BD%91%E6%A1%A5%EF%BC%88%E6%88%96%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%89%E4%B8%AD%E9%9C%80%E8%A6%81%E5%A2%9E%E5%8A%A0%E9%85%8D%E7%BD%AE%E8%A1%A8%E3%80%82%E5%9C%A8%E5%9B%BE-4-47%EF%BC%88%E5%8D%B3%E4%B8%8B%E5%9B%BE%EF%BC%89%E4%B8%AD%EF%BC%8C%E7%BD%91%E6%A1%A5%E8%83%BD%E5%90%A6%E6%8D%A2%E6%88%90-HUB%EF%BC%9FHUB-%E4%B9%9F%E9%9C%80%E8%A6%81%E9%85%8D%E7%BD%AE%E8%A1%A8%E5%90%97%EF%BC%9F%E4%B8%BA%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">41. 要支持 VLAN，网桥（或交换机）中需要增加配置表。在图 4-47（即下图）中，网桥能否换成 HUB？HUB 也需要配置表吗？为什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E-VLAN-%E5%8E%9F%E7%90%86%E5%92%8C-HUB-%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于 VLAN 原理和 HUB 工作原理的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#42-%E5%9C%A8%E5%9B%BE-4-48%EF%BC%88%E5%8D%B3%E4%B8%8B%E5%9B%BE%EF%BC%89%E4%B8%AD%EF%BC%8C%E5%9C%A8%E5%8F%B3%E4%BE%A7%E7%9A%84%E4%BC%A0%E7%BB%9F%E5%9F%9F%E4%B8%AD%E7%9A%84%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%88%E5%8D%B3B5%EF%BC%89%E6%98%AF%E4%B8%80%E4%B8%AA%E6%94%AF%E6%8C%81VLAN-%E7%9A%84%E4%BA%A4%E6%8D%A2%E6%9C%BA%EF%BC%8C%E6%9C%89%E5%8F%AF%E8%83%BD%E4%BD%BF%E7%94%A8%E4%BC%A0%E7%BB%9F%E7%9A%84%E4%BA%A4%E6%8D%A2%E6%9C%BA%E5%90%97%EF%BC%9F%E5%A6%82%E6%9E%9C%E5%8F%AF%E8%83%BD%EF%BC%8C%E8%AF%B7%E9%97%AE%E5%B0%86%E5%A6%82%E4%BD%95%E5%B7%A5%E4%BD%9C%EF%BC%9F%E5%A6%82%E6%9E%9C%E4%B8%8D%E5%8F%AF%E8%83%BD%EF%BC%8C%E5%8E%9F%E5%9B%A0%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">42. 在图 4-48（即下图）中，在右侧的传统域中的交换机（即B5）是一个支持VLAN 的交换机，有可能使用传统的交换机吗？如果可能，请问将如何工作？如果不可能，原因是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E-VLAN-%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于 VLAN 原理的理解。</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kc</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

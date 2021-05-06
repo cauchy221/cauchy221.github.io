@@ -1,0 +1,859 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kc的笔记本" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="第二章 物理层2. 一个 8kHz 的无噪声信道每毫秒采样 1 次，最大数据率是多少？解题思路：本题考查对于采样概念和奈奎斯特公式的理解。答：根据奈奎斯特公式，带宽固定，采样频率固定，最大数据率将取决于电平级数 L。每秒采样 1000 次，信号速率就是 1000 波特。若每次采样产生 16 位数据，则最大数据率为16kbps; 若每次采样产生 1024 位，则最大数据率约为 1.024Mbps。由">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ch2 物理层">
+<meta property="og:url" content="https://cauchy221.github.io/2021/05/06/ch2/index.html">
+<meta property="og:site_name" content="kc的笔记本">
+<meta property="og:description" content="第二章 物理层2. 一个 8kHz 的无噪声信道每毫秒采样 1 次，最大数据率是多少？解题思路：本题考查对于采样概念和奈奎斯特公式的理解。答：根据奈奎斯特公式，带宽固定，采样频率固定，最大数据率将取决于电平级数 L。每秒采样 1000 次，信号速率就是 1000 波特。若每次采样产生 16 位数据，则最大数据率为16kbps; 若每次采样产生 1024 位，则最大数据率约为 1.024Mbps。由">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch2/1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch2/2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch2/3.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch2/4.png">
+<meta property="article:published_time" content="2021-05-06T05:56:07.000Z">
+<meta property="article:modified_time" content="2021-05-06T05:58:22.497Z">
+<meta property="article:author" content="kc">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauchy221.github.io/2021/05/06/ch2/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cauchy221.github.io/2021/05/06/ch2/"/>
+
+
+
+
+
+  <title>ch2 物理层 | kc的笔记本</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kc的笔记本</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">可爱小猪</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cauchy221.github.io/2021/05/06/ch2/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kc的笔记本">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ch2 物理层</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-05-06T13:56:07+08:00">
+                2021-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">作业整理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第二章-物理层"><a href="#第二章-物理层" class="headerlink" title="第二章 物理层"></a>第二章 物理层</h1><h3 id="2-一个-8kHz-的无噪声信道每毫秒采样-1-次，最大数据率是多少？"><a href="#2-一个-8kHz-的无噪声信道每毫秒采样-1-次，最大数据率是多少？" class="headerlink" title="2. 一个 8kHz 的无噪声信道每毫秒采样 1 次，最大数据率是多少？"></a>2. 一个 8kHz 的无噪声信道每毫秒采样 1 次，最大数据率是多少？</h3><h5 id="解题思路：本题考查对于采样概念和奈奎斯特公式的理解。"><a href="#解题思路：本题考查对于采样概念和奈奎斯特公式的理解。" class="headerlink" title="解题思路：本题考查对于采样概念和奈奎斯特公式的理解。"></a>解题思路：本题考查对于采样概念和奈奎斯特公式的理解。</h5><p>答：根据奈奎斯特公式，带宽固定，采样频率固定，最大数据率将取决于电平级数 L。每秒采样 1000 次，信号速率就是 1000 波特。若每次采样产生 16 位数据，则最大数据率为16kbps; 若每次采样产生 1024 位，则最大数据率约为 1.024Mbps。由于题目没有说明电平级数，因此没有确定答案。</p>
+<h5 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、奈奎斯特公式</strong></p>
+<p>Cmax = 2Blog2V</p>
+<p>其中C为最大数据传输速率，B为带宽，2B为波特率，V为信号电平的个数，log2V为每个码元携带比特数。</p>
+<h3 id="3-在信噪比为-20dB-的-3kHz-信道上发送二进制信号，最大数据率是多少？"><a href="#3-在信噪比为-20dB-的-3kHz-信道上发送二进制信号，最大数据率是多少？" class="headerlink" title="3. 在信噪比为 20dB 的 3kHz 信道上发送二进制信号，最大数据率是多少？"></a>3. 在信噪比为 20dB 的 3kHz 信道上发送二进制信号，最大数据率是多少？</h3><h5 id="解题思路：本题考查对于两个最大数据率公式——奈奎斯特公式和香农公式的理解。"><a href="#解题思路：本题考查对于两个最大数据率公式——奈奎斯特公式和香农公式的理解。" class="headerlink" title="解题思路：本题考查对于两个最大数据率公式——奈奎斯特公式和香农公式的理解。"></a>解题思路：本题考查对于两个最大数据率公式——奈奎斯特公式和香农公式的理解。</h5><p>答：按照香农公式，S/N=100，可计算出最大数据率是 19.975kbps，即数据率的上限。无论采用何种调制技术，最大数据率都不会超过这个上限。而按照奈奎斯特公式，二进制信号说明V=2，可计算出最大数据率为 6kbps。因此，最大数据率为 6 kbps。</p>
+<h5 id="知识点：-1"><a href="#知识点：-1" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、香农公式</strong></p>
+<p>Cmax = Blog2(1+S/N)</p>
+<p>其中C为最大数据传输速率，B为带宽，S/N是信噪比（30dB对应10^(3.0)）。</p>
+<h3 id="4-要使用多大的信噪比才能在-100kHz-的线路上传输T1-信号？"><a href="#4-要使用多大的信噪比才能在-100kHz-的线路上传输T1-信号？" class="headerlink" title="4. 要使用多大的信噪比才能在 100kHz 的线路上传输T1 信号？"></a>4. 要使用多大的信噪比才能在 100kHz 的线路上传输T1 信号？</h3><h5 id="解题思路：本题考查对于香农公式的使用。"><a href="#解题思路：本题考查对于香农公式的使用。" class="headerlink" title="解题思路：本题考查对于香农公式的使用。"></a>解题思路：本题考查对于香农公式的使用。</h5><p>答：根据香农公式，有B×log2(1 + S /N) = 1.544×10^6 ，其中B = 100000，可算出 S /N = 2^15-1，即大约 46 dB。</p>
+<h5 id="知识点：-2"><a href="#知识点：-2" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、T1载波</strong></p>
+<ul>
+<li>数据传输速率 = 1.544Mbps（这是总的带宽，因为有一部分的开销）</li>
+<li>每个语音信道有8位，24个语音信道+一个数据分帧位，总共24x8+1=193bit构成一帧。因为每秒采样8000次，也就是每秒产生8000帧，因此速率为193x8000/1000000 = 1.544Mbps</li>
+<li>能提供给用户的是1.536Mbps</li>
+<li>有24个通道，每个通道传输速率 = 1.544Mbps/24 = 64kb/s</li>
+<li>每个通道的8位中只有7位用于用户数据，数据速率 = 64x7/8 = 56kb/s</li>
+<li>即每个采样周期发送7bit数据</li>
+</ul>
+<p><strong>2、E1载波</strong></p>
+<ul>
+<li>数据传输速率 = 2.048Mbps</li>
+<li>有30个语音信道，2个控制信道，每个信道数据速率 = 2.048Mbps/32 = 64kb/s</li>
+</ul>
+<h3 id="7-现要在光纤上传输一系列计算机屏幕的图像，屏幕是-1920×1200-像素，每个像素有24-位，每秒钟产生-50-屏图像，试求需要多少带宽？"><a href="#7-现要在光纤上传输一系列计算机屏幕的图像，屏幕是-1920×1200-像素，每个像素有24-位，每秒钟产生-50-屏图像，试求需要多少带宽？" class="headerlink" title="7. 现要在光纤上传输一系列计算机屏幕的图像，屏幕是 1920×1200 像素，每个像素有24 位，每秒钟产生 50 屏图像，试求需要多少带宽？"></a>7. 现要在光纤上传输一系列计算机屏幕的图像，屏幕是 1920×1200 像素，每个像素有24 位，每秒钟产生 50 屏图像，试求需要多少带宽？</h3><h5 id="解题思路：本题目考查对于大数据量应用的高带宽要求的理解。应根据像素计算出一屏图像的数据量，再根据单位时间内产生的图像数计算出带宽要求。"><a href="#解题思路：本题目考查对于大数据量应用的高带宽要求的理解。应根据像素计算出一屏图像的数据量，再根据单位时间内产生的图像数计算出带宽要求。" class="headerlink" title="解题思路：本题目考查对于大数据量应用的高带宽要求的理解。应根据像素计算出一屏图像的数据量，再根据单位时间内产生的图像数计算出带宽要求。"></a>解题思路：本题目考查对于大数据量应用的高带宽要求的理解。应根据像素计算出一屏图像的数据量，再根据单位时间内产生的图像数计算出带宽要求。</h5><p>答：所需要的带宽= 1920×1200×24×50= 2.765 Gbps。</p>
+<h3 id="8-奈奎斯特定理只适合铜线，还是同样适用于高质量单模光纤？-解题思路：本题考查对于奈奎斯特定理的理解。"><a href="#8-奈奎斯特定理只适合铜线，还是同样适用于高质量单模光纤？-解题思路：本题考查对于奈奎斯特定理的理解。" class="headerlink" title="8. 奈奎斯特定理只适合铜线，还是同样适用于高质量单模光纤？ 解题思路：本题考查对于奈奎斯特定理的理解。"></a>8. 奈奎斯特定理只适合铜线，还是同样适用于高质量单模光纤？ 解题思路：本题考查对于奈奎斯特定理的理解。</h3><p>答：奈奎斯特定理是一个数学性质，和具体技术无关。其含义是：如果一个函数的傅里叶频谱不包含频率在 f 之上的正弦和余弦分量，以频率 2f 对该函数采样，就可以获得全部信息。在实际应用中，奈奎斯特用于计算在模拟信道上承载数字数据的最大数据率。因此，奈奎斯特定理适用于任何传输媒体。</p>
+<h3 id="21-一个-MODEM-的星云图类似图-2-23，数据点在-0-1-0-2-。该-MODEM-使用的是相位调制还是振幅调制？"><a href="#21-一个-MODEM-的星云图类似图-2-23，数据点在-0-1-0-2-。该-MODEM-使用的是相位调制还是振幅调制？" class="headerlink" title="21. 一个 MODEM 的星云图类似图 2-23，数据点在(0, 1) , (0, 2)。该 MODEM 使用的是相位调制还是振幅调制？"></a>21. 一个 MODEM 的星云图类似图 2-23，数据点在(0, 1) , (0, 2)。该 MODEM 使用的是相位调制还是振幅调制？</h3><h5 id="解题思路：本题考查对于调幅、调频和调相等基本调制技术的理解。"><a href="#解题思路：本题考查对于调幅、调频和调相等基本调制技术的理解。" class="headerlink" title="解题思路：本题考查对于调幅、调频和调相等基本调制技术的理解。"></a>解题思路：本题考查对于调幅、调频和调相等基本调制技术的理解。</h5><p>答：数据点的相位一直是 0，而使用了两个不同的振幅，因此这是振幅调制。</p>
+<h5 id="知识点：-3"><a href="#知识点：-3" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、调制方法</strong></p>
+<p>与x正半轴夹角代表相位，和(0,0)点的距离代表振幅</p>
+<h3 id="24-一个-ADSL-系统使用DMT-将-3-4-的可用数据信道分配给下行链路。在每个信道上是用QAM64-调制。下行链路的总容量是多少？"><a href="#24-一个-ADSL-系统使用DMT-将-3-4-的可用数据信道分配给下行链路。在每个信道上是用QAM64-调制。下行链路的总容量是多少？" class="headerlink" title="24. 一个 ADSL 系统使用DMT 将 3/4 的可用数据信道分配给下行链路。在每个信道上是用QAM64 调制。下行链路的总容量是多少？"></a>24. 一个 ADSL 系统使用DMT 将 3/4 的可用数据信道分配给下行链路。在每个信道上是用QAM64 调制。下行链路的总容量是多少？</h3><h5 id="解题思路：本题考查对于-ADSL-采用-FDM-技术和-QAM-调制技术的理解。"><a href="#解题思路：本题考查对于-ADSL-采用-FDM-技术和-QAM-调制技术的理解。" class="headerlink" title="解题思路：本题考查对于 ADSL 采用 FDM 技术和 QAM 调制技术的理解。"></a>解题思路：本题考查对于 ADSL 采用 FDM 技术和 QAM 调制技术的理解。</h5><p>答：ADSL 有 256 个子信道，其中 6 个用于电话，2 个用于控制，还剩下 248 个数据信道，每个子信道为 4000 波特。下行信道的数据率为：248×3/4×4000×log2(64)= 4.464 Mbps</p>
+<h5 id="知识点：-4"><a href="#知识点：-4" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、ADSL（不太重要）</strong></p>
+<p>记住有 256 个子信道，其中 6 个用于电话，2 个用于控制，还剩下 248 个数据信道，每个子信道为 4000 波特就行.</p>
+<p><strong>2、QAM64</strong></p>
+<p>对于QAM-n，表示每个码元携带log2(n)比特。</p>
+<h3 id="25-带宽为-4000Hz-的-10-个信号使用FDM-复用到一条信道上，假定保护带为-400Hz，-复用信道最少需要多大的带宽？"><a href="#25-带宽为-4000Hz-的-10-个信号使用FDM-复用到一条信道上，假定保护带为-400Hz，-复用信道最少需要多大的带宽？" class="headerlink" title="25. 带宽为 4000Hz 的 10 个信号使用FDM 复用到一条信道上，假定保护带为 400Hz， 复用信道最少需要多大的带宽？"></a>25. 带宽为 4000Hz 的 10 个信号使用FDM 复用到一条信道上，假定保护带为 400Hz， 复用信道最少需要多大的带宽？</h3><h5 id="解题思路：本题考查对于-FDM-技术的理解。"><a href="#解题思路：本题考查对于-FDM-技术的理解。" class="headerlink" title="解题思路：本题考查对于 FDM 技术的理解。"></a>解题思路：本题考查对于 FDM 技术的理解。</h5><p>答：10 个信道复用在一起需要 9 个保护带，因此至少需要的总带宽为4000×10+400×9= 43600Hz</p>
+<h3 id="26-PCM-的采样时间为什么设置为-125μs？"><a href="#26-PCM-的采样时间为什么设置为-125μs？" class="headerlink" title="26. PCM 的采样时间为什么设置为 125μs？"></a>26. PCM 的采样时间为什么设置为 125μs？</h3><h5 id="解题思路：本题考查对于PCM-采样周期的理解。"><a href="#解题思路：本题考查对于PCM-采样周期的理解。" class="headerlink" title="解题思路：本题考查对于PCM 采样周期的理解。"></a>解题思路：本题考查对于PCM 采样周期的理解。</h5><p>答：<strong>话音信道的带宽为 4000Hz（要记住）</strong>，按照奈奎斯特定理，采样频率应该为带宽的两倍，即每秒采样 8000 次，每 125μs 采样一次。</p>
+<h3 id="28-一条-4kHz-的无噪声信道使用下列技术得到的最大数据率分别是多少？a-每个采样点用-2-比特表示的模拟编码，如-QPSK；b-T1-PCM-系统"><a href="#28-一条-4kHz-的无噪声信道使用下列技术得到的最大数据率分别是多少？a-每个采样点用-2-比特表示的模拟编码，如-QPSK；b-T1-PCM-系统" class="headerlink" title="28. 一条 4kHz 的无噪声信道使用下列技术得到的最大数据率分别是多少？a)  每个采样点用 2 比特表示的模拟编码，如 QPSK；b)  T1 PCM 系统"></a>28. 一条 4kHz 的无噪声信道使用下列技术得到的最大数据率分别是多少？a)  每个采样点用 2 比特表示的模拟编码，如 QPSK；b)  T1 PCM 系统</h3><h5 id="解题思路：本题考查对于多级调制技术和-PCM-系统的-TDM-技术的理解。QPSK-是用-4-个不同相位来表示二进制数据，每个相位点可以表示两位数据。PCM-系统采用同步-TDM-技术，复用帧中的一个时隙承载一路话音数据。"><a href="#解题思路：本题考查对于多级调制技术和-PCM-系统的-TDM-技术的理解。QPSK-是用-4-个不同相位来表示二进制数据，每个相位点可以表示两位数据。PCM-系统采用同步-TDM-技术，复用帧中的一个时隙承载一路话音数据。" class="headerlink" title="解题思路：本题考查对于多级调制技术和 PCM 系统的 TDM 技术的理解。QPSK 是用 4 个不同相位来表示二进制数据，每个相位点可以表示两位数据。PCM 系统采用同步 TDM 技术，复用帧中的一个时隙承载一路话音数据。"></a>解题思路：本题考查对于多级调制技术和 PCM 系统的 TDM 技术的理解。QPSK 是用 4 个不同相位来表示二进制数据，每个相位点可以表示两位数据。PCM 系统采用同步 TDM 技术，复用帧中的一个时隙承载一路话音数据。</h5><p>答：使用 QPSK 的最大数据率是：2×4k×2=16kbps；而采用 T1，<strong>每个采样周期发送7bit</strong>， 其数据率为：2×4k×7= 56kbps</p>
+<h3 id="35-有-3-个分组交换网络，每个网络中均包含-n-个节点。第一个网络采用有集中交换机的星型拓扑；第二个网络采用双向环型拓扑；第三个采用全互连拓扑结构，即每个节点都连接到其它任意一个节点。试求每个网络中的最好情形、平均情形和最坏情形下的跳数？"><a href="#35-有-3-个分组交换网络，每个网络中均包含-n-个节点。第一个网络采用有集中交换机的星型拓扑；第二个网络采用双向环型拓扑；第三个采用全互连拓扑结构，即每个节点都连接到其它任意一个节点。试求每个网络中的最好情形、平均情形和最坏情形下的跳数？" class="headerlink" title="35. 有 3 个分组交换网络，每个网络中均包含 n 个节点。第一个网络采用有集中交换机的星型拓扑；第二个网络采用双向环型拓扑；第三个采用全互连拓扑结构，即每个节点都连接到其它任意一个节点。试求每个网络中的最好情形、平均情形和最坏情形下的跳数？"></a>35. 有 3 个分组交换网络，每个网络中均包含 n 个节点。第一个网络采用有集中交换机的星型拓扑；第二个网络采用双向环型拓扑；第三个采用全互连拓扑结构，即每个节点都连接到其它任意一个节点。试求每个网络中的最好情形、平均情形和最坏情形下的跳数？</h3><h5 id="解题思路：本题考查对于不同的拓扑结构中节点互连情形的理解。"><a href="#解题思路：本题考查对于不同的拓扑结构中节点互连情形的理解。" class="headerlink" title="解题思路：本题考查对于不同的拓扑结构中节点互连情形的理解。"></a>解题思路：本题考查对于不同的拓扑结构中节点互连情形的理解。</h5><p>答：</p>
+<p>对于星型网络，最好情形=平均情形=最坏情形= 2 跳<br>对于双向环型网络，最好情形=1 跳（发给邻居节点），平均情形= n/4 跳，最坏情形= n/2 跳<br>对于全互连网络，最好情形=平均情形=最坏情形=1 跳</p>
+<h5 id="知识点：-5"><a href="#知识点：-5" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、网络拓扑结构</strong></p>
+<img src="/2021/05/06/ch2/1.png" class>
+
+
+
+
+
+<h3 id="36-要在-k-跳路径上发送一个-x-比特的报文，请比较采用电路交换方式和采用分组交换方式（轻载）的时延。电路建立的时间-s-秒，传播时延是每跳-d-秒，分组大小是-p-比特，-数据率是-b-比特-秒。什么情况下，分组交换网络的时延较低？并解释在什么条件下，分组交换网络优于电路交换网络？"><a href="#36-要在-k-跳路径上发送一个-x-比特的报文，请比较采用电路交换方式和采用分组交换方式（轻载）的时延。电路建立的时间-s-秒，传播时延是每跳-d-秒，分组大小是-p-比特，-数据率是-b-比特-秒。什么情况下，分组交换网络的时延较低？并解释在什么条件下，分组交换网络优于电路交换网络？" class="headerlink" title="36. 要在 k 跳路径上发送一个 x 比特的报文，请比较采用电路交换方式和采用分组交换方式（轻载）的时延。电路建立的时间 s 秒，传播时延是每跳 d 秒，分组大小是 p 比特， 数据率是 b 比特/秒。什么情况下，分组交换网络的时延较低？并解释在什么条件下，分组交换网络优于电路交换网络？"></a>36. 要在 k 跳路径上发送一个 x 比特的报文，请比较采用电路交换方式和采用分组交换方式（轻载）的时延。电路建立的时间 s 秒，传播时延是每跳 d 秒，分组大小是 p 比特， 数据率是 b 比特/秒。什么情况下，分组交换网络的时延较低？并解释在什么条件下，分组交换网络优于电路交换网络？</h3><h5 id="解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。在时延的计算中，由于采用相同的拓扑，两种方式的传播时延是一样的。电路交换需要考虑建立连接和释放连接。分组交换则需要将报文分成多个分组来发送。"><a href="#解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。在时延的计算中，由于采用相同的拓扑，两种方式的传播时延是一样的。电路交换需要考虑建立连接和释放连接。分组交换则需要将报文分成多个分组来发送。" class="headerlink" title="解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。在时延的计算中，由于采用相同的拓扑，两种方式的传播时延是一样的。电路交换需要考虑建立连接和释放连接。分组交换则需要将报文分成多个分组来发送。"></a>解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。在时延的计算中，由于采用相同的拓扑，两种方式的传播时延是一样的。电路交换需要考虑建立连接和释放连接。分组交换则需要将报文分成多个分组来发送。</h5><img src="/2021/05/06/ch2/2.png" class>
+
+<h5 id="知识点：-6"><a href="#知识点：-6" class="headerlink" title="知识点："></a>知识点：</h5><p>（1）电路交换时延 = 建立时间+发送时延+传播时延（每一跳时延x跳数）</p>
+<p>（2）分组交换时延 = 发送时延+转发时延（k跳进行k-1次转发）+传播时延</p>
+<h3 id="37-现有-x-比特用户数据，要在分组交换网络中一个-k-跳的路径上分成多个分组传输，-每个分组包含-p-比特数据和-h-比特包头，假定-x-gt-gt-p-h-；线路数据率是-b-比特-秒，忽略传播时延。p-如何取值才能使总时延最小？"><a href="#37-现有-x-比特用户数据，要在分组交换网络中一个-k-跳的路径上分成多个分组传输，-每个分组包含-p-比特数据和-h-比特包头，假定-x-gt-gt-p-h-；线路数据率是-b-比特-秒，忽略传播时延。p-如何取值才能使总时延最小？" class="headerlink" title="37. 现有 x 比特用户数据，要在分组交换网络中一个 k 跳的路径上分成多个分组传输， 每个分组包含 p 比特数据和 h 比特包头，假定 x&gt;&gt;(p+h)；线路数据率是 b 比特/秒，忽略传播时延。p 如何取值才能使总时延最小？"></a>37. 现有 x 比特用户数据，要在分组交换网络中一个 k 跳的路径上分成多个分组传输， 每个分组包含 p 比特数据和 h 比特包头，假定 x&gt;&gt;(p+h)；线路数据率是 b 比特/秒，忽略传播时延。p 如何取值才能使总时延最小？</h3><h5 id="解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。"><a href="#解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。" class="headerlink" title="解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。"></a>解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。</h5><img src="/2021/05/06/ch2/3.png" class>
+
+
+
+
+
+<h3 id="44-一个-CDMA-接收器收到下列码片：-1-1-3-1-1-3-1-1-，假定各站点的码片序列按照图-Fig-2-28-a-定义，试求这些站点的发送情况。"><a href="#44-一个-CDMA-接收器收到下列码片：-1-1-3-1-1-3-1-1-，假定各站点的码片序列按照图-Fig-2-28-a-定义，试求这些站点的发送情况。" class="headerlink" title="44. 一个 CDMA 接收器收到下列码片：(-1+1-3+1-1-3+1+1)，假定各站点的码片序列按照图 Fig. 2-28(a)定义，试求这些站点的发送情况。"></a>44. 一个 CDMA 接收器收到下列码片：(-1+1-3+1-1-3+1+1)，假定各站点的码片序列按照图 Fig. 2-28(a)定义，试求这些站点的发送情况。</h3><h5 id="解题思路：本题考查对于-CDMA-技术的理解。在-CDMA-中，每个站点使用自己独特的码片序列来表示数据位’0’和’1’，由于码片序列的正交性，采用同样码片序列的接收站点可以从复合数据中提取出发给自己的数据。"><a href="#解题思路：本题考查对于-CDMA-技术的理解。在-CDMA-中，每个站点使用自己独特的码片序列来表示数据位’0’和’1’，由于码片序列的正交性，采用同样码片序列的接收站点可以从复合数据中提取出发给自己的数据。" class="headerlink" title="解题思路：本题考查对于 CDMA 技术的理解。在 CDMA 中，每个站点使用自己独特的码片序列来表示数据位’0’和’1’，由于码片序列的正交性，采用同样码片序列的接收站点可以从复合数据中提取出发给自己的数据。"></a>解题思路：本题考查对于 CDMA 技术的理解。在 CDMA 中，每个站点使用自己独特的码片序列来表示数据位’0’和’1’，由于码片序列的正交性，采用同样码片序列的接收站点可以从复合数据中提取出发给自己的数据。</h5><p>答：对 A、B、C、D 四个站点按照码序计算如下：<br>A 站：(-1 +1 -3 +1 -1 -3 +1 +1)•(-1 -1 -1 +1 +1 -1 +1 +1)/8 = 1<br>B 站：(-1 +1 -3 +1 -1 -3 +1 +1)•(-1 -1 +1 -1 +1 +1 +1 -1)/8 = -1<br>C 站：(-1 +1 -3 +1 -1 -3 +1 +1)•(-1 +1 -1 +1 +1 +1 -1 -1)/8 = 0<br>D 站：(-1 +1 -3 +1 -1 -3 +1 +1)•(-1 +1 -1 -1 -1 -1 +1 -1)/8 = 1<br>可知，A 站和 D 站发送的是二进制位 1，B 站发送了二进制位 0，而C 站没有发送数据。</p>
+<h5 id="知识点：CDMA"><a href="#知识点：CDMA" class="headerlink" title="知识点：CDMA"></a>知识点：CDMA</h5><img src="/2021/05/06/ch2/4.png" class>
+
+
+
+
+
+<h3 id="补充题一：在网络中截获了一串数据，用十六进制表示为：06-7E-25-7D-5E-16-7D-5D-7E-A8-FF，其中包含一个完整的PPP-帧，请以十六进制写出该-PPP-帧的内容（不包含首尾标志）。"><a href="#补充题一：在网络中截获了一串数据，用十六进制表示为：06-7E-25-7D-5E-16-7D-5D-7E-A8-FF，其中包含一个完整的PPP-帧，请以十六进制写出该-PPP-帧的内容（不包含首尾标志）。" class="headerlink" title="补充题一：在网络中截获了一串数据，用十六进制表示为：06 7E 25 7D 5E 16 7D 5D 7E A8 FF，其中包含一个完整的PPP 帧，请以十六进制写出该 PPP 帧的内容（不包含首尾标志）。"></a>补充题一：在网络中截获了一串数据，用十六进制表示为：06 7E 25 7D 5E 16 7D 5D 7E A8 FF，其中包含一个完整的PPP 帧，请以十六进制写出该 PPP 帧的内容（不包含首尾标志）。</h3><h5 id="解题思路：本题考查-PPP-采用的字节填充原理。在-PPP-中，转义字符为-0x7D，数据中若出现-0x7E，则变为-0x7D-0x5E；出现-0x7D，则变为-0x7D-0x5D。"><a href="#解题思路：本题考查-PPP-采用的字节填充原理。在-PPP-中，转义字符为-0x7D，数据中若出现-0x7E，则变为-0x7D-0x5E；出现-0x7D，则变为-0x7D-0x5D。" class="headerlink" title="解题思路：本题考查 PPP 采用的字节填充原理。在 PPP 中，转义字符为 0x7D，数据中若出现 0x7E，则变为 0x7D 0x5E；出现 0x7D，则变为 0x7D 0x5D。"></a>解题思路：本题考查 PPP 采用的字节填充原理。在 PPP 中，转义字符为 0x7D，数据中若出现 0x7E，则变为 0x7D 0x5E；出现 0x7D，则变为 0x7D 0x5D。</h5><p>答：PPP 帧的帧头、帧尾都是 7E，因此完整的传输帧是 7E 25 7D 5E 16 7D 5D 7E。去掉帧头帧尾和填充字节，即 7D 5E 变为 7E，7D 5D 变为 7D，帧中的内容是：25 7E 16 7D。</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 感谢阅读-------------</div>
+    
+</div>
+
+    
+  </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"><i class="fa fa-tag"></i> 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/06/ch1/" rel="next" title="ch1 概述">
+                <i class="fa fa-chevron-left"></i> ch1 概述
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/05/06/ch3/" rel="prev" title="ch3 数据链路层">
+                ch3 数据链路层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/author.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cauchy221" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="liuxinyue@bupt.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%BA%8C%E7%AB%A0-%E7%89%A9%E7%90%86%E5%B1%82"><span class="nav-text">第二章 物理层</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E4%B8%80%E4%B8%AA-8kHz-%E7%9A%84%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BF%A1%E9%81%93%E6%AF%8F%E6%AF%AB%E7%A7%92%E9%87%87%E6%A0%B7-1-%E6%AC%A1%EF%BC%8C%E6%9C%80%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%87%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-text">2. 一个 8kHz 的无噪声信道每毫秒采样 1 次，最大数据率是多少？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E9%87%87%E6%A0%B7%E6%A6%82%E5%BF%B5%E5%92%8C%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E5%85%AC%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于采样概念和奈奎斯特公式的理解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E5%9C%A8%E4%BF%A1%E5%99%AA%E6%AF%94%E4%B8%BA-20dB-%E7%9A%84-3kHz-%E4%BF%A1%E9%81%93%E4%B8%8A%E5%8F%91%E9%80%81%E4%BA%8C%E8%BF%9B%E5%88%B6%E4%BF%A1%E5%8F%B7%EF%BC%8C%E6%9C%80%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%87%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-text">3. 在信噪比为 20dB 的 3kHz 信道上发送二进制信号，最大数据率是多少？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E4%B8%A4%E4%B8%AA%E6%9C%80%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%87%E5%85%AC%E5%BC%8F%E2%80%94%E2%80%94%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E5%85%AC%E5%BC%8F%E5%92%8C%E9%A6%99%E5%86%9C%E5%85%AC%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于两个最大数据率公式——奈奎斯特公式和香农公式的理解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-1"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-%E8%A6%81%E4%BD%BF%E7%94%A8%E5%A4%9A%E5%A4%A7%E7%9A%84%E4%BF%A1%E5%99%AA%E6%AF%94%E6%89%8D%E8%83%BD%E5%9C%A8-100kHz-%E7%9A%84%E7%BA%BF%E8%B7%AF%E4%B8%8A%E4%BC%A0%E8%BE%93T1-%E4%BF%A1%E5%8F%B7%EF%BC%9F"><span class="nav-text">4. 要使用多大的信噪比才能在 100kHz 的线路上传输T1 信号？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E9%A6%99%E5%86%9C%E5%85%AC%E5%BC%8F%E7%9A%84%E4%BD%BF%E7%94%A8%E3%80%82"><span class="nav-text">解题思路：本题考查对于香农公式的使用。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-2"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#7-%E7%8E%B0%E8%A6%81%E5%9C%A8%E5%85%89%E7%BA%A4%E4%B8%8A%E4%BC%A0%E8%BE%93%E4%B8%80%E7%B3%BB%E5%88%97%E8%AE%A1%E7%AE%97%E6%9C%BA%E5%B1%8F%E5%B9%95%E7%9A%84%E5%9B%BE%E5%83%8F%EF%BC%8C%E5%B1%8F%E5%B9%95%E6%98%AF-1920%C3%971200-%E5%83%8F%E7%B4%A0%EF%BC%8C%E6%AF%8F%E4%B8%AA%E5%83%8F%E7%B4%A0%E6%9C%8924-%E4%BD%8D%EF%BC%8C%E6%AF%8F%E7%A7%92%E9%92%9F%E4%BA%A7%E7%94%9F-50-%E5%B1%8F%E5%9B%BE%E5%83%8F%EF%BC%8C%E8%AF%95%E6%B1%82%E9%9C%80%E8%A6%81%E5%A4%9A%E5%B0%91%E5%B8%A6%E5%AE%BD%EF%BC%9F"><span class="nav-text">7. 现要在光纤上传输一系列计算机屏幕的图像，屏幕是 1920×1200 像素，每个像素有24 位，每秒钟产生 50 屏图像，试求需要多少带宽？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E7%9B%AE%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E5%A4%A7%E6%95%B0%E6%8D%AE%E9%87%8F%E5%BA%94%E7%94%A8%E7%9A%84%E9%AB%98%E5%B8%A6%E5%AE%BD%E8%A6%81%E6%B1%82%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82%E5%BA%94%E6%A0%B9%E6%8D%AE%E5%83%8F%E7%B4%A0%E8%AE%A1%E7%AE%97%E5%87%BA%E4%B8%80%E5%B1%8F%E5%9B%BE%E5%83%8F%E7%9A%84%E6%95%B0%E6%8D%AE%E9%87%8F%EF%BC%8C%E5%86%8D%E6%A0%B9%E6%8D%AE%E5%8D%95%E4%BD%8D%E6%97%B6%E9%97%B4%E5%86%85%E4%BA%A7%E7%94%9F%E7%9A%84%E5%9B%BE%E5%83%8F%E6%95%B0%E8%AE%A1%E7%AE%97%E5%87%BA%E5%B8%A6%E5%AE%BD%E8%A6%81%E6%B1%82%E3%80%82"><span class="nav-text">解题思路：本题目考查对于大数据量应用的高带宽要求的理解。应根据像素计算出一屏图像的数据量，再根据单位时间内产生的图像数计算出带宽要求。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#8-%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E5%AE%9A%E7%90%86%E5%8F%AA%E9%80%82%E5%90%88%E9%93%9C%E7%BA%BF%EF%BC%8C%E8%BF%98%E6%98%AF%E5%90%8C%E6%A0%B7%E9%80%82%E7%94%A8%E4%BA%8E%E9%AB%98%E8%B4%A8%E9%87%8F%E5%8D%95%E6%A8%A1%E5%85%89%E7%BA%A4%EF%BC%9F-%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E5%A5%88%E5%A5%8E%E6%96%AF%E7%89%B9%E5%AE%9A%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">8. 奈奎斯特定理只适合铜线，还是同样适用于高质量单模光纤？ 解题思路：本题考查对于奈奎斯特定理的理解。</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#21-%E4%B8%80%E4%B8%AA-MODEM-%E7%9A%84%E6%98%9F%E4%BA%91%E5%9B%BE%E7%B1%BB%E4%BC%BC%E5%9B%BE-2-23%EF%BC%8C%E6%95%B0%E6%8D%AE%E7%82%B9%E5%9C%A8-0-1-0-2-%E3%80%82%E8%AF%A5-MODEM-%E4%BD%BF%E7%94%A8%E7%9A%84%E6%98%AF%E7%9B%B8%E4%BD%8D%E8%B0%83%E5%88%B6%E8%BF%98%E6%98%AF%E6%8C%AF%E5%B9%85%E8%B0%83%E5%88%B6%EF%BC%9F"><span class="nav-text">21. 一个 MODEM 的星云图类似图 2-23，数据点在(0, 1) , (0, 2)。该 MODEM 使用的是相位调制还是振幅调制？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E8%B0%83%E5%B9%85%E3%80%81%E8%B0%83%E9%A2%91%E5%92%8C%E8%B0%83%E7%9B%B8%E7%AD%89%E5%9F%BA%E6%9C%AC%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于调幅、调频和调相等基本调制技术的理解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-3"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#24-%E4%B8%80%E4%B8%AA-ADSL-%E7%B3%BB%E7%BB%9F%E4%BD%BF%E7%94%A8DMT-%E5%B0%86-3-4-%E7%9A%84%E5%8F%AF%E7%94%A8%E6%95%B0%E6%8D%AE%E4%BF%A1%E9%81%93%E5%88%86%E9%85%8D%E7%BB%99%E4%B8%8B%E8%A1%8C%E9%93%BE%E8%B7%AF%E3%80%82%E5%9C%A8%E6%AF%8F%E4%B8%AA%E4%BF%A1%E9%81%93%E4%B8%8A%E6%98%AF%E7%94%A8QAM64-%E8%B0%83%E5%88%B6%E3%80%82%E4%B8%8B%E8%A1%8C%E9%93%BE%E8%B7%AF%E7%9A%84%E6%80%BB%E5%AE%B9%E9%87%8F%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-text">24. 一个 ADSL 系统使用DMT 将 3&#x2F;4 的可用数据信道分配给下行链路。在每个信道上是用QAM64 调制。下行链路的总容量是多少？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E-ADSL-%E9%87%87%E7%94%A8-FDM-%E6%8A%80%E6%9C%AF%E5%92%8C-QAM-%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于 ADSL 采用 FDM 技术和 QAM 调制技术的理解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-4"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#25-%E5%B8%A6%E5%AE%BD%E4%B8%BA-4000Hz-%E7%9A%84-10-%E4%B8%AA%E4%BF%A1%E5%8F%B7%E4%BD%BF%E7%94%A8FDM-%E5%A4%8D%E7%94%A8%E5%88%B0%E4%B8%80%E6%9D%A1%E4%BF%A1%E9%81%93%E4%B8%8A%EF%BC%8C%E5%81%87%E5%AE%9A%E4%BF%9D%E6%8A%A4%E5%B8%A6%E4%B8%BA-400Hz%EF%BC%8C-%E5%A4%8D%E7%94%A8%E4%BF%A1%E9%81%93%E6%9C%80%E5%B0%91%E9%9C%80%E8%A6%81%E5%A4%9A%E5%A4%A7%E7%9A%84%E5%B8%A6%E5%AE%BD%EF%BC%9F"><span class="nav-text">25. 带宽为 4000Hz 的 10 个信号使用FDM 复用到一条信道上，假定保护带为 400Hz， 复用信道最少需要多大的带宽？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E-FDM-%E6%8A%80%E6%9C%AF%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于 FDM 技术的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#26-PCM-%E7%9A%84%E9%87%87%E6%A0%B7%E6%97%B6%E9%97%B4%E4%B8%BA%E4%BB%80%E4%B9%88%E8%AE%BE%E7%BD%AE%E4%B8%BA-125%CE%BCs%EF%BC%9F"><span class="nav-text">26. PCM 的采样时间为什么设置为 125μs？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8EPCM-%E9%87%87%E6%A0%B7%E5%91%A8%E6%9C%9F%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于PCM 采样周期的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#28-%E4%B8%80%E6%9D%A1-4kHz-%E7%9A%84%E6%97%A0%E5%99%AA%E5%A3%B0%E4%BF%A1%E9%81%93%E4%BD%BF%E7%94%A8%E4%B8%8B%E5%88%97%E6%8A%80%E6%9C%AF%E5%BE%97%E5%88%B0%E7%9A%84%E6%9C%80%E5%A4%A7%E6%95%B0%E6%8D%AE%E7%8E%87%E5%88%86%E5%88%AB%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9Fa-%E6%AF%8F%E4%B8%AA%E9%87%87%E6%A0%B7%E7%82%B9%E7%94%A8-2-%E6%AF%94%E7%89%B9%E8%A1%A8%E7%A4%BA%E7%9A%84%E6%A8%A1%E6%8B%9F%E7%BC%96%E7%A0%81%EF%BC%8C%E5%A6%82-QPSK%EF%BC%9Bb-T1-PCM-%E7%B3%BB%E7%BB%9F"><span class="nav-text">28. 一条 4kHz 的无噪声信道使用下列技术得到的最大数据率分别是多少？a)  每个采样点用 2 比特表示的模拟编码，如 QPSK；b)  T1 PCM 系统</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E5%A4%9A%E7%BA%A7%E8%B0%83%E5%88%B6%E6%8A%80%E6%9C%AF%E5%92%8C-PCM-%E7%B3%BB%E7%BB%9F%E7%9A%84-TDM-%E6%8A%80%E6%9C%AF%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82QPSK-%E6%98%AF%E7%94%A8-4-%E4%B8%AA%E4%B8%8D%E5%90%8C%E7%9B%B8%E4%BD%8D%E6%9D%A5%E8%A1%A8%E7%A4%BA%E4%BA%8C%E8%BF%9B%E5%88%B6%E6%95%B0%E6%8D%AE%EF%BC%8C%E6%AF%8F%E4%B8%AA%E7%9B%B8%E4%BD%8D%E7%82%B9%E5%8F%AF%E4%BB%A5%E8%A1%A8%E7%A4%BA%E4%B8%A4%E4%BD%8D%E6%95%B0%E6%8D%AE%E3%80%82PCM-%E7%B3%BB%E7%BB%9F%E9%87%87%E7%94%A8%E5%90%8C%E6%AD%A5-TDM-%E6%8A%80%E6%9C%AF%EF%BC%8C%E5%A4%8D%E7%94%A8%E5%B8%A7%E4%B8%AD%E7%9A%84%E4%B8%80%E4%B8%AA%E6%97%B6%E9%9A%99%E6%89%BF%E8%BD%BD%E4%B8%80%E8%B7%AF%E8%AF%9D%E9%9F%B3%E6%95%B0%E6%8D%AE%E3%80%82"><span class="nav-text">解题思路：本题考查对于多级调制技术和 PCM 系统的 TDM 技术的理解。QPSK 是用 4 个不同相位来表示二进制数据，每个相位点可以表示两位数据。PCM 系统采用同步 TDM 技术，复用帧中的一个时隙承载一路话音数据。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#35-%E6%9C%89-3-%E4%B8%AA%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C%EF%BC%8C%E6%AF%8F%E4%B8%AA%E7%BD%91%E7%BB%9C%E4%B8%AD%E5%9D%87%E5%8C%85%E5%90%AB-n-%E4%B8%AA%E8%8A%82%E7%82%B9%E3%80%82%E7%AC%AC%E4%B8%80%E4%B8%AA%E7%BD%91%E7%BB%9C%E9%87%87%E7%94%A8%E6%9C%89%E9%9B%86%E4%B8%AD%E4%BA%A4%E6%8D%A2%E6%9C%BA%E7%9A%84%E6%98%9F%E5%9E%8B%E6%8B%93%E6%89%91%EF%BC%9B%E7%AC%AC%E4%BA%8C%E4%B8%AA%E7%BD%91%E7%BB%9C%E9%87%87%E7%94%A8%E5%8F%8C%E5%90%91%E7%8E%AF%E5%9E%8B%E6%8B%93%E6%89%91%EF%BC%9B%E7%AC%AC%E4%B8%89%E4%B8%AA%E9%87%87%E7%94%A8%E5%85%A8%E4%BA%92%E8%BF%9E%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84%EF%BC%8C%E5%8D%B3%E6%AF%8F%E4%B8%AA%E8%8A%82%E7%82%B9%E9%83%BD%E8%BF%9E%E6%8E%A5%E5%88%B0%E5%85%B6%E5%AE%83%E4%BB%BB%E6%84%8F%E4%B8%80%E4%B8%AA%E8%8A%82%E7%82%B9%E3%80%82%E8%AF%95%E6%B1%82%E6%AF%8F%E4%B8%AA%E7%BD%91%E7%BB%9C%E4%B8%AD%E7%9A%84%E6%9C%80%E5%A5%BD%E6%83%85%E5%BD%A2%E3%80%81%E5%B9%B3%E5%9D%87%E6%83%85%E5%BD%A2%E5%92%8C%E6%9C%80%E5%9D%8F%E6%83%85%E5%BD%A2%E4%B8%8B%E7%9A%84%E8%B7%B3%E6%95%B0%EF%BC%9F"><span class="nav-text">35. 有 3 个分组交换网络，每个网络中均包含 n 个节点。第一个网络采用有集中交换机的星型拓扑；第二个网络采用双向环型拓扑；第三个采用全互连拓扑结构，即每个节点都连接到其它任意一个节点。试求每个网络中的最好情形、平均情形和最坏情形下的跳数？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E4%B8%8D%E5%90%8C%E7%9A%84%E6%8B%93%E6%89%91%E7%BB%93%E6%9E%84%E4%B8%AD%E8%8A%82%E7%82%B9%E4%BA%92%E8%BF%9E%E6%83%85%E5%BD%A2%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于不同的拓扑结构中节点互连情形的理解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-5"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#36-%E8%A6%81%E5%9C%A8-k-%E8%B7%B3%E8%B7%AF%E5%BE%84%E4%B8%8A%E5%8F%91%E9%80%81%E4%B8%80%E4%B8%AA-x-%E6%AF%94%E7%89%B9%E7%9A%84%E6%8A%A5%E6%96%87%EF%BC%8C%E8%AF%B7%E6%AF%94%E8%BE%83%E9%87%87%E7%94%A8%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F%E5%92%8C%E9%87%87%E7%94%A8%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E6%96%B9%E5%BC%8F%EF%BC%88%E8%BD%BB%E8%BD%BD%EF%BC%89%E7%9A%84%E6%97%B6%E5%BB%B6%E3%80%82%E7%94%B5%E8%B7%AF%E5%BB%BA%E7%AB%8B%E7%9A%84%E6%97%B6%E9%97%B4-s-%E7%A7%92%EF%BC%8C%E4%BC%A0%E6%92%AD%E6%97%B6%E5%BB%B6%E6%98%AF%E6%AF%8F%E8%B7%B3-d-%E7%A7%92%EF%BC%8C%E5%88%86%E7%BB%84%E5%A4%A7%E5%B0%8F%E6%98%AF-p-%E6%AF%94%E7%89%B9%EF%BC%8C-%E6%95%B0%E6%8D%AE%E7%8E%87%E6%98%AF-b-%E6%AF%94%E7%89%B9-%E7%A7%92%E3%80%82%E4%BB%80%E4%B9%88%E6%83%85%E5%86%B5%E4%B8%8B%EF%BC%8C%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C%E7%9A%84%E6%97%B6%E5%BB%B6%E8%BE%83%E4%BD%8E%EF%BC%9F%E5%B9%B6%E8%A7%A3%E9%87%8A%E5%9C%A8%E4%BB%80%E4%B9%88%E6%9D%A1%E4%BB%B6%E4%B8%8B%EF%BC%8C%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C%E4%BC%98%E4%BA%8E%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C%EF%BC%9F"><span class="nav-text">36. 要在 k 跳路径上发送一个 x 比特的报文，请比较采用电路交换方式和采用分组交换方式（轻载）的时延。电路建立的时间 s 秒，传播时延是每跳 d 秒，分组大小是 p 比特， 数据率是 b 比特&#x2F;秒。什么情况下，分组交换网络的时延较低？并解释在什么条件下，分组交换网络优于电路交换网络？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%E5%92%8C%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%9A%84%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%97%B6%E5%BB%B6%E7%9A%84%E8%AE%A1%E7%AE%97%E5%92%8C%E6%AF%94%E8%BE%83%E3%80%82%E5%9C%A8%E6%97%B6%E5%BB%B6%E7%9A%84%E8%AE%A1%E7%AE%97%E4%B8%AD%EF%BC%8C%E7%94%B1%E4%BA%8E%E9%87%87%E7%94%A8%E7%9B%B8%E5%90%8C%E7%9A%84%E6%8B%93%E6%89%91%EF%BC%8C%E4%B8%A4%E7%A7%8D%E6%96%B9%E5%BC%8F%E7%9A%84%E4%BC%A0%E6%92%AD%E6%97%B6%E5%BB%B6%E6%98%AF%E4%B8%80%E6%A0%B7%E7%9A%84%E3%80%82%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%E9%9C%80%E8%A6%81%E8%80%83%E8%99%91%E5%BB%BA%E7%AB%8B%E8%BF%9E%E6%8E%A5%E5%92%8C%E9%87%8A%E6%94%BE%E8%BF%9E%E6%8E%A5%E3%80%82%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E5%88%99%E9%9C%80%E8%A6%81%E5%B0%86%E6%8A%A5%E6%96%87%E5%88%86%E6%88%90%E5%A4%9A%E4%B8%AA%E5%88%86%E7%BB%84%E6%9D%A5%E5%8F%91%E9%80%81%E3%80%82"><span class="nav-text">解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。在时延的计算中，由于采用相同的拓扑，两种方式的传播时延是一样的。电路交换需要考虑建立连接和释放连接。分组交换则需要将报文分成多个分组来发送。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-6"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#37-%E7%8E%B0%E6%9C%89-x-%E6%AF%94%E7%89%B9%E7%94%A8%E6%88%B7%E6%95%B0%E6%8D%AE%EF%BC%8C%E8%A6%81%E5%9C%A8%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%BD%91%E7%BB%9C%E4%B8%AD%E4%B8%80%E4%B8%AA-k-%E8%B7%B3%E7%9A%84%E8%B7%AF%E5%BE%84%E4%B8%8A%E5%88%86%E6%88%90%E5%A4%9A%E4%B8%AA%E5%88%86%E7%BB%84%E4%BC%A0%E8%BE%93%EF%BC%8C-%E6%AF%8F%E4%B8%AA%E5%88%86%E7%BB%84%E5%8C%85%E5%90%AB-p-%E6%AF%94%E7%89%B9%E6%95%B0%E6%8D%AE%E5%92%8C-h-%E6%AF%94%E7%89%B9%E5%8C%85%E5%A4%B4%EF%BC%8C%E5%81%87%E5%AE%9A-x-gt-gt-p-h-%EF%BC%9B%E7%BA%BF%E8%B7%AF%E6%95%B0%E6%8D%AE%E7%8E%87%E6%98%AF-b-%E6%AF%94%E7%89%B9-%E7%A7%92%EF%BC%8C%E5%BF%BD%E7%95%A5%E4%BC%A0%E6%92%AD%E6%97%B6%E5%BB%B6%E3%80%82p-%E5%A6%82%E4%BD%95%E5%8F%96%E5%80%BC%E6%89%8D%E8%83%BD%E4%BD%BF%E6%80%BB%E6%97%B6%E5%BB%B6%E6%9C%80%E5%B0%8F%EF%BC%9F"><span class="nav-text">37. 现有 x 比特用户数据，要在分组交换网络中一个 k 跳的路径上分成多个分组传输， 每个分组包含 p 比特数据和 h 比特包头，假定 x&gt;&gt;(p+h)；线路数据率是 b 比特&#x2F;秒，忽略传播时延。p 如何取值才能使总时延最小？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E7%94%B5%E8%B7%AF%E4%BA%A4%E6%8D%A2%E5%92%8C%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%9A%84%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%8C%E4%BB%A5%E5%8F%8A%E6%97%B6%E5%BB%B6%E7%9A%84%E8%AE%A1%E7%AE%97%E5%92%8C%E6%AF%94%E8%BE%83%E3%80%82"><span class="nav-text">解题思路：本题考查对于电路交换和分组交换的原理的理解，以及时延的计算和比较。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#44-%E4%B8%80%E4%B8%AA-CDMA-%E6%8E%A5%E6%94%B6%E5%99%A8%E6%94%B6%E5%88%B0%E4%B8%8B%E5%88%97%E7%A0%81%E7%89%87%EF%BC%9A-1-1-3-1-1-3-1-1-%EF%BC%8C%E5%81%87%E5%AE%9A%E5%90%84%E7%AB%99%E7%82%B9%E7%9A%84%E7%A0%81%E7%89%87%E5%BA%8F%E5%88%97%E6%8C%89%E7%85%A7%E5%9B%BE-Fig-2-28-a-%E5%AE%9A%E4%B9%89%EF%BC%8C%E8%AF%95%E6%B1%82%E8%BF%99%E4%BA%9B%E7%AB%99%E7%82%B9%E7%9A%84%E5%8F%91%E9%80%81%E6%83%85%E5%86%B5%E3%80%82"><span class="nav-text">44. 一个 CDMA 接收器收到下列码片：(-1+1-3+1-1-3+1+1)，假定各站点的码片序列按照图 Fig. 2-28(a)定义，试求这些站点的发送情况。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E-CDMA-%E6%8A%80%E6%9C%AF%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82%E5%9C%A8-CDMA-%E4%B8%AD%EF%BC%8C%E6%AF%8F%E4%B8%AA%E7%AB%99%E7%82%B9%E4%BD%BF%E7%94%A8%E8%87%AA%E5%B7%B1%E7%8B%AC%E7%89%B9%E7%9A%84%E7%A0%81%E7%89%87%E5%BA%8F%E5%88%97%E6%9D%A5%E8%A1%A8%E7%A4%BA%E6%95%B0%E6%8D%AE%E4%BD%8D%E2%80%990%E2%80%99%E5%92%8C%E2%80%991%E2%80%99%EF%BC%8C%E7%94%B1%E4%BA%8E%E7%A0%81%E7%89%87%E5%BA%8F%E5%88%97%E7%9A%84%E6%AD%A3%E4%BA%A4%E6%80%A7%EF%BC%8C%E9%87%87%E7%94%A8%E5%90%8C%E6%A0%B7%E7%A0%81%E7%89%87%E5%BA%8F%E5%88%97%E7%9A%84%E6%8E%A5%E6%94%B6%E7%AB%99%E7%82%B9%E5%8F%AF%E4%BB%A5%E4%BB%8E%E5%A4%8D%E5%90%88%E6%95%B0%E6%8D%AE%E4%B8%AD%E6%8F%90%E5%8F%96%E5%87%BA%E5%8F%91%E7%BB%99%E8%87%AA%E5%B7%B1%E7%9A%84%E6%95%B0%E6%8D%AE%E3%80%82"><span class="nav-text">解题思路：本题考查对于 CDMA 技术的理解。在 CDMA 中，每个站点使用自己独特的码片序列来表示数据位’0’和’1’，由于码片序列的正交性，采用同样码片序列的接收站点可以从复合数据中提取出发给自己的数据。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9ACDMA"><span class="nav-text">知识点：CDMA</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%A1%A5%E5%85%85%E9%A2%98%E4%B8%80%EF%BC%9A%E5%9C%A8%E7%BD%91%E7%BB%9C%E4%B8%AD%E6%88%AA%E8%8E%B7%E4%BA%86%E4%B8%80%E4%B8%B2%E6%95%B0%E6%8D%AE%EF%BC%8C%E7%94%A8%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E8%A1%A8%E7%A4%BA%E4%B8%BA%EF%BC%9A06-7E-25-7D-5E-16-7D-5D-7E-A8-FF%EF%BC%8C%E5%85%B6%E4%B8%AD%E5%8C%85%E5%90%AB%E4%B8%80%E4%B8%AA%E5%AE%8C%E6%95%B4%E7%9A%84PPP-%E5%B8%A7%EF%BC%8C%E8%AF%B7%E4%BB%A5%E5%8D%81%E5%85%AD%E8%BF%9B%E5%88%B6%E5%86%99%E5%87%BA%E8%AF%A5-PPP-%E5%B8%A7%E7%9A%84%E5%86%85%E5%AE%B9%EF%BC%88%E4%B8%8D%E5%8C%85%E5%90%AB%E9%A6%96%E5%B0%BE%E6%A0%87%E5%BF%97%EF%BC%89%E3%80%82"><span class="nav-text">补充题一：在网络中截获了一串数据，用十六进制表示为：06 7E 25 7D 5E 16 7D 5D 7E A8 FF，其中包含一个完整的PPP 帧，请以十六进制写出该 PPP 帧的内容（不包含首尾标志）。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5-PPP-%E9%87%87%E7%94%A8%E7%9A%84%E5%AD%97%E8%8A%82%E5%A1%AB%E5%85%85%E5%8E%9F%E7%90%86%E3%80%82%E5%9C%A8-PPP-%E4%B8%AD%EF%BC%8C%E8%BD%AC%E4%B9%89%E5%AD%97%E7%AC%A6%E4%B8%BA-0x7D%EF%BC%8C%E6%95%B0%E6%8D%AE%E4%B8%AD%E8%8B%A5%E5%87%BA%E7%8E%B0-0x7E%EF%BC%8C%E5%88%99%E5%8F%98%E4%B8%BA-0x7D-0x5E%EF%BC%9B%E5%87%BA%E7%8E%B0-0x7D%EF%BC%8C%E5%88%99%E5%8F%98%E4%B8%BA-0x7D-0x5D%E3%80%82"><span class="nav-text">解题思路：本题考查 PPP 采用的字节填充原理。在 PPP 中，转义字符为 0x7D，数据中若出现 0x7E，则变为 0x7D 0x5E；出现 0x7D，则变为 0x7D 0x5D。</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kc</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>

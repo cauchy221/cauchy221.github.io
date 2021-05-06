@@ -1,0 +1,893 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="计算机网络," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kc的笔记本" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="第一章 概述1.An alternative to a LAN is simply a big timesharing system with terminals for all users. Give two advantages of a client-server system using a LAN.习题 1. 将所有用户的终端组成一个大的分时系统也是一种小范围的组网方式。写出相对于这种方">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ch1 概述">
+<meta property="og:url" content="https://cauchy221.github.io/2021/05/06/ch1/index.html">
+<meta property="og:site_name" content="kc的笔记本">
+<meta property="og:description" content="第一章 概述1.An alternative to a LAN is simply a big timesharing system with terminals for all users. Give two advantages of a client-server system using a LAN.习题 1. 将所有用户的终端组成一个大的分时系统也是一种小范围的组网方式。写出相对于这种方">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch1/1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch1/2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch1/3.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch1/4.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch1/5.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch1/6.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/06/ch1/7.png">
+<meta property="article:published_time" content="2021-05-06T05:48:51.000Z">
+<meta property="article:modified_time" content="2021-05-06T05:53:28.783Z">
+<meta property="article:author" content="kc">
+<meta property="article:tag" content="计算机网络">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauchy221.github.io/2021/05/06/ch1/1.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cauchy221.github.io/2021/05/06/ch1/"/>
+
+
+
+
+
+  <title>ch1 概述 | kc的笔记本</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kc的笔记本</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">可爱小猪</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/%20" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cauchy221.github.io/2021/05/06/ch1/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kc的笔记本">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">ch1 概述</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-05-06T13:48:51+08:00">
+                2021-05-06
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" itemprop="url" rel="index">
+                    <span itemprop="name">计算机网络</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/%E4%BD%9C%E4%B8%9A%E6%95%B4%E7%90%86/" itemprop="url" rel="index">
+                    <span itemprop="name">作业整理</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <h1 id="第一章-概述"><a href="#第一章-概述" class="headerlink" title="第一章 概述"></a>第一章 概述</h1><h3 id="1-An-alternative-to-a-LAN-is-simply-a-big-timesharing-system-with-terminals-for-all-users-Give-two-advantages-of-a-client-server-system-using-a-LAN"><a href="#1-An-alternative-to-a-LAN-is-simply-a-big-timesharing-system-with-terminals-for-all-users-Give-two-advantages-of-a-client-server-system-using-a-LAN" class="headerlink" title="1.An alternative to a LAN is simply a big timesharing system with terminals for all users. Give two advantages of a client-server system using a LAN."></a>1.An alternative to a LAN is simply a big timesharing system with terminals for all users. Give two advantages of a client-server system using a LAN.</h3><p>习题 1. 将所有用户的终端组成一个大的分时系统也是一种小范围的组网方式。写出相对于这种方式，用LAN 实现客户-服务器系统的两个优点。</p>
+<h5 id="解题思路：本题考查与对同步分时系统和-LAN-的基本工作原理的理解。"><a href="#解题思路：本题考查与对同步分时系统和-LAN-的基本工作原理的理解。" class="headerlink" title="解题思路：本题考查与对同步分时系统和 LAN 的基本工作原理的理解。"></a>解题思路：本题考查与对同步分时系统和 LAN 的基本工作原理的理解。</h5><p>答：</p>
+<p>思路 1：题目提及的分时系统采用同步时分复用的方式共享信道。而 LAN 则是每台主机分布式共享信道，类似统计时分复用。与分时系统相比，在负载较轻的情况下，LAN 中主机发送之前等待占用的时延更短，且更有效利用信道。而且很容易扩展，在网络中增加主机。此外， LAN 控制简单，成本低。</p>
+<p>思路 2：该题目是考察多终端系统和计算机网络的区别。大型分时系统属于一种多终端系统， 多个终端共享主机的资源（多终端系统采用同步时分复用技术）。LAN 属于计算机网络（计算机网络采用统计时分复用技术），各计算机在硬件上没有区别。因此两者区别（1）多终端系统存在单点故障问题。当在多终端系统中实现C/S 时，主机固定是server，终端是client。因此当主机出现故障，该 C/S 系统就无法提供服务了。而 LAN 中实现 C/S 时，当 S 进程所在的计算机出现故障时，可以将 S 进程迁移到其他计算机上，还可以继续提供服务。（2）LAN 成本更低，多终端系统的主机比较昂贵。</p>
+<h5 id="知识点："><a href="#知识点：" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、4种复用方式</strong></p>
+<p>（1）频分复用FDM</p>
+<p>用户在分配到一定频带后，在通信过程中自始至终都占有这个频带。频分复用的所有用户在同样的时间内占有不同的带宽资源（这里说的带宽是频率带宽，而不是数据的发送速率）。</p>
+<img src="/2021/05/06/ch1/1.png" class>
+
+<p>（2）时分复用TDM</p>
+<p>时分复用是将时间划分为一段段等长的时分复用帧（TDM帧）。每一个时分复用的用户在每一个TDM帧中占用固定序号的时隙。每一个用户所占用的时隙是周期性地出现（其周期就是TDM帧的长度）。时分复用的所有用户是在不同的时间内占用同样的频带宽度。但是时分复用会造成线路资源的浪费。</p>
+<img src="/2021/05/06/ch1/2.png" class>
+
+<p>（3）码分复用CDM</p>
+<p>每一个用户可以在同样的时间使用同样的频带进行通信，由于各用户使用经过特殊挑选的不同码型，因此各用户之间不会造成干扰。</p>
+<img src="/2021/05/06/ch1/3.png" class>
+
+<p>（4）波分复用WDM</p>
+<p>将一系列载有信息、但波长不同的光信号合成一束，沿着单根光纤传输。</p>
+<img src="/2021/05/06/ch1/4.png" class>
+
+<p><strong>2、统计时分复用和同步时分复用</strong></p>
+<p>统计时分复用在给用户分配资源时，不像同步时分那样固定分配，而是采用动态分配，即按需分配，只有在用户有数据传送时才给它分配资源，因此线路的利用率高。</p>
+<h3 id="2-The-performance-of-a-client-server-system-is-strongly-influenced-by-two-major-network-characteristics-the-bandwidth-of-the-network-that-is-how-many-bits-sec-it-can-transport-and-the-latency-that-is-how-many-seconds-it-takes-for-the-first-bit-to-get-from-the-client-to-the-server-Give-an-example-of-a-network-that-exhibits-high-bandwidth-but-also-high-latency-Then-give-an-example-of-one-that-has-both-low-bandwidth-and-low-latency"><a href="#2-The-performance-of-a-client-server-system-is-strongly-influenced-by-two-major-network-characteristics-the-bandwidth-of-the-network-that-is-how-many-bits-sec-it-can-transport-and-the-latency-that-is-how-many-seconds-it-takes-for-the-first-bit-to-get-from-the-client-to-the-server-Give-an-example-of-a-network-that-exhibits-high-bandwidth-but-also-high-latency-Then-give-an-example-of-one-that-has-both-low-bandwidth-and-low-latency" class="headerlink" title="2.The performance of a client-server system is strongly influenced by two major network characteristics: the bandwidth of the network (that is, how many bits/sec it can transport) and the latency (that is, how many seconds it takes for the first bit to get from the client to the server). Give an example of a network that exhibits high bandwidth but also high latency. Then give an example of one that has both low bandwidth and low latency."></a>2.The performance of a client-server system is strongly influenced by two major network characteristics: the bandwidth of the network (that is, how many bits/sec it can transport) and the latency (that is, how many seconds it takes for the first bit to get from the client to the server). Give an example of a network that exhibits high bandwidth but also high latency. Then give an example of one that has both low bandwidth and low latency.</h3><p>习题 2. 有两个主要网络特性对客户-服务器系统的性能有很大影响：网络的带宽和时延。举一个高带宽高时延的网络示例；再举一个低带宽和低时延的例子。</p>
+<h5 id="解题思路：本题考查对于重要的网络性能指标：带宽和时延的理解"><a href="#解题思路：本题考查对于重要的网络性能指标：带宽和时延的理解" class="headerlink" title="解题思路：本题考查对于重要的网络性能指标：带宽和时延的理解"></a>解题思路：本题考查对于重要的网络性能指标：带宽和时延的理解</h5><p>答：高带宽高时延的一个例子是横跨大陆的光纤连接，其带宽可达数千兆 bps，但是因为传输距离要达数千公里，时延也高。另外，卫星通信也是高带宽高时延。低带宽和低时延的一个例子是使用双绞线相连的 LAN，带宽是 10Mbps，时延却可以忽略不计。</p>
+<h5 id="知识点：-1"><a href="#知识点：-1" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、带宽和时延概念</strong></p>
+<p>（1）带宽：在单位时间（一般指的是1秒钟）内能传输的数据量。</p>
+<p>（2）时延：数据在线路上传输需要的时间（注意应与传输时间区分）。</p>
+<p><strong>2、QoS服务质量的参数</strong></p>
+<p>包括带宽、时延、抖动 jitter和误码率。</p>
+<p>其中在网络上连续传输的数据包即便使用相同的路径，也会有不同的延时，每个数据包之间的这种延时不一致称为抖动。对于<strong>实时通信</strong>而言，这可能是一个相当大的问题。</p>
+<h3 id="3-Besides-bandwidth-and-latency-what-other-parameter-is-needed-to-give-a-good-characterization-of-the-quality-of-service-offered-by-a-network-used-for-i-digitized-voice-traffic-ii-video-traffic-iii-financial-transaction-traffic"><a href="#3-Besides-bandwidth-and-latency-what-other-parameter-is-needed-to-give-a-good-characterization-of-the-quality-of-service-offered-by-a-network-used-for-i-digitized-voice-traffic-ii-video-traffic-iii-financial-transaction-traffic" class="headerlink" title="3.Besides bandwidth and latency, what other parameter is needed to give a good characterization of the quality of service offered by a network used for (i) digitized voice traffic? (ii) video traffic? (iii) financial transaction traffic?"></a>3.Besides bandwidth and latency, what other parameter is needed to give a good characterization of the quality of service offered by a network used for (i) digitized voice traffic? (ii) video traffic? (iii) financial transaction traffic?</h3><p>习题 3.除了带宽和时延，要描述下列业务网络的 QoS 还需要什么参数：（1）数字化语音业务（2）视频业务（3）金融事务业务？</p>
+<h5 id="解题思路：QoS-包含的参数是带宽、时延与时延抖动、误码率。本题考查对于除带宽和时延之外的其它网络性能指标的理解"><a href="#解题思路：QoS-包含的参数是带宽、时延与时延抖动、误码率。本题考查对于除带宽和时延之外的其它网络性能指标的理解" class="headerlink" title="解题思路：QoS 包含的参数是带宽、时延与时延抖动、误码率。本题考查对于除带宽和时延之外的其它网络性能指标的理解"></a>解题思路：QoS 包含的参数是带宽、时延与时延抖动、误码率。本题考查对于除带宽和时延之外的其它网络性能指标的理解</h5><p>答：1.数字化语音业务还需要考虑时延抖动（jitter）2.视频业务也需要考虑时延抖动  3.对于金融事务业务，可靠性非常重要，因此需要考虑误码率。另外，对于金融业务安全性也是特别重要的一个性质，但是安全性严格意义上不属于 QoS 的指标。</p>
+<h3 id="4-A-factor-in-the-delay-of-a-store-and-forward-packet-switching-system-is-how-long-it-takes-to-store-and-forward-a-packet-through-a-switch-If-switching-time-is-10-μsec-is-this-likely-to-be-a-major-factor-in-the-response-of-a-client-server-system-where-the-client-is-in-New-York-and-the-server-is-in-California-Assume-the-propagation-speed-in-copper-and-fiber-to-be-2-3-the-speed-of-light-in-vacuum"><a href="#4-A-factor-in-the-delay-of-a-store-and-forward-packet-switching-system-is-how-long-it-takes-to-store-and-forward-a-packet-through-a-switch-If-switching-time-is-10-μsec-is-this-likely-to-be-a-major-factor-in-the-response-of-a-client-server-system-where-the-client-is-in-New-York-and-the-server-is-in-California-Assume-the-propagation-speed-in-copper-and-fiber-to-be-2-3-the-speed-of-light-in-vacuum" class="headerlink" title="4.A factor in the delay of a store-and-forward packet-switching system is how long it takes to store and forward a packet through a switch. If switching time is 10 μsec, is this likely to be a major factor in the response of a client-server system where the client is in New York and the server is in California? Assume the propagation speed in copper and fiber to be 2/3 the speed of light in vacuum."></a>4.A factor in the delay of a store-and-forward packet-switching system is how long it takes to store and forward a packet through a switch. If switching time is 10 μsec, is this likely to be a major factor in the response of a client-server system where the client is in New York and the server is in California? Assume the propagation speed in copper and fiber to be 2/3 the speed of light in vacuum.</h3><p>习题 4. 存储转发分组交换系统的时延中的一个因素是交换机存储和转发一个数据包所用的时间。如果交换时间是 10 微秒，对于一个客户-服务器系统的响应时间是否可能是一个主要因素。假定客户机在纽约，而服务器在加利福尼亚；假定铜缆和光纤的传播速度是真空中光速的 2/3。</p>
+<h5 id="解题思路：本题相关的知识点是在一个存储转发分组交换系统中，客户-服务器系统的响应时间-传播时延-交换时延。本题考查学生对两种时延概念的理解，以及传播时延的计算。"><a href="#解题思路：本题相关的知识点是在一个存储转发分组交换系统中，客户-服务器系统的响应时间-传播时延-交换时延。本题考查学生对两种时延概念的理解，以及传播时延的计算。" class="headerlink" title="解题思路：本题相关的知识点是在一个存储转发分组交换系统中，客户-服务器系统的响应时间=传播时延+交换时延。本题考查学生对两种时延概念的理解，以及传播时延的计算。"></a>解题思路：本题相关的知识点是在一个存储转发分组交换系统中，客户-服务器系统的响应时间=传播时延+交换时延。本题考查学生对两种时延概念的理解，以及传播时延的计算。</h5><p>答：传播速度 v = c×(2/3) = 3×108×2/3 = 2×108 米/秒</p>
+<p>交换机存储转发的时延相当于传输距离：s= v×t = 2×108 ×10×10-6 = 2000 米</p>
+<p>而纽约到加利福尼亚的距离超过 2000 公里，远大于 2000 米，因此交换机的处理时间对于响应时间影响不大，可以忽略。</p>
+<h3 id="5-A-client-server-system-uses-a-satellite-network-with-the-satellite-at-a-height-of-40-000km-What-is-the-best-case-delay-in-response-to-a-request"><a href="#5-A-client-server-system-uses-a-satellite-network-with-the-satellite-at-a-height-of-40-000km-What-is-the-best-case-delay-in-response-to-a-request" class="headerlink" title="5.A client-server system uses a satellite network, with the satellite at a height of 40,000km. What is the best-case delay in response to a request?"></a>5.A client-server system uses a satellite network, with the satellite at a height of 40,000km. What is the best-case delay in response to a request?</h3><p>习题 5. 一个客户-服务器系统使用卫星网络，卫星在 40000 公里的高空。从发出请求到收到响应至少需要多少时间？</p>
+<h5 id="解题思路：本题考查（1）对于传播时延概念的理解及计算；（2）卫星通信系统概念的理解，在卫星通信系统中，卫星是中继设备，用于转发信号，既不是信源也不是信宿。"><a href="#解题思路：本题考查（1）对于传播时延概念的理解及计算；（2）卫星通信系统概念的理解，在卫星通信系统中，卫星是中继设备，用于转发信号，既不是信源也不是信宿。" class="headerlink" title="解题思路：本题考查（1）对于传播时延概念的理解及计算；（2）卫星通信系统概念的理解，在卫星通信系统中，卫星是中继设备，用于转发信号，既不是信源也不是信宿。"></a>解题思路：本题考查（1）对于传播时延概念的理解及计算；（2）卫星通信系统概念的理解，在卫星通信系统中，卫星是中继设备，用于转发信号，既不是信源也不是信宿。</h5><p>答：理想状态下的传播速度为光速 c = 3×108 米/秒，客户发送请求到卫星接收所花费的时间t1 = 40000×103/(3×108) = 0.13 秒，卫星将请求转发给服务器所花费时间 t2 = t1 = 0.13 秒，服务器通过卫星将响应发回给客户机所用的时间是 0.13×2=0.26 秒，因此总时间为 0.26×2=0.52 秒。</p>
+<h5 id="知识点：-2"><a href="#知识点：-2" class="headerlink" title="知识点："></a>知识点：</h5><p>就是要注意整个过程有四个部分（1）客户机发送请求给卫星（2）卫星转发请求给服务器（3）服务器发送响应给卫星（4）卫星转发响应给客户机。</p>
+<h3 id="9-A-disadvantage-of-a-broadcast-subnet-is-the-capacity-wasted-when-multiple-hosts-attempt-to-access-the-channel-at-the-same-time-As-a-simplistic-example-suppose-that-time-is-divided-into-discrete-slots-with-each-of-the-n-hosts-attempting-to-use-the-channel-with-probability-p-during-each-slot-What-fraction-of-the-slots-will-be-wasted-due-to-collisions"><a href="#9-A-disadvantage-of-a-broadcast-subnet-is-the-capacity-wasted-when-multiple-hosts-attempt-to-access-the-channel-at-the-same-time-As-a-simplistic-example-suppose-that-time-is-divided-into-discrete-slots-with-each-of-the-n-hosts-attempting-to-use-the-channel-with-probability-p-during-each-slot-What-fraction-of-the-slots-will-be-wasted-due-to-collisions" class="headerlink" title="9.A disadvantage of a broadcast subnet is the capacity wasted when multiple hosts attempt to access the channel at the same time. As a simplistic example, suppose that time is divided into discrete slots, with each of the n hosts attempting to use the channel with probability p during each slot. What fraction of the slots will be wasted due to collisions?"></a>9.A disadvantage of a broadcast subnet is the capacity wasted when multiple hosts attempt to access the channel at the same time. As a simplistic example, suppose that time is divided into discrete slots, with each of the n hosts attempting to use the channel with probability p during each slot. What fraction of the slots will be wasted due to collisions?</h3><p>习题 9. 广播子网的一个缺点是当多个主机同时访问信道时会浪费带宽。例如，假定将信道按时间分成多个离散的时隙，每个时隙中，n 个主机中的每个主机以概率 p 访问信道。求由于冲突而浪费时隙的比例？</p>
+<h5 id="解题思路：本题考查对于信道冲突的理解（信道冲突：两个或两个以上的主机在一个时隙内访问信道）和简单的冲突概率计算这个结论将用于-MAC-子层的学习中。"><a href="#解题思路：本题考查对于信道冲突的理解（信道冲突：两个或两个以上的主机在一个时隙内访问信道）和简单的冲突概率计算这个结论将用于-MAC-子层的学习中。" class="headerlink" title="解题思路：本题考查对于信道冲突的理解（信道冲突：两个或两个以上的主机在一个时隙内访问信道）和简单的冲突概率计算这个结论将用于 MAC 子层的学习中。"></a>解题思路：本题考查对于信道冲突的理解（信道冲突：两个或两个以上的主机在一个时隙内访问信道）和简单的冲突概率计算这个结论将用于 MAC 子层的学习中。</h5><p>答：当只有一台主机访问信道时，时隙不会被浪费，其概率为 p1 = n×p×(1-p) ^n-1</p>
+<p>当没有主机访问占用信道时，此时信道空闲，其概率为 p2 = (1-p) ^n</p>
+<p>其它的情况为发生了冲突，因此冲突的概率为 1-p1-p2</p>
+<p>所以因为冲突而被浪费的时隙的比例应该为 1 – p1 – p2 = 1- n×p×(1-p) ^n-1^ - (1-p)^n</p>
+<h3 id="10-What-are-two-reasons-for-using-layered-protocols-What-is-one-possible-disadvantage-of-using-layered-protocols"><a href="#10-What-are-two-reasons-for-using-layered-protocols-What-is-one-possible-disadvantage-of-using-layered-protocols" class="headerlink" title="10.What are two reasons for using layered protocols? What is one possible disadvantage of using layered protocols?"></a>10.What are two reasons for using layered protocols? What is one possible disadvantage of using layered protocols?</h3><p>习题 10. 使用分层协议的两点原因是什么？分层协议的一个可能缺点是什么？ </p>
+<h5 id="解题思路：本题考查对于网络体系结构采用分层方法的理解。"><a href="#解题思路：本题考查对于网络体系结构采用分层方法的理解。" class="headerlink" title="解题思路：本题考查对于网络体系结构采用分层方法的理解。"></a>解题思路：本题考查对于网络体系结构采用分层方法的理解。</h5><p>答：使用分层协议的其中两点主要好处如下：</p>
+<p>（1） 简化网络的设计和实现的难度（2）各层之间的依赖性较低，只要不改变服务和接口， 各层内部进行修改不会影响其它层。</p>
+<p>一个可能的缺点是：由于各层都要加上控制信息和处理的开销，性能比不分层的系统要差。</p>
+<h3 id="11-What-is-the-principle-difference-between-connectionless-communication-and-connection-oriented-communication-Give-one-example-of-a-protocol-that-uses-1-connectionless-communication-2-connection-oriented-communication"><a href="#11-What-is-the-principle-difference-between-connectionless-communication-and-connection-oriented-communication-Give-one-example-of-a-protocol-that-uses-1-connectionless-communication-2-connection-oriented-communication" class="headerlink" title="11.What is the principle difference between connectionless communication and connection-oriented communication? Give one example of a protocol that uses 1) connectionless communication  2) connection-oriented communication."></a>11.What is the principle difference between connectionless communication and connection-oriented communication? Give one example of a protocol that uses 1) connectionless communication  2) connection-oriented communication.</h3><p>习题 11. 无连接通信和面向连接通信的主要区别是什么？分别给出使用无连接通信的一个协议示例和使用面向连接通信的一个协议示例。</p>
+<h5 id="解题思路：本题考查对于网络体系结构中的两个重要概念——面向连接服务和无连接服务的理解。"><a href="#解题思路：本题考查对于网络体系结构中的两个重要概念——面向连接服务和无连接服务的理解。" class="headerlink" title="解题思路：本题考查对于网络体系结构中的两个重要概念——面向连接服务和无连接服务的理解。"></a>解题思路：本题考查对于网络体系结构中的两个重要概念——面向连接服务和无连接服务的理解。</h5><p>答：面向连接通信和无连接通信主要有以下三点区别：（1）通信双方是否需要预先建立连接（2）能够保证数据传输的可靠性（3）通信过程中是否需要完整的目的地址等。</p>
+<p>UDP 是无连接通信的协议示例，而TCP 则是面向连接通信的协议示例。</p>
+<h5 id="知识点：-3"><a href="#知识点：-3" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、面向连接服务和无连接服务</strong></p>
+<p>​        无连接协议中的分组被称为数据报（datagram），每个分组都是独立寻址，并由应用程序发送的。从协议的角度来看，每个数据报都是一个独立的实体，与在两个相同的对等实体之间传送的任何其他数据报都没有关系，这就意味着协议很可能是不可靠的。也就是说，网络会尽最大努力传送每一个数据报，但并不保证数据报不丢失、不延迟或者不错序传输。<br>​        另一方面，面向连接的协议则维护了分组之间的状态，使用这种协议的应用程序通常都会进行长期的对话。记住这些状态，协议就可以提供可靠的传输。比如，发送端可以记住哪些数据已经发送出去了但还未被确认，以及数据是什么时候发送的。如果在某段时间间隔内没有收到确认，发送端可以重传数据。接收端可以记住已经收到了哪些数据，并将重复的数据丢弃。如果分组不是按序到达的，接收端可以将其保存下来，直到逻辑上先于它的分组到达为止。<br>  典型的面向连接协议有三个阶段。第一阶段，在对等实体间<strong>建立连接</strong>。接下来是数据传输阶段，在这个阶段中，<strong>数据在对等实体间传输</strong>。最后，当对等实体完成数据传输时，<strong>连接被拆除</strong>。<br>​        一种标准的类比是：使用无连接协议就像寄信，而使用面向连接的协议就像打电话。</p>
+<p><strong>2、UDP和TCP</strong></p>
+<p>（1）TCP</p>
+<ul>
+<li>它为 TCP 段中的数据提供了<strong>校验和</strong>。这样有助于确保抵达目的地的数据在传输过程中不会被网络损坏；</li>
+<li>它为每字节分配了一个<strong>序列号</strong>，这样，如果数据抵达目的地时真的错序了，接收端也能够按照恰当的顺序将其重装起来。当然，TCP 并没有为每字节都附加一个序列号。实际上，每个 TCP 段的首部都包含了段中第一字节的序列号。这样，就隐含地知道了段中其他字节的序列号。</li>
+<li>TCP 提供了一种<strong>确认-重传机制</strong>，以确保最终每个段都会被传送出去。</li>
+</ul>
+<p>（2）UDP</p>
+<ul>
+<li>它提供了一个<strong>可选的校验和</strong>来检测数据的损坏情况。尽管 IP 也有校验和，但它只对 IP 分组首部进行计算，所以，TCP 和 UDP 也都提供了校验和来保护它们自己的首部和数据；</li>
+<li>UDP 向 IP添加的第二项特性就是<strong>端口</strong>的概念。</li>
+</ul>
+<h3 id="12-Two-networks-each-provide-reliable-connection-oriented-service-One-of-them-offers-a-reliable-byte-stream-and-the-other-offers-a-reliable-message-stream-Are-these-identical-If-so-why-is-the-distinction-made-If-not-give-an-example-of-how-they-differ"><a href="#12-Two-networks-each-provide-reliable-connection-oriented-service-One-of-them-offers-a-reliable-byte-stream-and-the-other-offers-a-reliable-message-stream-Are-these-identical-If-so-why-is-the-distinction-made-If-not-give-an-example-of-how-they-differ" class="headerlink" title="12.Two networks each provide reliable connection-oriented service. One of them offers a reliable byte stream and the other offers a reliable message stream. Are these identical? If so, why is the distinction made? If not, give an example of how they differ."></a>12.Two networks each provide reliable connection-oriented service. One of them offers a reliable byte stream and the other offers a reliable message stream. Are these identical? If so, why is the distinction made? If not, give an example of how they differ.</h3><p>习题 12. 两个网络都提供可靠的面向连接服务。其中一个提供可靠的字节流，另一个则提供可靠的报文流。这两者是否相同？如果相同，为什么要区分成两类？如果不同，请举例说明其区别。</p>
+<h5 id="解题思路：本题考查面向连接的服务中，可靠的字节流服务和可靠的报文流服务的区别。在传输层一章中，将再次强调-TCP-提供的是可靠的字节流服务。"><a href="#解题思路：本题考查面向连接的服务中，可靠的字节流服务和可靠的报文流服务的区别。在传输层一章中，将再次强调-TCP-提供的是可靠的字节流服务。" class="headerlink" title="解题思路：本题考查面向连接的服务中，可靠的字节流服务和可靠的报文流服务的区别。在传输层一章中，将再次强调 TCP 提供的是可靠的字节流服务。"></a>解题思路：本题考查面向连接的服务中，可靠的字节流服务和可靠的报文流服务的区别。在传输层一章中，将再次强调 TCP 提供的是可靠的字节流服务。</h5><p>答：可靠的字节流与可靠的报文流不同。可靠的字节流没有边界，而可靠的报文流则有边界。例如：一个发送进程向一个连接中写入了 1024 字节数据，然后又写入了 1024 字节数据。对于可靠的报文流服务，接收进程将收到两个 1024 字节的数据；而对于可靠的字节流服务，接收进程将可能收到一个完整的 2048 字节的数据，即不能保证上层信息的边界。</p>
+<h3 id="15-在一些网络里，数据链路层通过请求重传出错的帧来处理传输差错。如果一帧出错的概率是-p，假定确认（ACK）从不丢失，要发送一帧需要平均传输多少次？"><a href="#15-在一些网络里，数据链路层通过请求重传出错的帧来处理传输差错。如果一帧出错的概率是-p，假定确认（ACK）从不丢失，要发送一帧需要平均传输多少次？" class="headerlink" title="15. 在一些网络里，数据链路层通过请求重传出错的帧来处理传输差错。如果一帧出错的概率是 p，假定确认（ACK）从不丢失，要发送一帧需要平均传输多少次？"></a>15. 在一些网络里，数据链路层通过请求重传出错的帧来处理传输差错。如果一帧出错的概率是 p，假定确认（ACK）从不丢失，要发送一帧需要平均传输多少次？</h3><h5 id="解题思路：本题考查已知出错概率时，平均传输次数的计算。这个结论将用于数据链路层和MAC-子层的学习中。"><a href="#解题思路：本题考查已知出错概率时，平均传输次数的计算。这个结论将用于数据链路层和MAC-子层的学习中。" class="headerlink" title="解题思路：本题考查已知出错概率时，平均传输次数的计算。这个结论将用于数据链路层和MAC 子层的学习中。"></a>解题思路：本题考查已知出错概率时，平均传输次数的计算。这个结论将用于数据链路层和MAC 子层的学习中。</h5><p>答：假定第 k 次传输成功，前面 k-1 次均失败，则平均传输次数为</p>
+<img src="/2021/05/06/ch1/5.png" class>
+
+
+
+
+
+<h3 id="16-OSI-参考模型和-TCP-IP-协议栈的哪一层分别完成下列功能？（a）把传输的比特流分成帧-b-确定使用哪条路由来通过子网"><a href="#16-OSI-参考模型和-TCP-IP-协议栈的哪一层分别完成下列功能？（a）把传输的比特流分成帧-b-确定使用哪条路由来通过子网" class="headerlink" title="16. OSI 参考模型和 TCP/IP 协议栈的哪一层分别完成下列功能？（a）把传输的比特流分成帧 (b) 确定使用哪条路由来通过子网"></a>16. OSI 参考模型和 TCP/IP 协议栈的哪一层分别完成下列功能？（a）把传输的比特流分成帧 (b) 确定使用哪条路由来通过子网</h3><h5 id="解题思路：本题目考查对于-OSI-参考模型和-TCP-IP-协议栈各层功能的理解。这些概念是网络分层体系结构的重点。"><a href="#解题思路：本题目考查对于-OSI-参考模型和-TCP-IP-协议栈各层功能的理解。这些概念是网络分层体系结构的重点。" class="headerlink" title="解题思路：本题目考查对于 OSI 参考模型和 TCP/IP 协议栈各层功能的理解。这些概念是网络分层体系结构的重点。"></a>解题思路：本题目考查对于 OSI 参考模型和 TCP/IP 协议栈各层功能的理解。这些概念是网络分层体系结构的重点。</h5><p>答：（a）OSI：数据链路层 TCP/IP：链路层（b）OSI：网络层 TCP/IP：网际层</p>
+<h5 id="知识点：-4"><a href="#知识点：-4" class="headerlink" title="知识点："></a>知识点：</h5><p><strong>1、OSI与TCP/IP对应关系及各层作用</strong></p>
+<p>（1）OSI</p>
+<img src="/2021/05/06/ch1/6.png" class>
+
+<p>（2）TCP/IP</p>
+<img src="/2021/05/06/ch1/7.png" class>
+
+
+
+
+
+<h3 id="17-如果数据链路层交换的单元称为帧，而网络层交换的单元称为分组，是帧封装了分组还是分组封装了帧？请解释。"><a href="#17-如果数据链路层交换的单元称为帧，而网络层交换的单元称为分组，是帧封装了分组还是分组封装了帧？请解释。" class="headerlink" title="17. 如果数据链路层交换的单元称为帧，而网络层交换的单元称为分组，是帧封装了分组还是分组封装了帧？请解释。"></a>17. 如果数据链路层交换的单元称为帧，而网络层交换的单元称为分组，是帧封装了分组还是分组封装了帧？请解释。</h3><h5 id="解题思路：本题考查对于封装概念的理解，封装指的是某层的协议实体在其上层的-PDU-之前加上头部（数据链路层在上层-PDU-之后还会加上尾部），构成本层的-PDU。一层协议的功能就是靠其-PDU-的头部（和尾部）内的控制信息来提供的。"><a href="#解题思路：本题考查对于封装概念的理解，封装指的是某层的协议实体在其上层的-PDU-之前加上头部（数据链路层在上层-PDU-之后还会加上尾部），构成本层的-PDU。一层协议的功能就是靠其-PDU-的头部（和尾部）内的控制信息来提供的。" class="headerlink" title="解题思路：本题考查对于封装概念的理解，封装指的是某层的协议实体在其上层的 PDU 之前加上头部（数据链路层在上层 PDU 之后还会加上尾部），构成本层的 PDU。一层协议的功能就是靠其 PDU 的头部（和尾部）内的控制信息来提供的。"></a>解题思路：本题考查对于封装概念的理解，封装指的是某层的协议实体在其上层的 PDU 之前加上头部（数据链路层在上层 PDU 之后还会加上尾部），构成本层的 PDU。一层协议的功能就是靠其 PDU 的头部（和尾部）内的控制信息来提供的。</h5><p>答：是帧封装了分组（包）。因为网络层在数据链路层的上层，在分组向下传输的过程中， 数据链路层在分组之前加上帧头，在分组之后加上帧尾，这就是封装。</p>
+<h3 id="18-一个系统具有-n-层协议体系。应用产生了一个长度为-M-字节的报文。在每一层，都会增加一个-h-字节的首部。首部所占网络带宽的比率是多少？"><a href="#18-一个系统具有-n-层协议体系。应用产生了一个长度为-M-字节的报文。在每一层，都会增加一个-h-字节的首部。首部所占网络带宽的比率是多少？" class="headerlink" title="18. 一个系统具有 n 层协议体系。应用产生了一个长度为 M 字节的报文。在每一层，都会增加一个 h 字节的首部。首部所占网络带宽的比率是多少？"></a>18. 一个系统具有 n 层协议体系。应用产生了一个长度为 M 字节的报文。在每一层，都会增加一个 h 字节的首部。首部所占网络带宽的比率是多少？</h3><h5 id="解题思路：本题考查对于封装的简单计算。要注意题目中是指应用产生了-M-字节的报文，而不是应用层，因此n-层中的每一层都增加h-字节的首部。"><a href="#解题思路：本题考查对于封装的简单计算。要注意题目中是指应用产生了-M-字节的报文，而不是应用层，因此n-层中的每一层都增加h-字节的首部。" class="headerlink" title="解题思路：本题考查对于封装的简单计算。要注意题目中是指应用产生了 M 字节的报文，而不是应用层，因此n 层中的每一层都增加h 字节的首部。"></a>解题思路：本题考查对于封装的简单计算。要注意题目中是指应用产生了 M 字节的报文，而不是应用层，因此n 层中的每一层都增加h 字节的首部。</h5><p>答： n 层协议中，每一层都增加 h 字节首部，<br>因此首部总长度为 nh 字节，所占带宽的比率为 nh/( M + nh) 。</p>
+<h3 id="20-TCP-和-UDP-的主要区别是什么？"><a href="#20-TCP-和-UDP-的主要区别是什么？" class="headerlink" title="20. TCP 和 UDP 的主要区别是什么？"></a>20. TCP 和 UDP 的主要区别是什么？</h3><h5 id="解题思路：本题考查对于因特网传输层的两个重要协议的功能的理解。"><a href="#解题思路：本题考查对于因特网传输层的两个重要协议的功能的理解。" class="headerlink" title="解题思路：本题考查对于因特网传输层的两个重要协议的功能的理解。"></a>解题思路：本题考查对于因特网传输层的两个重要协议的功能的理解。</h5><p>答：TCP 提供的是可靠的面向连接的服务，而 UDP 提供的是不可靠的无连接服务。</p>
+<h3 id="22-在两台计算机之间传输一个文件时，有两种可能的确认机制。第一种机制是，文件被分成多个分组传输，接收方确认每个分组，但不对整个文件进行确认；第二种机制是，接收方在收到整个文件之后进行确认，但不对每个分组确认。请对这两种机制进行讨论。"><a href="#22-在两台计算机之间传输一个文件时，有两种可能的确认机制。第一种机制是，文件被分成多个分组传输，接收方确认每个分组，但不对整个文件进行确认；第二种机制是，接收方在收到整个文件之后进行确认，但不对每个分组确认。请对这两种机制进行讨论。" class="headerlink" title="22. 在两台计算机之间传输一个文件时，有两种可能的确认机制。第一种机制是，文件被分成多个分组传输，接收方确认每个分组，但不对整个文件进行确认；第二种机制是，接收方在收到整个文件之后进行确认，但不对每个分组确认。请对这两种机制进行讨论。"></a>22. 在两台计算机之间传输一个文件时，有两种可能的确认机制。第一种机制是，文件被分成多个分组传输，接收方确认每个分组，但不对整个文件进行确认；第二种机制是，接收方在收到整个文件之后进行确认，但不对每个分组确认。请对这两种机制进行讨论。</h3><h5 id="解题思路：本题考查对于不同的确认方式的理解和比较。"><a href="#解题思路：本题考查对于不同的确认方式的理解和比较。" class="headerlink" title="解题思路：本题考查对于不同的确认方式的理解和比较。"></a>解题思路：本题考查对于不同的确认方式的理解和比较。</h5><p>答：第一种机制中，当某个分组的传输发生错误时，可以只重发该分组，而无需重发整个文件。其优点是重传开销小，但确认的开销相对第二种机制要大。适合于网络可靠性能较差， 容易发生传输错误或丢失的情况。</p>
+<p>第二种机制中，一旦某个分组发生错误，则需要重传整个文件。适合于网络传输故障率比较低的情况，其优点是节省确认所消耗的网络资源。</p>
+<h3 id="30-假定-k-层提供的服务发生变化，对于-k-1-层和-k-1-层的服务有何影响？"><a href="#30-假定-k-层提供的服务发生变化，对于-k-1-层和-k-1-层的服务有何影响？" class="headerlink" title="30. 假定 k 层提供的服务发生变化，对于(k-1)层和(k+1)层的服务有何影响？"></a>30. 假定 k 层提供的服务发生变化，对于(k-1)层和(k+1)层的服务有何影响？</h3><h5 id="解题思路：本题考查网络体系结构中相邻两层的关系。"><a href="#解题思路：本题考查网络体系结构中相邻两层的关系。" class="headerlink" title="解题思路：本题考查网络体系结构中相邻两层的关系。"></a>解题思路：本题考查网络体系结构中相邻两层的关系。</h5><p>答：k 层服务的变化会导致(k+1)层的服务随之改变，对于(k-1)层的服务则没有影响。</p>
+<h5 id="知识点：-5"><a href="#知识点：-5" class="headerlink" title="知识点："></a>知识点：</h5><p>（1）算法/协议是针对同一层之间的（2）下层为上层提供服务</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 感谢阅读-------------</div>
+    
+</div>
+
+    
+  </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E7%BD%91%E7%BB%9C/" rel="tag"><i class="fa fa-tag"></i> 计算机网络</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/04/28/Soteria%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/" rel="next" title="Soteria阅读笔记">
+                <i class="fa fa-chevron-left"></i> Soteria阅读笔记
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2021/05/06/ch2/" rel="prev" title="ch2 物理层">
+                ch2 物理层 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/author.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%20%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">9</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">15</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cauchy221" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="liuxinyue@bupt.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%AC%AC%E4%B8%80%E7%AB%A0-%E6%A6%82%E8%BF%B0"><span class="nav-text">第一章 概述</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-An-alternative-to-a-LAN-is-simply-a-big-timesharing-system-with-terminals-for-all-users-Give-two-advantages-of-a-client-server-system-using-a-LAN"><span class="nav-text">1.An alternative to a LAN is simply a big timesharing system with terminals for all users. Give two advantages of a client-server system using a LAN.</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E4%B8%8E%E5%AF%B9%E5%90%8C%E6%AD%A5%E5%88%86%E6%97%B6%E7%B3%BB%E7%BB%9F%E5%92%8C-LAN-%E7%9A%84%E5%9F%BA%E6%9C%AC%E5%B7%A5%E4%BD%9C%E5%8E%9F%E7%90%86%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查与对同步分时系统和 LAN 的基本工作原理的理解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-The-performance-of-a-client-server-system-is-strongly-influenced-by-two-major-network-characteristics-the-bandwidth-of-the-network-that-is-how-many-bits-sec-it-can-transport-and-the-latency-that-is-how-many-seconds-it-takes-for-the-first-bit-to-get-from-the-client-to-the-server-Give-an-example-of-a-network-that-exhibits-high-bandwidth-but-also-high-latency-Then-give-an-example-of-one-that-has-both-low-bandwidth-and-low-latency"><span class="nav-text">2.The performance of a client-server system is strongly influenced by two major network characteristics: the bandwidth of the network (that is, how many bits&#x2F;sec it can transport) and the latency (that is, how many seconds it takes for the first bit to get from the client to the server). Give an example of a network that exhibits high bandwidth but also high latency. Then give an example of one that has both low bandwidth and low latency.</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E9%87%8D%E8%A6%81%E7%9A%84%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%EF%BC%9A%E5%B8%A6%E5%AE%BD%E5%92%8C%E6%97%B6%E5%BB%B6%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-text">解题思路：本题考查对于重要的网络性能指标：带宽和时延的理解</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-1"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-Besides-bandwidth-and-latency-what-other-parameter-is-needed-to-give-a-good-characterization-of-the-quality-of-service-offered-by-a-network-used-for-i-digitized-voice-traffic-ii-video-traffic-iii-financial-transaction-traffic"><span class="nav-text">3.Besides bandwidth and latency, what other parameter is needed to give a good characterization of the quality of service offered by a network used for (i) digitized voice traffic? (ii) video traffic? (iii) financial transaction traffic?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9AQoS-%E5%8C%85%E5%90%AB%E7%9A%84%E5%8F%82%E6%95%B0%E6%98%AF%E5%B8%A6%E5%AE%BD%E3%80%81%E6%97%B6%E5%BB%B6%E4%B8%8E%E6%97%B6%E5%BB%B6%E6%8A%96%E5%8A%A8%E3%80%81%E8%AF%AF%E7%A0%81%E7%8E%87%E3%80%82%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E9%99%A4%E5%B8%A6%E5%AE%BD%E5%92%8C%E6%97%B6%E5%BB%B6%E4%B9%8B%E5%A4%96%E7%9A%84%E5%85%B6%E5%AE%83%E7%BD%91%E7%BB%9C%E6%80%A7%E8%83%BD%E6%8C%87%E6%A0%87%E7%9A%84%E7%90%86%E8%A7%A3"><span class="nav-text">解题思路：QoS 包含的参数是带宽、时延与时延抖动、误码率。本题考查对于除带宽和时延之外的其它网络性能指标的理解</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-A-factor-in-the-delay-of-a-store-and-forward-packet-switching-system-is-how-long-it-takes-to-store-and-forward-a-packet-through-a-switch-If-switching-time-is-10-%CE%BCsec-is-this-likely-to-be-a-major-factor-in-the-response-of-a-client-server-system-where-the-client-is-in-New-York-and-the-server-is-in-California-Assume-the-propagation-speed-in-copper-and-fiber-to-be-2-3-the-speed-of-light-in-vacuum"><span class="nav-text">4.A factor in the delay of a store-and-forward packet-switching system is how long it takes to store and forward a packet through a switch. If switching time is 10 μsec, is this likely to be a major factor in the response of a client-server system where the client is in New York and the server is in California? Assume the propagation speed in copper and fiber to be 2&#x2F;3 the speed of light in vacuum.</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E7%9B%B8%E5%85%B3%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9%E6%98%AF%E5%9C%A8%E4%B8%80%E4%B8%AA%E5%AD%98%E5%82%A8%E8%BD%AC%E5%8F%91%E5%88%86%E7%BB%84%E4%BA%A4%E6%8D%A2%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E5%AE%A2%E6%88%B7-%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%B3%BB%E7%BB%9F%E7%9A%84%E5%93%8D%E5%BA%94%E6%97%B6%E9%97%B4-%E4%BC%A0%E6%92%AD%E6%97%B6%E5%BB%B6-%E4%BA%A4%E6%8D%A2%E6%97%B6%E5%BB%B6%E3%80%82%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AD%A6%E7%94%9F%E5%AF%B9%E4%B8%A4%E7%A7%8D%E6%97%B6%E5%BB%B6%E6%A6%82%E5%BF%B5%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%8C%E4%BB%A5%E5%8F%8A%E4%BC%A0%E6%92%AD%E6%97%B6%E5%BB%B6%E7%9A%84%E8%AE%A1%E7%AE%97%E3%80%82"><span class="nav-text">解题思路：本题相关的知识点是在一个存储转发分组交换系统中，客户-服务器系统的响应时间&#x3D;传播时延+交换时延。本题考查学生对两种时延概念的理解，以及传播时延的计算。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-A-client-server-system-uses-a-satellite-network-with-the-satellite-at-a-height-of-40-000km-What-is-the-best-case-delay-in-response-to-a-request"><span class="nav-text">5.A client-server system uses a satellite network, with the satellite at a height of 40,000km. What is the best-case delay in response to a request?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%EF%BC%881%EF%BC%89%E5%AF%B9%E4%BA%8E%E4%BC%A0%E6%92%AD%E6%97%B6%E5%BB%B6%E6%A6%82%E5%BF%B5%E7%9A%84%E7%90%86%E8%A7%A3%E5%8F%8A%E8%AE%A1%E7%AE%97%EF%BC%9B%EF%BC%882%EF%BC%89%E5%8D%AB%E6%98%9F%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E6%A6%82%E5%BF%B5%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%8C%E5%9C%A8%E5%8D%AB%E6%98%9F%E9%80%9A%E4%BF%A1%E7%B3%BB%E7%BB%9F%E4%B8%AD%EF%BC%8C%E5%8D%AB%E6%98%9F%E6%98%AF%E4%B8%AD%E7%BB%A7%E8%AE%BE%E5%A4%87%EF%BC%8C%E7%94%A8%E4%BA%8E%E8%BD%AC%E5%8F%91%E4%BF%A1%E5%8F%B7%EF%BC%8C%E6%97%A2%E4%B8%8D%E6%98%AF%E4%BF%A1%E6%BA%90%E4%B9%9F%E4%B8%8D%E6%98%AF%E4%BF%A1%E5%AE%BF%E3%80%82"><span class="nav-text">解题思路：本题考查（1）对于传播时延概念的理解及计算；（2）卫星通信系统概念的理解，在卫星通信系统中，卫星是中继设备，用于转发信号，既不是信源也不是信宿。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-2"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-A-disadvantage-of-a-broadcast-subnet-is-the-capacity-wasted-when-multiple-hosts-attempt-to-access-the-channel-at-the-same-time-As-a-simplistic-example-suppose-that-time-is-divided-into-discrete-slots-with-each-of-the-n-hosts-attempting-to-use-the-channel-with-probability-p-during-each-slot-What-fraction-of-the-slots-will-be-wasted-due-to-collisions"><span class="nav-text">9.A disadvantage of a broadcast subnet is the capacity wasted when multiple hosts attempt to access the channel at the same time. As a simplistic example, suppose that time is divided into discrete slots, with each of the n hosts attempting to use the channel with probability p during each slot. What fraction of the slots will be wasted due to collisions?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E4%BF%A1%E9%81%93%E5%86%B2%E7%AA%81%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%88%E4%BF%A1%E9%81%93%E5%86%B2%E7%AA%81%EF%BC%9A%E4%B8%A4%E4%B8%AA%E6%88%96%E4%B8%A4%E4%B8%AA%E4%BB%A5%E4%B8%8A%E7%9A%84%E4%B8%BB%E6%9C%BA%E5%9C%A8%E4%B8%80%E4%B8%AA%E6%97%B6%E9%9A%99%E5%86%85%E8%AE%BF%E9%97%AE%E4%BF%A1%E9%81%93%EF%BC%89%E5%92%8C%E7%AE%80%E5%8D%95%E7%9A%84%E5%86%B2%E7%AA%81%E6%A6%82%E7%8E%87%E8%AE%A1%E7%AE%97%E8%BF%99%E4%B8%AA%E7%BB%93%E8%AE%BA%E5%B0%86%E7%94%A8%E4%BA%8E-MAC-%E5%AD%90%E5%B1%82%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%AD%E3%80%82"><span class="nav-text">解题思路：本题考查对于信道冲突的理解（信道冲突：两个或两个以上的主机在一个时隙内访问信道）和简单的冲突概率计算这个结论将用于 MAC 子层的学习中。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#10-What-are-two-reasons-for-using-layered-protocols-What-is-one-possible-disadvantage-of-using-layered-protocols"><span class="nav-text">10.What are two reasons for using layered protocols? What is one possible disadvantage of using layered protocols?</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E9%87%87%E7%94%A8%E5%88%86%E5%B1%82%E6%96%B9%E6%B3%95%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于网络体系结构采用分层方法的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#11-What-is-the-principle-difference-between-connectionless-communication-and-connection-oriented-communication-Give-one-example-of-a-protocol-that-uses-1-connectionless-communication-2-connection-oriented-communication"><span class="nav-text">11.What is the principle difference between connectionless communication and connection-oriented communication? Give one example of a protocol that uses 1) connectionless communication  2) connection-oriented communication.</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%87%8D%E8%A6%81%E6%A6%82%E5%BF%B5%E2%80%94%E2%80%94%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E5%92%8C%E6%97%A0%E8%BF%9E%E6%8E%A5%E6%9C%8D%E5%8A%A1%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于网络体系结构中的两个重要概念——面向连接服务和无连接服务的理解。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-3"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#12-Two-networks-each-provide-reliable-connection-oriented-service-One-of-them-offers-a-reliable-byte-stream-and-the-other-offers-a-reliable-message-stream-Are-these-identical-If-so-why-is-the-distinction-made-If-not-give-an-example-of-how-they-differ"><span class="nav-text">12.Two networks each provide reliable connection-oriented service. One of them offers a reliable byte stream and the other offers a reliable message stream. Are these identical? If so, why is the distinction made? If not, give an example of how they differ.</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E9%9D%A2%E5%90%91%E8%BF%9E%E6%8E%A5%E7%9A%84%E6%9C%8D%E5%8A%A1%E4%B8%AD%EF%BC%8C%E5%8F%AF%E9%9D%A0%E7%9A%84%E5%AD%97%E8%8A%82%E6%B5%81%E6%9C%8D%E5%8A%A1%E5%92%8C%E5%8F%AF%E9%9D%A0%E7%9A%84%E6%8A%A5%E6%96%87%E6%B5%81%E6%9C%8D%E5%8A%A1%E7%9A%84%E5%8C%BA%E5%88%AB%E3%80%82%E5%9C%A8%E4%BC%A0%E8%BE%93%E5%B1%82%E4%B8%80%E7%AB%A0%E4%B8%AD%EF%BC%8C%E5%B0%86%E5%86%8D%E6%AC%A1%E5%BC%BA%E8%B0%83-TCP-%E6%8F%90%E4%BE%9B%E7%9A%84%E6%98%AF%E5%8F%AF%E9%9D%A0%E7%9A%84%E5%AD%97%E8%8A%82%E6%B5%81%E6%9C%8D%E5%8A%A1%E3%80%82"><span class="nav-text">解题思路：本题考查面向连接的服务中，可靠的字节流服务和可靠的报文流服务的区别。在传输层一章中，将再次强调 TCP 提供的是可靠的字节流服务。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#15-%E5%9C%A8%E4%B8%80%E4%BA%9B%E7%BD%91%E7%BB%9C%E9%87%8C%EF%BC%8C%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E9%80%9A%E8%BF%87%E8%AF%B7%E6%B1%82%E9%87%8D%E4%BC%A0%E5%87%BA%E9%94%99%E7%9A%84%E5%B8%A7%E6%9D%A5%E5%A4%84%E7%90%86%E4%BC%A0%E8%BE%93%E5%B7%AE%E9%94%99%E3%80%82%E5%A6%82%E6%9E%9C%E4%B8%80%E5%B8%A7%E5%87%BA%E9%94%99%E7%9A%84%E6%A6%82%E7%8E%87%E6%98%AF-p%EF%BC%8C%E5%81%87%E5%AE%9A%E7%A1%AE%E8%AE%A4%EF%BC%88ACK%EF%BC%89%E4%BB%8E%E4%B8%8D%E4%B8%A2%E5%A4%B1%EF%BC%8C%E8%A6%81%E5%8F%91%E9%80%81%E4%B8%80%E5%B8%A7%E9%9C%80%E8%A6%81%E5%B9%B3%E5%9D%87%E4%BC%A0%E8%BE%93%E5%A4%9A%E5%B0%91%E6%AC%A1%EF%BC%9F"><span class="nav-text">15. 在一些网络里，数据链路层通过请求重传出错的帧来处理传输差错。如果一帧出错的概率是 p，假定确认（ACK）从不丢失，要发送一帧需要平均传输多少次？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%B7%B2%E7%9F%A5%E5%87%BA%E9%94%99%E6%A6%82%E7%8E%87%E6%97%B6%EF%BC%8C%E5%B9%B3%E5%9D%87%E4%BC%A0%E8%BE%93%E6%AC%A1%E6%95%B0%E7%9A%84%E8%AE%A1%E7%AE%97%E3%80%82%E8%BF%99%E4%B8%AA%E7%BB%93%E8%AE%BA%E5%B0%86%E7%94%A8%E4%BA%8E%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E5%92%8CMAC-%E5%AD%90%E5%B1%82%E7%9A%84%E5%AD%A6%E4%B9%A0%E4%B8%AD%E3%80%82"><span class="nav-text">解题思路：本题考查已知出错概率时，平均传输次数的计算。这个结论将用于数据链路层和MAC 子层的学习中。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#16-OSI-%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E5%92%8C-TCP-IP-%E5%8D%8F%E8%AE%AE%E6%A0%88%E7%9A%84%E5%93%AA%E4%B8%80%E5%B1%82%E5%88%86%E5%88%AB%E5%AE%8C%E6%88%90%E4%B8%8B%E5%88%97%E5%8A%9F%E8%83%BD%EF%BC%9F%EF%BC%88a%EF%BC%89%E6%8A%8A%E4%BC%A0%E8%BE%93%E7%9A%84%E6%AF%94%E7%89%B9%E6%B5%81%E5%88%86%E6%88%90%E5%B8%A7-b-%E7%A1%AE%E5%AE%9A%E4%BD%BF%E7%94%A8%E5%93%AA%E6%9D%A1%E8%B7%AF%E7%94%B1%E6%9D%A5%E9%80%9A%E8%BF%87%E5%AD%90%E7%BD%91"><span class="nav-text">16. OSI 参考模型和 TCP&#x2F;IP 协议栈的哪一层分别完成下列功能？（a）把传输的比特流分成帧 (b) 确定使用哪条路由来通过子网</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E7%9B%AE%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E-OSI-%E5%8F%82%E8%80%83%E6%A8%A1%E5%9E%8B%E5%92%8C-TCP-IP-%E5%8D%8F%E8%AE%AE%E6%A0%88%E5%90%84%E5%B1%82%E5%8A%9F%E8%83%BD%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82%E8%BF%99%E4%BA%9B%E6%A6%82%E5%BF%B5%E6%98%AF%E7%BD%91%E7%BB%9C%E5%88%86%E5%B1%82%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E7%9A%84%E9%87%8D%E7%82%B9%E3%80%82"><span class="nav-text">解题思路：本题目考查对于 OSI 参考模型和 TCP&#x2F;IP 协议栈各层功能的理解。这些概念是网络分层体系结构的重点。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-4"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#17-%E5%A6%82%E6%9E%9C%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E4%BA%A4%E6%8D%A2%E7%9A%84%E5%8D%95%E5%85%83%E7%A7%B0%E4%B8%BA%E5%B8%A7%EF%BC%8C%E8%80%8C%E7%BD%91%E7%BB%9C%E5%B1%82%E4%BA%A4%E6%8D%A2%E7%9A%84%E5%8D%95%E5%85%83%E7%A7%B0%E4%B8%BA%E5%88%86%E7%BB%84%EF%BC%8C%E6%98%AF%E5%B8%A7%E5%B0%81%E8%A3%85%E4%BA%86%E5%88%86%E7%BB%84%E8%BF%98%E6%98%AF%E5%88%86%E7%BB%84%E5%B0%81%E8%A3%85%E4%BA%86%E5%B8%A7%EF%BC%9F%E8%AF%B7%E8%A7%A3%E9%87%8A%E3%80%82"><span class="nav-text">17. 如果数据链路层交换的单元称为帧，而网络层交换的单元称为分组，是帧封装了分组还是分组封装了帧？请解释。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E5%B0%81%E8%A3%85%E6%A6%82%E5%BF%B5%E7%9A%84%E7%90%86%E8%A7%A3%EF%BC%8C%E5%B0%81%E8%A3%85%E6%8C%87%E7%9A%84%E6%98%AF%E6%9F%90%E5%B1%82%E7%9A%84%E5%8D%8F%E8%AE%AE%E5%AE%9E%E4%BD%93%E5%9C%A8%E5%85%B6%E4%B8%8A%E5%B1%82%E7%9A%84-PDU-%E4%B9%8B%E5%89%8D%E5%8A%A0%E4%B8%8A%E5%A4%B4%E9%83%A8%EF%BC%88%E6%95%B0%E6%8D%AE%E9%93%BE%E8%B7%AF%E5%B1%82%E5%9C%A8%E4%B8%8A%E5%B1%82-PDU-%E4%B9%8B%E5%90%8E%E8%BF%98%E4%BC%9A%E5%8A%A0%E4%B8%8A%E5%B0%BE%E9%83%A8%EF%BC%89%EF%BC%8C%E6%9E%84%E6%88%90%E6%9C%AC%E5%B1%82%E7%9A%84-PDU%E3%80%82%E4%B8%80%E5%B1%82%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8A%9F%E8%83%BD%E5%B0%B1%E6%98%AF%E9%9D%A0%E5%85%B6-PDU-%E7%9A%84%E5%A4%B4%E9%83%A8%EF%BC%88%E5%92%8C%E5%B0%BE%E9%83%A8%EF%BC%89%E5%86%85%E7%9A%84%E6%8E%A7%E5%88%B6%E4%BF%A1%E6%81%AF%E6%9D%A5%E6%8F%90%E4%BE%9B%E7%9A%84%E3%80%82"><span class="nav-text">解题思路：本题考查对于封装概念的理解，封装指的是某层的协议实体在其上层的 PDU 之前加上头部（数据链路层在上层 PDU 之后还会加上尾部），构成本层的 PDU。一层协议的功能就是靠其 PDU 的头部（和尾部）内的控制信息来提供的。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#18-%E4%B8%80%E4%B8%AA%E7%B3%BB%E7%BB%9F%E5%85%B7%E6%9C%89-n-%E5%B1%82%E5%8D%8F%E8%AE%AE%E4%BD%93%E7%B3%BB%E3%80%82%E5%BA%94%E7%94%A8%E4%BA%A7%E7%94%9F%E4%BA%86%E4%B8%80%E4%B8%AA%E9%95%BF%E5%BA%A6%E4%B8%BA-M-%E5%AD%97%E8%8A%82%E7%9A%84%E6%8A%A5%E6%96%87%E3%80%82%E5%9C%A8%E6%AF%8F%E4%B8%80%E5%B1%82%EF%BC%8C%E9%83%BD%E4%BC%9A%E5%A2%9E%E5%8A%A0%E4%B8%80%E4%B8%AA-h-%E5%AD%97%E8%8A%82%E7%9A%84%E9%A6%96%E9%83%A8%E3%80%82%E9%A6%96%E9%83%A8%E6%89%80%E5%8D%A0%E7%BD%91%E7%BB%9C%E5%B8%A6%E5%AE%BD%E7%9A%84%E6%AF%94%E7%8E%87%E6%98%AF%E5%A4%9A%E5%B0%91%EF%BC%9F"><span class="nav-text">18. 一个系统具有 n 层协议体系。应用产生了一个长度为 M 字节的报文。在每一层，都会增加一个 h 字节的首部。首部所占网络带宽的比率是多少？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E5%B0%81%E8%A3%85%E7%9A%84%E7%AE%80%E5%8D%95%E8%AE%A1%E7%AE%97%E3%80%82%E8%A6%81%E6%B3%A8%E6%84%8F%E9%A2%98%E7%9B%AE%E4%B8%AD%E6%98%AF%E6%8C%87%E5%BA%94%E7%94%A8%E4%BA%A7%E7%94%9F%E4%BA%86-M-%E5%AD%97%E8%8A%82%E7%9A%84%E6%8A%A5%E6%96%87%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E5%BA%94%E7%94%A8%E5%B1%82%EF%BC%8C%E5%9B%A0%E6%AD%A4n-%E5%B1%82%E4%B8%AD%E7%9A%84%E6%AF%8F%E4%B8%80%E5%B1%82%E9%83%BD%E5%A2%9E%E5%8A%A0h-%E5%AD%97%E8%8A%82%E7%9A%84%E9%A6%96%E9%83%A8%E3%80%82"><span class="nav-text">解题思路：本题考查对于封装的简单计算。要注意题目中是指应用产生了 M 字节的报文，而不是应用层，因此n 层中的每一层都增加h 字节的首部。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#20-TCP-%E5%92%8C-UDP-%E7%9A%84%E4%B8%BB%E8%A6%81%E5%8C%BA%E5%88%AB%E6%98%AF%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="nav-text">20. TCP 和 UDP 的主要区别是什么？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E5%9B%A0%E7%89%B9%E7%BD%91%E4%BC%A0%E8%BE%93%E5%B1%82%E7%9A%84%E4%B8%A4%E4%B8%AA%E9%87%8D%E8%A6%81%E5%8D%8F%E8%AE%AE%E7%9A%84%E5%8A%9F%E8%83%BD%E7%9A%84%E7%90%86%E8%A7%A3%E3%80%82"><span class="nav-text">解题思路：本题考查对于因特网传输层的两个重要协议的功能的理解。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#22-%E5%9C%A8%E4%B8%A4%E5%8F%B0%E8%AE%A1%E7%AE%97%E6%9C%BA%E4%B9%8B%E9%97%B4%E4%BC%A0%E8%BE%93%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E6%97%B6%EF%BC%8C%E6%9C%89%E4%B8%A4%E7%A7%8D%E5%8F%AF%E8%83%BD%E7%9A%84%E7%A1%AE%E8%AE%A4%E6%9C%BA%E5%88%B6%E3%80%82%E7%AC%AC%E4%B8%80%E7%A7%8D%E6%9C%BA%E5%88%B6%E6%98%AF%EF%BC%8C%E6%96%87%E4%BB%B6%E8%A2%AB%E5%88%86%E6%88%90%E5%A4%9A%E4%B8%AA%E5%88%86%E7%BB%84%E4%BC%A0%E8%BE%93%EF%BC%8C%E6%8E%A5%E6%94%B6%E6%96%B9%E7%A1%AE%E8%AE%A4%E6%AF%8F%E4%B8%AA%E5%88%86%E7%BB%84%EF%BC%8C%E4%BD%86%E4%B8%8D%E5%AF%B9%E6%95%B4%E4%B8%AA%E6%96%87%E4%BB%B6%E8%BF%9B%E8%A1%8C%E7%A1%AE%E8%AE%A4%EF%BC%9B%E7%AC%AC%E4%BA%8C%E7%A7%8D%E6%9C%BA%E5%88%B6%E6%98%AF%EF%BC%8C%E6%8E%A5%E6%94%B6%E6%96%B9%E5%9C%A8%E6%94%B6%E5%88%B0%E6%95%B4%E4%B8%AA%E6%96%87%E4%BB%B6%E4%B9%8B%E5%90%8E%E8%BF%9B%E8%A1%8C%E7%A1%AE%E8%AE%A4%EF%BC%8C%E4%BD%86%E4%B8%8D%E5%AF%B9%E6%AF%8F%E4%B8%AA%E5%88%86%E7%BB%84%E7%A1%AE%E8%AE%A4%E3%80%82%E8%AF%B7%E5%AF%B9%E8%BF%99%E4%B8%A4%E7%A7%8D%E6%9C%BA%E5%88%B6%E8%BF%9B%E8%A1%8C%E8%AE%A8%E8%AE%BA%E3%80%82"><span class="nav-text">22. 在两台计算机之间传输一个文件时，有两种可能的确认机制。第一种机制是，文件被分成多个分组传输，接收方确认每个分组，但不对整个文件进行确认；第二种机制是，接收方在收到整个文件之后进行确认，但不对每个分组确认。请对这两种机制进行讨论。</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E5%AF%B9%E4%BA%8E%E4%B8%8D%E5%90%8C%E7%9A%84%E7%A1%AE%E8%AE%A4%E6%96%B9%E5%BC%8F%E7%9A%84%E7%90%86%E8%A7%A3%E5%92%8C%E6%AF%94%E8%BE%83%E3%80%82"><span class="nav-text">解题思路：本题考查对于不同的确认方式的理解和比较。</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#30-%E5%81%87%E5%AE%9A-k-%E5%B1%82%E6%8F%90%E4%BE%9B%E7%9A%84%E6%9C%8D%E5%8A%A1%E5%8F%91%E7%94%9F%E5%8F%98%E5%8C%96%EF%BC%8C%E5%AF%B9%E4%BA%8E-k-1-%E5%B1%82%E5%92%8C-k-1-%E5%B1%82%E7%9A%84%E6%9C%8D%E5%8A%A1%E6%9C%89%E4%BD%95%E5%BD%B1%E5%93%8D%EF%BC%9F"><span class="nav-text">30. 假定 k 层提供的服务发生变化，对于(k-1)层和(k+1)层的服务有何影响？</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%A7%A3%E9%A2%98%E6%80%9D%E8%B7%AF%EF%BC%9A%E6%9C%AC%E9%A2%98%E8%80%83%E6%9F%A5%E7%BD%91%E7%BB%9C%E4%BD%93%E7%B3%BB%E7%BB%93%E6%9E%84%E4%B8%AD%E7%9B%B8%E9%82%BB%E4%B8%A4%E5%B1%82%E7%9A%84%E5%85%B3%E7%B3%BB%E3%80%82"><span class="nav-text">解题思路：本题考查网络体系结构中相邻两层的关系。</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A5%E8%AF%86%E7%82%B9%EF%BC%9A-5"><span class="nav-text">知识点：</span></a></li></ol></li></ol></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kc</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
