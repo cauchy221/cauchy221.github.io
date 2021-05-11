@@ -6,7 +6,7 @@
   <link href="https://cauchy221.github.io/atom.xml" rel="self"/>
   
   <link href="https://cauchy221.github.io/"/>
-  <updated>2021-05-06T06:03:44.698Z</updated>
+  <updated>2021-05-11T12:16:44.542Z</updated>
   <id>https://cauchy221.github.io/</id>
   
   <author>
@@ -15,6 +15,32 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>技术点整理</title>
+    <link href="https://cauchy221.github.io/2021/05/11/%E6%8A%80%E6%9C%AF%E7%82%B9%E6%95%B4%E7%90%86/"/>
+    <id>https://cauchy221.github.io/2021/05/11/%E6%8A%80%E6%9C%AF%E7%82%B9%E6%95%B4%E7%90%86/</id>
+    <published>2021-05-11T12:14:08.000Z</published>
+    <updated>2021-05-11T12:16:44.542Z</updated>
+    
+    <content type="html"><![CDATA[<h1 id="技术点整理"><a href="#技术点整理" class="headerlink" title="技术点整理"></a>技术点整理</h1><p>本文主要列举了一些在科研中经常会用到的知识点以及经典论文，最基本的要求是要能够知道其作用（例如，ResNet的作用是什么？ResNet的作用是提取图片的特征进而用于图像分类）可以看一些论文笔记快速了解；其次，最好循序渐进地理解其背后的原理（例如Attention的实现方法），这一阶段建议阅读论文原文；最后，需要在实现中应用或改进这些知识，例如自己实现，或应用开源代码</p><h2 id="Attention"><a href="#Attention" class="headerlink" title="Attention"></a>Attention</h2><p>核心论文 <code>Attention is All You Need</code> <a href="https://zhuanlan.zhihu.com/p/283125663">知乎笔记1</a> <a href="https://zhuanlan.zhihu.com/p/34781297">知乎笔记2</a></p><h2 id="VLAD相关"><a href="#VLAD相关" class="headerlink" title="VLAD相关"></a>VLAD相关</h2><p>核心论文</p><figure class="highlight dsconfig"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">NetVLAD</span>: <span class="string">CNN</span> <span class="string">architecture</span> <span class="string">for</span> <span class="string">weakly</span> <span class="string">supervised</span> <span class="string">place</span> <span class="string">recognition</span></span><br><span class="line"><span class="string">NeXtVLAD</span>: <span class="string">An</span> <span class="string">Efficient</span> <span class="string">Neural</span> <span class="string">Network</span> <span class="string">to</span> <span class="string">Aggregate</span> <span class="string">Frame-level</span> <span class="string">Features</span> <span class="string">for</span> <span class="string">Large-scale</span> <span class="string">Video</span> <span class="string">Classification</span></span><br><span class="line"><span class="string">GhostVLAD</span> <span class="string">for</span> <span class="built_in">set-based</span> <span class="string">face</span> <span class="string">recognition</span></span><br></pre></td></tr></table></figure><p><a href="https://zhuanlan.zhihu.com/p/96718053">知乎笔记3</a></p><h2 id="图像分类与目标检测"><a href="#图像分类与目标检测" class="headerlink" title="图像分类与目标检测"></a>图像分类与目标检测</h2><p>核心论文</p><figure class="highlight pgsql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Deep Residual Learning <span class="keyword">for</span> Image Recognition</span><br><span class="line">Fast R-CNN</span><br><span class="line">Faster R-CNN: Towards <span class="type">Real</span>-<span class="type">Time</span> <span class="keyword">Object</span> Detection <span class="keyword">with</span> Region Proposal Networks</span><br></pre></td></tr></table></figure><p><a href="https://zhuanlan.zhihu.com/p/31852747">知乎笔记4</a> <a href="https://zhuanlan.zhihu.com/p/23006190">知乎笔记5</a></p><h2 id="图神经网络"><a href="#图神经网络" class="headerlink" title="图神经网络"></a>图神经网络</h2><p>核心论文</p><figure class="highlight coq"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">Semi-Supervised Classification <span class="built_in">with</span> <span class="keyword">Graph</span> Convolutional Networks</span><br><span class="line"><span class="keyword">Graph</span> Attention Networks</span><br></pre></td></tr></table></figure><p><a href="https://www.zhihu.com/question/54504471">知乎笔记6</a> <a href="https://zhuanlan.zhihu.com/p/81350196">知乎笔记7</a></p><h2 id="文本处理"><a href="#文本处理" class="headerlink" title="文本处理"></a>文本处理</h2><p>核心论文</p><figure class="highlight mipsasm"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">BERT: </span>Pre-training of Deep <span class="keyword">Bidirectional </span>Transformers for Language Understanding</span><br></pre></td></tr></table></figure><p><a href="https://zhuanlan.zhihu.com/p/51413773">知乎笔记8</a></p>]]></content>
+    
+    
+      
+      
+    <summary type="html">&lt;h1 id=&quot;技术点整理&quot;&gt;&lt;a href=&quot;#技术点整理&quot; class=&quot;headerlink&quot; title=&quot;技术点整理&quot;&gt;&lt;/a&gt;技术点整理&lt;/h1&gt;&lt;p&gt;本文主要列举了一些在科研中经常会用到的知识点以及经典论文，最基本的要求是要能够知道其作用（例如，ResNet的作用是</summary>
+      
+    
+    
+    
+    <category term="视频理解" scheme="https://cauchy221.github.io/categories/%E8%A7%86%E9%A2%91%E7%90%86%E8%A7%A3/"/>
+    
+    <category term="基础知识" scheme="https://cauchy221.github.io/categories/%E8%A7%86%E9%A2%91%E7%90%86%E8%A7%A3/%E5%9F%BA%E7%A1%80%E7%9F%A5%E8%AF%86/"/>
+    
+    
+    <category term="视频理解" scheme="https://cauchy221.github.io/tags/%E8%A7%86%E9%A2%91%E7%90%86%E8%A7%A3/"/>
+    
+  </entry>
   
   <entry>
     <title>ch4 MAC子层</title>
