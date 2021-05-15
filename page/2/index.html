@@ -261,6 +261,211 @@
   
   
   <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cauchy221.github.io/2021/04/25/Lecture%202/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kc的笔记本">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+                
+                <a class="post-title-link" href="/2021/04/25/Lecture%202/" itemprop="url">Lecture 2:Classification</a></h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-25T18:43:42+08:00">
+                2021-04-25
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/" itemprop="url" rel="index">
+                    <span itemprop="name">深度学习</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/UMich/" itemprop="url" rel="index">
+                    <span itemprop="name">UMich</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/UMich/Lecture-Note/" itemprop="url" rel="index">
+                    <span itemprop="name">Lecture Note</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <h1 id="Lecture-2-Image-Classification"><a href="#Lecture-2-Image-Classification" class="headerlink" title="Lecture 2: Image Classification"></a>Lecture 2: Image Classification</h1><h2 id="1-Problem-Semantic-Gap"><a href="#1-Problem-Semantic-Gap" class="headerlink" title="1 Problem: Semantic Gap"></a>1 Problem: Semantic Gap</h2><p>电脑看到的是像素值</p>
+<p><em>补充：对于计算机来说，图像是一个由数字组成的巨大的3维数组。在这个例子中，猫的图像大小是宽248像素，高400像素，有3个颜色通道，分别是红、绿和蓝（简称RGB）。如此，该图像就包含了248X400X3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。我们的任务就是把这些上百万的数字变成一个简单的标签，比如“猫”。</em></p>
+<h2 id="2-Challenges"><a href="#2-Challenges" class="headerlink" title="2 Challenges"></a>2 Challenges</h2><ul>
+<li>Viewpoint Variation 看猫咪的角度不同，机器可能难以识别，但人类知道是猫咪</li>
+<li>Intraclass Variation 一类物体的个体之间的外形差异很大</li>
+<li>Fine-Grained Categories 都是猫但品种不同</li>
+<li>Background Clutter 背景干扰</li>
+<li>Illumination Changes 光线干扰</li>
+<li>Deformation 形变</li>
+<li>Occlusion 遮挡</li>
+</ul>
+<h2 id="3-Support-Other-Tasks"><a href="#3-Support-Other-Tasks" class="headerlink" title="3 Support Other Tasks"></a>3 Support Other Tasks</h2><ul>
+<li>Object Detection</li>
+<li>Image Captioning</li>
+<li>Playing Go</li>
+</ul>
+<h2 id="4-Image-Classification-Datasets"><a href="#4-Image-Classification-Datasets" class="headerlink" title="4 Image Classification Datasets"></a>4 Image Classification Datasets</h2><ul>
+<li>MNIST</li>
+<li>CIFAR10</li>
+<li>CIFAR100（本课程通常使用这两个数据集）</li>
+<li>ImageNet</li>
+<li>MIT Places</li>
+<li>Omniglot (20 images per category)</li>
+</ul>
+<h2 id="5-Some-Classifier"><a href="#5-Some-Classifier" class="headerlink" title="5 Some Classifier"></a>5 Some Classifier</h2><h3 id="5-1-K-Nearest-Neighbor"><a href="#5-1-K-Nearest-Neighbor" class="headerlink" title="5.1 K-Nearest Neighbor"></a>5.1 K-Nearest Neighbor</h3><ul>
+<li><p>How fast is training: O(1)</p>
+</li>
+<li><p>How fast is testing: O(N) (In fact we can afford slow training, but we need fast testing)</p>
+</li>
+<li><p>Use different <strong>Distance Metric</strong> to calculate distances (L1 dist. or L2 dist.)</p>
+</li>
+<li><p>Change the value of <strong>K</strong> in K-Nearest Neighbors (These two are called <strong>Hyperparameters</strong>)</p>
+</li>
+<li><p>Split data into TRAIN, VALIDATION and TEST sets</p>
+</li>
+<li><p>Better idea: <strong>Cross-Validation</strong>, split data into <strong>folds</strong>, try each fold as validation and average the results (commonly used for small datasets, but not used too frequently in DL)</p>
+</li>
+</ul>
+
+          
+        
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+  <div>
+    
+  </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+    
+      
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
     <link itemprop="mainEntityOfPage" href="https://cauchy221.github.io/2021/04/25/python%E4%B8%8E%E5%B8%B8%E8%A7%81%E5%BA%93/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -698,7 +903,7 @@
               
                 <a href="/archives/%7C%7C%20archive">
               
-                  <span class="site-state-item-count">12</span>
+                  <span class="site-state-item-count">13</span>
                   <span class="site-state-item-name">posts</span>
                 </a>
               </div>
@@ -720,7 +925,7 @@
               
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
-                  <span class="site-state-item-count">16</span>
+                  <span class="site-state-item-count">17</span>
                   <span class="site-state-item-name">tags</span>
                 </a>
               </div>

@@ -1,0 +1,1038 @@
+<!DOCTYPE html>
+
+
+
+  
+
+
+<html class="theme-next gemini use-motion" lang="en">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+<meta name="theme-color" content="#222">
+
+
+
+
+
+
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+
+
+
+<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.1.4" rel="stylesheet" type="text/css" />
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png?v=5.1.4">
+
+
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png?v=5.1.4">
+
+
+  <link rel="mask-icon" href="/images/logo.png?v=5.1.4" color="#222">
+
+
+
+
+
+  <meta name="keywords" content="Adversary Detection,Network Intrusion," />
+
+
+
+
+
+  <link rel="alternate" href="/atom.xml" title="kc的笔记本" type="application/atom+xml" />
+
+
+
+
+
+
+<meta name="description" content="MANDA: On Adversarial Example Detection for Network Intrusion Detection System 1 一些后面用到的知识点1.1 Network Intrusion Detection System (NIDS)网络入侵检测系统1.2 Manifold Learning流形学习流形学习（manifold learning）是一类借鉴了拓扑">
+<meta property="og:type" content="article">
+<meta property="og:title" content="MANDA阅读笔记">
+<meta property="og:url" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/index.html">
+<meta property="og:site_name" content="kc的笔记本">
+<meta property="og:description" content="MANDA: On Adversarial Example Detection for Network Intrusion Detection System 1 一些后面用到的知识点1.1 Network Intrusion Detection System (NIDS)网络入侵检测系统1.2 Manifold Learning流形学习流形学习（manifold learning）是一类借鉴了拓扑">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/2.2.2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.3-1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.3-2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.3-3.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.3-4.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.1.4.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.2.2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.3.1-1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.3.1-2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.3.2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.3.3.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/6.4.1-1.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/6.4.1-2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/6.4.2.png">
+<meta property="og:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/6.5.2.png">
+<meta property="article:published_time" content="2021-05-15T02:17:07.000Z">
+<meta property="article:modified_time" content="2021-05-15T02:26:55.157Z">
+<meta property="article:author" content="kc">
+<meta property="article:tag" content="Adversary Detection">
+<meta property="article:tag" content="Network Intrusion">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/2.2.2.png">
+
+
+
+<script type="text/javascript" id="hexo.configurations">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    root: '',
+    scheme: 'Gemini',
+    version: '5.1.4',
+    sidebar: {"position":"left","display":"post","offset":12,"b2t":true,"scrollpercent":true,"onmobile":false},
+    fancybox: true,
+    tabs: true,
+    motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
+    duoshuo: {
+      userId: '0',
+      author: 'Author'
+    },
+    algolia: {
+      applicationID: '',
+      apiKey: '',
+      indexName: '',
+      hits: {"per_page":10},
+      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
+    }
+  };
+</script>
+
+
+
+  <link rel="canonical" href="https://cauchy221.github.io/2021/05/15/MANDA阅读笔记/"/>
+
+
+
+
+
+  <title>MANDA阅读笔记 | kc的笔记本</title>
+  
+
+
+
+
+
+
+
+
+<meta name="generator" content="Hexo 5.4.0"></head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+
+  
+  
+    
+  
+
+  <div class="container sidebar-position-left page-post-detail">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-wrapper">
+  <div class="site-meta ">
+    
+
+    <div class="custom-logo-site-title">
+      <a href="/"  class="brand" rel="start">
+        <span class="logo-line-before"><i></i></span>
+        <span class="site-title">kc的笔记本</span>
+        <span class="logo-line-after"><i></i></span>
+      </a>
+    </div>
+      
+        <p class="site-subtitle">可爱小猪</p>
+      
+  </div>
+
+  <div class="site-nav-toggle">
+    <button>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+      <span class="btn-bar"></span>
+    </button>
+  </div>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Home
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
+            
+            About
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
+            
+            Categories
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archives
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
+  
+  
+  
+  <div class="post-block">
+    <link itemprop="mainEntityOfPage" href="https://cauchy221.github.io/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="name" content="">
+      <meta itemprop="description" content="">
+      <meta itemprop="image" content="/images/author.png">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="kc的笔记本">
+    </span>
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">MANDA阅读笔记</h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">Posted on</span>
+              
+              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-05-15T10:17:07+08:00">
+                2021-05-15
+              </time>
+            
+
+            
+
+            
+          </span>
+
+          
+            <span class="post-category" >
+            
+              <span class="post-meta-divider">|</span>
+            
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              
+                <span class="post-meta-item-text">In</span>
+              
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/" itemprop="url" rel="index">
+                    <span itemprop="name">论文阅读</span>
+                  </a>
+                </span>
+
+                
+                
+                  , 
+                
+              
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/%E5%AF%B9%E6%8A%97%E6%A3%80%E6%B5%8B/" itemprop="url" rel="index">
+                    <span itemprop="name">对抗检测</span>
+                  </a>
+                </span>
+
+                
+                
+              
+            </span>
+          
+
+          
+            
+          
+
+          
+          
+
+          
+
+          
+
+          
+
+        </div>
+      </header>
+    
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>MANDA: On Adversarial Example Detection for Network Intrusion Detection System</p>
+<h3 id="1-一些后面用到的知识点"><a href="#1-一些后面用到的知识点" class="headerlink" title="1 一些后面用到的知识点"></a>1 一些后面用到的知识点</h3><h4 id="1-1-Network-Intrusion-Detection-System-NIDS-网络入侵检测系统"><a href="#1-1-Network-Intrusion-Detection-System-NIDS-网络入侵检测系统" class="headerlink" title="1.1 Network Intrusion Detection System (NIDS)网络入侵检测系统"></a>1.1 Network Intrusion Detection System (NIDS)网络入侵检测系统</h4><h4 id="1-2-Manifold-Learning流形学习"><a href="#1-2-Manifold-Learning流形学习" class="headerlink" title="1.2 Manifold Learning流形学习"></a>1.2 Manifold Learning流形学习</h4><p>流形学习（manifold learning）是一类借鉴了拓扑流行概念的降维方法，在降维时，若低维流行嵌入到高维空间中，则数据样本在高维空间的分布虽然看上去十分复杂，但在局部上仍具有欧式空间（对现实空间的规则抽象和推广）的性质。</p>
+<p>我们先来理解流形： 流形(manifold)是一般几何对象的总称，包括各种维度的曲线与曲面等，和一般的降维分析一样，流形学习是把一组在高维空间中的数据在低维空间中重新表示。不同之处是，在流形学习中假设：所处理的数据采样与一个潜在的流形上，或者说对于这组数据存在一个潜在的流形。</p>
+<p>为什么要用流行学习降维：我所能观察到的数据其实是由一个低维流形映射到高维空间上的（一个立方体可以展开为平面）。由于数据内部特征的限制，一些高维中的数据会产生维度上的冗余，实际上只需要比较低的维度就能唯一的表示。<br>降维的举例：一个二维的圆，在整个二维空间中除了这个圆上的点之外的点，都是浪费的，用二维空间来表示这个圆是有冗余的；但如果用极坐标来表示这个圆，就只有半径这一个参数来确定圆。</p>
+<p>通俗的说，流行学习可以概括为：在保持流形上点的某些几何性质特征（圆形、瑞士卷形）的情况下，找出一组对应的内蕴坐标，将流形尽量好的展开在低维平面上。</p>
+<h3 id="2-总体介绍"><a href="#2-总体介绍" class="headerlink" title="2 总体介绍"></a>2 总体介绍</h3><h4 id="2-1-目前已有的IDS-Intrusion-Detection-System"><a href="#2-1-目前已有的IDS-Intrusion-Detection-System" class="headerlink" title="2.1 目前已有的IDS (Intrusion Detection System)"></a>2.1 目前已有的IDS (Intrusion Detection System)</h4><p>目前已存在的IDS主要分为两类：</p>
+<p><strong>（1）signature-based detection</strong></p>
+<ul>
+<li>通过提取 traffic signature并将它们与之前建立好的一个 knowledge base对比进行检测</li>
+<li>缺点：只能检测已知的攻击</li>
+</ul>
+<p><strong>（2）anomaly-based detection</strong></p>
+<ul>
+<li>试图通过测量和已建立的标准 traffic model之间的偏差来检测</li>
+<li>这个标准模型代表着正常的良性的 traffic，并用于以此评估某个 traffic的可信度</li>
+<li>目前这个标准模型通常通过ML方法（如LSTM, meta-learning, active learning）来训练</li>
+</ul>
+<h4 id="2-2-关于MANDA"><a href="#2-2-关于MANDA" class="headerlink" title="2.2 关于MANDA"></a>2.2 关于MANDA</h4><h5 id="2-2-1-目前抵抗AEs的方法"><a href="#2-2-1-目前抵抗AEs的方法" class="headerlink" title="2.2.1 目前抵抗AEs的方法"></a>2.2.1 目前抵抗AEs的方法</h5><p>主要有两个：</p>
+<p>（1）增强IDS模型对于对抗干扰的鲁棒性<br>（2）在样本进入IDS之前，先增设一个AE检测器</p>
+<p>但是第一种方法往往针对不同的AE，需要定制不同的IDS，导致模型通用性差。因此本文选择第二章方法。</p>
+<h5 id="2-2-2-MANDA"><a href="#2-2-2-MANDA" class="headerlink" title="2.2.2 MANDA"></a>2.2.2 MANDA</h5><img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/2.2.2.png" class>
+
+<p>由图可知，对抗样本（黑色圆形）往往与决策边界的距离很近。MANDA利用了由此带来的两点性质。</p>
+<p>（1）矛盾性：虽然IDS模型会将对抗样本错误分类为良性，但是 manifold detector会将其分类到恶性样本中（因为AE在恶性样本的聚类中）<br>（2）易变性：如果加一个小的噪音作为干扰，相比于干净样本，IDS对AE的分类结果更容易变化</p>
+<h5 id="2-2-3-三点贡献"><a href="#2-2-3-三点贡献" class="headerlink" title="2.2.3 三点贡献"></a>2.2.3 三点贡献</h5><ul>
+<li>第一个提出 problem space中AE对IDS的攻击，而不是特征空间；同样也是第一个提出对抗此类攻击的方法的</li>
+<li>MANDA通过结合MANifold和DB来构建AE检测器</li>
+<li>在IDS和图片分类上的表现都很好</li>
+</ul>
+<h3 id="3-背景和相关工作"><a href="#3-背景和相关工作" class="headerlink" title="3 背景和相关工作"></a>3 背景和相关工作</h3><h4 id="3-1-Network-Intrusion-Attack"><a href="#3-1-Network-Intrusion-Attack" class="headerlink" title="3.1 Network Intrusion Attack"></a>3.1 Network Intrusion Attack</h4><h5 id="3-1-1-以往的入侵攻击方式"><a href="#3-1-1-以往的入侵攻击方式" class="headerlink" title="3.1.1 以往的入侵攻击方式"></a>3.1.1 以往的入侵攻击方式</h5><p>往往有三类常见的入侵攻击方式：</p>
+<p>（1）扫描连接<br>比如扫描网络的端口，来找寻网络的脆弱点并发起攻击</p>
+<p>（2）Advanced Persistent Threat (APT)<br>不依赖于运行代码，而是依赖于人类执行的相应操作</p>
+<p>（3）DDoS<br>通过消耗网络资源来扰乱网络执行过程</p>
+<h5 id="3-1-2-最新的入侵攻击方式"><a href="#3-1-2-最新的入侵攻击方式" class="headerlink" title="3.1.2 最新的入侵攻击方式"></a>3.1.2 最新的入侵攻击方式</h5><p>在机器学习发展之后，有很多AE攻击专门针对基于ML的IDS（具体方法见论文Ⅱ-A）</p>
+<h4 id="3-2-对抗样本"><a href="#3-2-对抗样本" class="headerlink" title="3.2 对抗样本"></a>3.2 对抗样本</h4><p>关于对抗样本的研究主要有两个方向：（1）对抗样本攻击（2）对抗样本检测</p>
+<h5 id="3-2-1-AE-attacks"><a href="#3-2-1-AE-attacks" class="headerlink" title="3.2.1 AE attacks"></a>3.2.1 AE attacks</h5><p>常见的AE攻击有以下四种：（1）FGSM（2）BIM（3）JSMA（4）CW</p>
+<h5 id="3-2-2-AE-detection"><a href="#3-2-2-AE-detection" class="headerlink" title="3.2.2 AE detection"></a>3.2.2 AE detection</h5><p>有很多对抗样本检测方法是仅仅针对于images的，因此在IDS上并不适用。但是基于<strong>statistical testing</strong>的方法并没有适用范围的限制，因此这写检测方法可以用于IDS（论文Ⅱ-B-AE detection列举了四种可行的方法）。</p>
+<p>本文提出的MANDA是<strong>第一个</strong>针对于ML-based IDS的对抗样本检测器。</p>
+<h3 id="4-System-Model-and-Threat-Model"><a href="#4-System-Model-and-Threat-Model" class="headerlink" title="4 System Model and Threat Model"></a>4 System Model and Threat Model</h3><h4 id="4-1-Notation"><a href="#4-1-Notation" class="headerlink" title="4.1 Notation"></a>4.1 Notation</h4><p>本论文构建的模型一共包含两个部分：</p>
+<p>（1）MANDA</p>
+<p>MANDA作为一个对抗样本检测器，放在整个模型的最前面，用于检测出对抗样本，并将这些AE剔除掉</p>
+<ul>
+<li>clean input, clean sample</li>
+<li>adversarial input, adversarial sample</li>
+</ul>
+<p>（2）IDS Model</p>
+<p>IDS Model作为一个入侵攻击检测器，用于判断输入的网络事件是良性的或者是恶性的。由于IDS Model放在MANDA的后面，它的输入不包含对抗样本。</p>
+<ul>
+<li>输入为一系列网络包（称为网络事件）</li>
+<li>malicious input指由DDoS攻击或僵尸网络生成的恶意攻击，也被称为malicious data, malicious traffic, intrusion</li>
+<li>benign traffic指由正常网络应用生成的时间，也被称为benign data, benign input, normal traffic</li>
+</ul>
+<h4 id="4-2-System-Model"><a href="#4-2-System-Model" class="headerlink" title="4.2 System Model"></a>4.2 System Model</h4><img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.2.png" class>
+
+<h5 id="4-2-1-整理框架（见Fig-1左半部分）"><a href="#4-2-1-整理框架（见Fig-1左半部分）" class="headerlink" title="4.2.1 整理框架（见Fig.1左半部分）"></a>4.2.1 整理框架（见Fig.1左半部分）</h5><ul>
+<li>IDS以只读模式与防火墙的内部接口连接</li>
+<li>IDS通过一个可读可写接口，向IDS Management发送警告</li>
+</ul>
+<h5 id="4-2-2-IDS细节（见Fig-1右半部分）"><a href="#4-2-2-IDS细节（见Fig-1右半部分）" class="headerlink" title="4.2.2 IDS细节（见Fig.1右半部分）"></a>4.2.2 IDS细节（见Fig.1右半部分）</h5><p>如图，一共有四个部分：</p>
+<ul>
+<li>Network Traffic Monitor：监控当前的网络流量</li>
+<li>Feature Extractor：将原始网络流量提取为特征向量</li>
+<li>Traning Phase：通过良性和恶性的流量训练我们的ML模型</li>
+<li>Detection Phase：用来判断输入的网络流量是否为恶性，如果是则向IDS Managment发出警告</li>
+</ul>
+<h4 id="4-3-Threat-Model"><a href="#4-3-Threat-Model" class="headerlink" title="4.3 Threat Model"></a>4.3 Threat Model</h4><h5 id="4-3-1-站在攻击者的角度"><a href="#4-3-1-站在攻击者的角度" class="headerlink" title="4.3.1 站在攻击者的角度"></a>4.3.1 站在攻击者的角度</h5><p>站在攻击者的角度，有三种攻击模式：</p>
+<p>（1）white-box：攻击者知道IDS Model的架构和权值</p>
+<p>（2）gray-box：攻击者知道架构，但不知道权值</p>
+<p>（3）black-box：攻击者不知道架构也不知道权值</p>
+<p>本篇论文考虑使用white-box攻击，因为这种方法产生的攻击最有力。但同时我们假设攻击者不知道模型的对抗样本检测方法。</p>
+<h5 id="4-3-2-AE生成过程"><a href="#4-3-2-AE生成过程" class="headerlink" title="4.3.2 AE生成过程"></a>4.3.2 AE生成过程</h5><img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.2.png" class>
+
+<h5 id="4-3-3-选择的攻击（AE生成）方法"><a href="#4-3-3-选择的攻击（AE生成）方法" class="headerlink" title="4.3.3 选择的攻击（AE生成）方法"></a>4.3.3 选择的攻击（AE生成）方法</h5><p>本论文一共选择了四种常见的AE攻击方法</p>
+<p>通常情况下，CW Attack的效果最好</p>
+<p>（1）<strong>FGSM</strong>：fast gradient sign method</p>
+<ul>
+<li>详细介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014380165/article/details/90723948">https://blog.csdn.net/u014380165/article/details/90723948</a></li>
+<li>计算y关于x的梯度，并使x向着使J(θ, x, y)最大的方向移动</li>
+</ul>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.3-1.png" class>
+
+<ul>
+<li>其中sign()函数计算梯度的方向。sign()函数是用来求数值符号的函数，比如对于大于0的输入，输出为1， 对于小于0的输入，输出为-1，对于等于0的输入，输出为0。<strong>之所以采用梯度方向而不是采用梯度值是为了控制扰动的L∞距离，这是FGSM算法的评价指标</strong>。</li>
+<li>e为权重参数，可以用来控制攻击噪声的幅值，参数值越大，攻击强度也越大，肉眼也更容易观察到攻击噪声</li>
+</ul>
+<p>（2）<strong>BIM</strong>：basic iterative method，是FGSM的多次迭代版本</p>
+<ul>
+<li>详细介绍：<a target="_blank" rel="noopener" href="https://blog.csdn.net/u014380165/article/details/90724000">https://blog.csdn.net/u014380165/article/details/90724000</a></li>
+<li>可见就是FGSM的多次迭代</li>
+</ul>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.3-2.png" class>
+
+<ul>
+<li>a就是上面的权重e</li>
+<li>Clip表示将溢出的数值用边界值代替。这是因为在迭代更新中，随着迭代次数的增加，部分像素值可能会溢出（比如超出0到1的范围），这时候就需要将这些值用0或1代替，这样最后才能生成有效的图像。</li>
+</ul>
+<p>（3）<strong>JSMA</strong>：jacobian-based saliency map attack</p>
+<ul>
+<li>迭代地来找在每一步中对误分类贡献最大的特征</li>
+<li>对抗样本的显著图（saliency map）如下：</li>
+</ul>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.3-3.png" class>
+
+<ul>
+<li>其中fj(x)表示将输入x分类到class-j的置信度。为了将原本属于class-j的x误分类为class-t，加入的扰动需要使fj(x)减小，ft(x)增大</li>
+</ul>
+<p>（4）<strong>CW attack</strong>：Carlini and Wagner提出的</p>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/4.3.3-4.png" class>
+
+<ul>
+<li>x’-x对应着干净样本和对抗样本的差，差距越小越难检测</li>
+<li>max{fi(x’):i != t}-ft(x’)越小，表示将x误分类到class-t的可能性和分类到正确类别class-i的可能性越接近</li>
+<li>k为置信度，k越大，那么模型分错的概率越大</li>
+<li>c是一个超参数，用来权衡两个loss之间的关系</li>
+</ul>
+<h3 id="5-The-MANDA-System"><a href="#5-The-MANDA-System" class="headerlink" title="5 The MANDA System"></a>5 The MANDA System</h3><p>由于我们的IDS系统的输入是problem-space中的流量，因此我们需要把已知的基于feature-space的AE生成算法转化成基于problem-space的算法。</p>
+<h4 id="5-1-Problem-Space-AE-Attack-for-IDS"><a href="#5-1-Problem-Space-AE-Attack-for-IDS" class="headerlink" title="5.1 Problem-Space AE Attack for IDS"></a>5.1 Problem-Space AE Attack for IDS</h4><h5 id="5-1-1-Problem-space-and-Feature-space"><a href="#5-1-1-Problem-space-and-Feature-space" class="headerlink" title="5.1.1 Problem-space and Feature-space"></a>5.1.1 Problem-space and Feature-space</h5><ul>
+<li>IDS的problem-space指所有可能的网络流量实例，通常以一系列网络数据包的形式出现</li>
+<li>IDS的feature-space指所有可能的特征向量，其中向量的数值可以表示数据包的长度、数据包到达的时间间隔等</li>
+</ul>
+<h5 id="5-1-2-在problem-space中生成AE的步骤"><a href="#5-1-2-在problem-space中生成AE的步骤" class="headerlink" title="5.1.2 在problem-space中生成AE的步骤"></a>5.1.2 在problem-space中生成AE的步骤</h5><p>（1）首先，通过一个输入的干净样本x，我们将其转化为基于feature-space的对抗样本x’</p>
+<p>（2）然后，我们利用一个mapping函数，将x’映射到problem-space中，得到对应的对抗样本z’。干净样本x在problem-space中对应z</p>
+<h5 id="5-1-3-mapping函数"><a href="#5-1-3-mapping函数" class="headerlink" title="5.1.3 mapping函数"></a>5.1.3 mapping函数</h5><ul>
+<li>总体思想：通过消除不可微特征中的扰动，使mapping变成可微的</li>
+<li>具体操作如下：</li>
+</ul>
+<p>（1）基于feature-space的对抗样本x’由两部分组成：{x’_diff, x’_non-diff}，另x’_non-diiff = x_non-diff</p>
+<p>（2）由此直接可得，z’_non-diiff = z_non-diff</p>
+<p>（3）我们将 f(x_diff) 的梯度从x反向传播到z，使z在problem-space中的变化遵循负梯度</p>
+<ul>
+<li>IDS中的不可微特征包括协议类型，服务类型等等</li>
+<li>可见，消除这些不可微特征依然保留了干净样本x中的本质特性，使得AE能够成功误导分类器误判</li>
+</ul>
+<h5 id="5-1-4-problem-space-AE"><a href="#5-1-4-problem-space-AE" class="headerlink" title="5.1.4 problem-space AE"></a>5.1.4 problem-space AE</h5><p>同特征空间中生成的AE，我们需要给出以下限制：</p>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.1.4.png" class>
+
+<p>其中x’为通过x生成的AE，x[i]表示x的第i个特征，Ri表示该特征的范围，e为最大扰动，S_diff为可微特征集合，p为S_diff的最大变化比例</p>
+<h4 id="5-2-Properties-of-AEs"><a href="#5-2-Properties-of-AEs" class="headerlink" title="5.2 Properties of AEs"></a>5.2 Properties of AEs</h4><h5 id="5-2-1-Manifold-Learning流形学习"><a href="#5-2-1-Manifold-Learning流形学习" class="headerlink" title="5.2.1 Manifold Learning流形学习"></a>5.2.1 Manifold Learning流形学习</h5><p>流形学习可以概括为：在保持流形上点的某些几何性质特征（圆形、瑞士卷形）的情况下，找出一组对应的内蕴坐标，将流形尽量好的展开在低维平面上（具体见1.4）</p>
+<p>在这里流形可以理解为簇。</p>
+<p>设M为一个流形模型，则流行评估M(x)的输出为一个向量，该向量的各个分量表示位于各个子流形（即各个class）的概率</p>
+<h5 id="5-2-2-AE的性质"><a href="#5-2-2-AE的性质" class="headerlink" title="5.2.2 AE的性质"></a>5.2.2 AE的性质</h5><p>不妨假设原来的x是恶性的，即c(x) = 1，需要将由x生成的对抗样本x’误分类到良性，即c(x’) = 0</p>
+<p>有以下两种情况：</p>
+<p>（1）x’接近恶性类的流形，但是远离良性类的流形</p>
+<p>（2）x’与恶性和良性的流形都接近</p>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.2.2.png" class>
+
+<p>可见以上两种情况是成功生成AE的，因为生成的对抗样本很好的保留了x中的本质特性。</p>
+<p>相反，如果x’远离恶性的流形但是接近良性的流形，或者远离这两种流形，都是不成功的，因为没有很好的保留原有的恶性特质。</p>
+<h4 id="5-3-MANDA对抗样本检测器"><a href="#5-3-MANDA对抗样本检测器" class="headerlink" title="5.3 MANDA对抗样本检测器"></a>5.3 MANDA对抗样本检测器</h4><p>MANDA<strong>结合</strong>了两个独立的对抗样本检测方法，分别是Manifold和DB (desicion-boundary)</p>
+<p>（1）<strong>Manifold</strong></p>
+<ul>
+<li>综合IDS对x的分类结果和x的流形评估结果M(x)进行检测</li>
+<li>如果IDS对x的分类与M(x)不一致，则x很有可能是AE</li>
+</ul>
+<p>（2）<strong>DB</strong></p>
+<ul>
+<li>通过判断x是否在决策边界旁边来检测</li>
+<li>如果给x一个很小的Gaussian noise，c(x)发生了变化，说明x很可能在DB旁边，即x很有可能是AE</li>
+</ul>
+<h5 id="5-3-1-Manifold"><a href="#5-3-1-Manifold" class="headerlink" title="5.3.1 Manifold"></a>5.3.1 Manifold</h5><ul>
+<li>*<em>针对Fig.3中的Case A ** 可以看到，在这个例子中，x’接近于恶性的流形，同时IDS分类器会将x分在良性类，</em>产生了矛盾*，因此检测出对抗样本</li>
+<li>如何得到良性类和恶性类的流形：<br>本论文利用了<strong>之前提出来的</strong>一个传感器学习模型，通过学习一组包含标记点和未标记的点的数据得到。该模型保证了局部一致性和全局一致性，即（1）相邻的点有同样的标签（2）拥有相同结构的点有同样的标签</li>
+<li>具体检测方法：<br>我们首先根据Algorithm 1计算score1，再将score1与设定的阈值进行比较（Algorithm 2）来判断是否为对抗样本</li>
+</ul>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.3.1-1.png" class><img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.3.1-2.png" class>
+
+<h5 id="5-3-2-DB"><a href="#5-3-2-DB" class="headerlink" title="5.3.2 DB"></a>5.3.2 DB</h5><ul>
+<li><strong>针对Fig.3中的Case B</strong> 可以看到，这个例子中良性和恶性的流形有重合部分</li>
+<li>我们做出以下假设来判断x‘是否为对抗样本：如果满足以下情况，则x’非常接近于决策边界</li>
+</ul>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.3.2.png" class>
+
+<ul>
+<li>在接近DB的情况下，如果给对抗样本一个极小的扰动，其分类结果有很大可能性发生变化，此时的IDS分类器是不稳定的。我们通过<em>测量这种不稳定性</em>来检测对抗样本。</li>
+<li>由Algorithm 1可知，我们给x一个扰动N(0, σ^2)，并以此计算score2，并将score2与预先设置的阈值进行比较，判断是否为对抗样本</li>
+</ul>
+<h5 id="5-3-3-MANDA-Manifold-DB"><a href="#5-3-3-MANDA-Manifold-DB" class="headerlink" title="5.3.3 MANDA (Manifold + DB)"></a>5.3.3 MANDA (Manifold + DB)</h5><p>（1）MANDA首先对训练集中的每一个样本x，计算他们的score1和score2，并记x的标签为label(x)</p>
+<p>（2）再将[x, label(x)]转化为[score1, score2, label(x)]，以得到一组新的训练集</p>
+<p>（3）最后，MANDA用这组新的训练集训练一个logistic回归模型，并最终用于对抗样本检测</p>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/5.3.3.png" class>
+
+
+
+
+
+<h3 id="6-实验结果"><a href="#6-实验结果" class="headerlink" title="6 实验结果"></a>6 实验结果</h3><h4 id="6-1-Datasets"><a href="#6-1-Datasets" class="headerlink" title="6.1 Datasets"></a>6.1 Datasets</h4><h5 id="6-1-1-NSL-KDD"><a href="#6-1-1-NSL-KDD" class="headerlink" title="6.1.1 NSL-KDD"></a>6.1.1 NSL-KDD</h5><ul>
+<li>互联网流量数据集，用于validation</li>
+<li>每一个样本都有4组字段：Intrinsic Characteristics, Content Characteristics, Time-based Characteristics, Host-based Characteristics</li>
+<li>该数据集一共包含四种攻击方式：DoS, Probing, Remote-to-Local (R2L), User-to-Root (U2R)，其中每一种下面有很多子类</li>
+<li>训练集有125973个样本，包含共24种攻击模式；测试集有22544个样本，包含共38种攻击模式</li>
+</ul>
+<h5 id="6-1-2-MINST"><a href="#6-1-2-MINST" class="headerlink" title="6.1.2 MINST"></a>6.1.2 MINST</h5><ul>
+<li>手写数字0-9，每个数字类有6000训练样本和1000测试样本</li>
+<li>每张图片都是28x28，且为灰色</li>
+</ul>
+<h4 id="6-2-Experiment-Setting"><a href="#6-2-Experiment-Setting" class="headerlink" title="6.2 Experiment Setting"></a>6.2 Experiment Setting</h4><ul>
+<li>IDS Model针对NSL-KDD数据集采用了MLP多层感知机，包括1个输入层，1个隐藏层（50个神经元）和1个输出层</li>
+<li>IDS Model针对MINST数据集采用CNN模型，包括4个卷积层（ReLU作激活函数），2个全连接层</li>
+<li>我们选取之前提过的FGSM, BIM, CW, JSMA作为AE生成方法，但是只将前三种放到problem-space里。在每组实验中，我们选择测试集中被IDS正确分类的样本来生成AE，并将这些对抗样本和随机选择的数量相同的干净样本混合，作为一个新的dataset来检测</li>
+<li>我们将MANDA与Artifact进行比较</li>
+</ul>
+<h4 id="6-3-Evaluation-Metrics"><a href="#6-3-Evaluation-Metrics" class="headerlink" title="6.3 Evaluation Metrics"></a>6.3 Evaluation Metrics</h4><ul>
+<li>选用TP, FP, TN, FN, TPR = TP/(TP+FN), FRP = FP/(TN+FP)</li>
+<li>绘制ROC曲线，计算AUC值 <a target="_blank" rel="noopener" href="https://blog.csdn.net/qrlhl/article/details/50209841">https://blog.csdn.net/qrlhl/article/details/50209841</a></li>
+</ul>
+<h4 id="6-4-Results-of-IDS"><a href="#6-4-Results-of-IDS" class="headerlink" title="6.4 Results of IDS"></a>6.4 Results of IDS</h4><h5 id="6-4-1-Problem-space中的AE攻击"><a href="#6-4-1-Problem-space中的AE攻击" class="headerlink" title="6.4.1 Problem-space中的AE攻击"></a>6.4.1 Problem-space中的AE攻击</h5><img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/6.4.1-1.png" class>
+
+<ul>
+<li>TABLE Ⅰ除了最后一行都是problem-space sttack，最后一行是feature-space sttack</li>
+<li>得出以下两个结论：</li>
+</ul>
+<p>（1）扰动p越大，攻击越强，IDS正确分类的效果越差</p>
+<p>（2）feature-space的攻击效果比problem-space的好，因为problem-space的AE生成过程有更多的限制</p>
+<ul>
+<li>后续选定p = 5%来考察AE检测器的性能</li>
+</ul>
+<img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/6.4.1-2.png" class>
+
+<p>我们的IDS选择了MLP多层感知机模型，但是我们的基于problem-space对抗样本生成方法同样可以迁移到其他模型，比如Logistic回归，KNN，朴素贝叶斯，决策树，支持向量机等等</p>
+<h5 id="6-4-2-Detection-Performance"><a href="#6-4-2-Detection-Performance" class="headerlink" title="6.4.2 Detection Performance"></a>6.4.2 Detection Performance</h5><img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/6.4.2.png" class>
+
+<ul>
+<li>其中Manifold, DB和MANDA都是我们提出来的，并且MANDA由前两者组成</li>
+<li>可以发现，Manifold和MANDA检测对抗样本的性能是最好的，因为它们对应的AUC很高，TPR值也很高。因此最终MANDA的实际效果应该是最好的，因为它还加入了DB，可以检测出那些Manifold不能检测的AE</li>
+</ul>
+<h4 id="6-5-Result-on-MNIST"><a href="#6-5-Result-on-MNIST" class="headerlink" title="6.5 Result on MNIST"></a>6.5 Result on MNIST</h4><p>在处理图像的时候，首先需要将图像转为特征向量，因此在处理MNIST数据集时，先加入了一个特征提取器，并将28x28的输入降维</p>
+<h5 id="6-5-1-特征提取"><a href="#6-5-1-特征提取" class="headerlink" title="6.5.1 特征提取"></a>6.5.1 特征提取</h5><p>采用了一个自编码器，将28x28的图片降维到64x1的特征向量</p>
+<h5 id="6-5-2-Detection-Performance"><a href="#6-5-2-Detection-Performance" class="headerlink" title="6.5.2 Detection Performance"></a>6.5.2 Detection Performance</h5><img src="/2021/05/15/MANDA%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/6.5.2.png" class>
+
+<p>可以发现，MANDA的表现比Artifact要好，说明MANDA不仅可以用于网络流量入侵攻击的AE检测，也可以应用到其他方面</p>
+
+      
+    </div>
+    
+    
+    
+
+    
+
+    
+
+    
+
+  <div>
+    
+      <div>
+    
+        <div style="text-align:center;color: #ccc;font-size:14px;">-------------本文结束 感谢阅读-------------</div>
+    
+</div>
+
+    
+  </div>
+
+    <footer class="post-footer">
+      
+        <div class="post-tags">
+          
+            <a href="/tags/Adversary-Detection/" rel="tag"><i class="fa fa-tag"></i> Adversary Detection</a>
+          
+            <a href="/tags/Network-Intrusion/" rel="tag"><i class="fa fa-tag"></i> Network Intrusion</a>
+          
+        </div>
+      
+
+      
+      
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2021/05/11/%E6%8A%80%E6%9C%AF%E7%82%B9%E6%95%B4%E7%90%86/" rel="next" title="技术点整理">
+                <i class="fa fa-chevron-left"></i> 技术点整理
+              </a>
+            
+          </div>
+
+          <span class="post-nav-divider"></span>
+
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </div>
+  
+  
+  
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+
+  
+
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap">
+            Table of Contents
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview-wrap">
+            Overview
+          </li>
+        </ul>
+      
+
+      <section class="site-overview-wrap sidebar-panel">
+        <div class="site-overview">
+          <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+            
+              <img class="site-author-image" itemprop="image"
+                src="/images/author.png"
+                alt="" />
+            
+              <p class="site-author-name" itemprop="name"></p>
+              <p class="site-description motion-element" itemprop="description"></p>
+          </div>
+
+          <nav class="site-state motion-element">
+
+            
+              <div class="site-state-item site-state-posts">
+              
+                <a href="/archives/%7C%7C%20archive">
+              
+                  <span class="site-state-item-count">13</span>
+                  <span class="site-state-item-name">posts</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-categories">
+                <a href="/categories/index.html">
+                  <span class="site-state-item-count">11</span>
+                  <span class="site-state-item-name">categories</span>
+                </a>
+              </div>
+            
+
+            
+              
+              
+              <div class="site-state-item site-state-tags">
+                <a href="/tags/index.html">
+                  <span class="site-state-item-count">17</span>
+                  <span class="site-state-item-name">tags</span>
+                </a>
+              </div>
+            
+
+          </nav>
+
+          
+            <div class="feed-link motion-element">
+              <a href="/atom.xml" rel="alternate">
+                <i class="fa fa-rss"></i>
+                RSS
+              </a>
+            </div>
+          
+
+          
+            <div class="links-of-author motion-element">
+                
+                  <span class="links-of-author-item">
+                    <a href="https://github.com/cauchy221" target="_blank" title="GitHub">
+                      
+                        <i class="fa fa-fw fa-github"></i>GitHub</a>
+                  </span>
+                
+                  <span class="links-of-author-item">
+                    <a href="liuxinyue@bupt.edu.cn" target="_blank" title="E-Mail">
+                      
+                        <i class="fa fa-fw fa-envelope"></i>E-Mail</a>
+                  </span>
+                
+            </div>
+          
+
+          
+          
+
+          
+          
+
+          
+
+        </div>
+      </section>
+
+      
+      <!--noindex-->
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+
+            
+              
+            
+
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#1-%E4%B8%80%E4%BA%9B%E5%90%8E%E9%9D%A2%E7%94%A8%E5%88%B0%E7%9A%84%E7%9F%A5%E8%AF%86%E7%82%B9"><span class="nav-text">1 一些后面用到的知识点</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#1-1-Network-Intrusion-Detection-System-NIDS-%E7%BD%91%E7%BB%9C%E5%85%A5%E4%BE%B5%E6%A3%80%E6%B5%8B%E7%B3%BB%E7%BB%9F"><span class="nav-text">1.1 Network Intrusion Detection System (NIDS)网络入侵检测系统</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#1-2-Manifold-Learning%E6%B5%81%E5%BD%A2%E5%AD%A6%E4%B9%A0"><span class="nav-text">1.2 Manifold Learning流形学习</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#2-%E6%80%BB%E4%BD%93%E4%BB%8B%E7%BB%8D"><span class="nav-text">2 总体介绍</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#2-1-%E7%9B%AE%E5%89%8D%E5%B7%B2%E6%9C%89%E7%9A%84IDS-Intrusion-Detection-System"><span class="nav-text">2.1 目前已有的IDS (Intrusion Detection System)</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#2-2-%E5%85%B3%E4%BA%8EMANDA"><span class="nav-text">2.2 关于MANDA</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-1-%E7%9B%AE%E5%89%8D%E6%8A%B5%E6%8A%97AEs%E7%9A%84%E6%96%B9%E6%B3%95"><span class="nav-text">2.2.1 目前抵抗AEs的方法</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-2-MANDA"><span class="nav-text">2.2.2 MANDA</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#2-2-3-%E4%B8%89%E7%82%B9%E8%B4%A1%E7%8C%AE"><span class="nav-text">2.2.3 三点贡献</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-%E8%83%8C%E6%99%AF%E5%92%8C%E7%9B%B8%E5%85%B3%E5%B7%A5%E4%BD%9C"><span class="nav-text">3 背景和相关工作</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#3-1-Network-Intrusion-Attack"><span class="nav-text">3.1 Network Intrusion Attack</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-1-%E4%BB%A5%E5%BE%80%E7%9A%84%E5%85%A5%E4%BE%B5%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="nav-text">3.1.1 以往的入侵攻击方式</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-2-%E6%9C%80%E6%96%B0%E7%9A%84%E5%85%A5%E4%BE%B5%E6%94%BB%E5%87%BB%E6%96%B9%E5%BC%8F"><span class="nav-text">3.1.2 最新的入侵攻击方式</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#3-2-%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC"><span class="nav-text">3.2 对抗样本</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-1-AE-attacks"><span class="nav-text">3.2.1 AE attacks</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-2-AE-detection"><span class="nav-text">3.2.2 AE detection</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-System-Model-and-Threat-Model"><span class="nav-text">4 System Model and Threat Model</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#4-1-Notation"><span class="nav-text">4.1 Notation</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-2-System-Model"><span class="nav-text">4.2 System Model</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-1-%E6%95%B4%E7%90%86%E6%A1%86%E6%9E%B6%EF%BC%88%E8%A7%81Fig-1%E5%B7%A6%E5%8D%8A%E9%83%A8%E5%88%86%EF%BC%89"><span class="nav-text">4.2.1 整理框架（见Fig.1左半部分）</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-2-2-IDS%E7%BB%86%E8%8A%82%EF%BC%88%E8%A7%81Fig-1%E5%8F%B3%E5%8D%8A%E9%83%A8%E5%88%86%EF%BC%89"><span class="nav-text">4.2.2 IDS细节（见Fig.1右半部分）</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-3-Threat-Model"><span class="nav-text">4.3 Threat Model</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-1-%E7%AB%99%E5%9C%A8%E6%94%BB%E5%87%BB%E8%80%85%E7%9A%84%E8%A7%92%E5%BA%A6"><span class="nav-text">4.3.1 站在攻击者的角度</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-2-AE%E7%94%9F%E6%88%90%E8%BF%87%E7%A8%8B"><span class="nav-text">4.3.2 AE生成过程</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#4-3-3-%E9%80%89%E6%8B%A9%E7%9A%84%E6%94%BB%E5%87%BB%EF%BC%88AE%E7%94%9F%E6%88%90%EF%BC%89%E6%96%B9%E6%B3%95"><span class="nav-text">4.3.3 选择的攻击（AE生成）方法</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#5-The-MANDA-System"><span class="nav-text">5 The MANDA System</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#5-1-Problem-Space-AE-Attack-for-IDS"><span class="nav-text">5.1 Problem-Space AE Attack for IDS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-1-Problem-space-and-Feature-space"><span class="nav-text">5.1.1 Problem-space and Feature-space</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-2-%E5%9C%A8problem-space%E4%B8%AD%E7%94%9F%E6%88%90AE%E7%9A%84%E6%AD%A5%E9%AA%A4"><span class="nav-text">5.1.2 在problem-space中生成AE的步骤</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-3-mapping%E5%87%BD%E6%95%B0"><span class="nav-text">5.1.3 mapping函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-1-4-problem-space-AE"><span class="nav-text">5.1.4 problem-space AE</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-2-Properties-of-AEs"><span class="nav-text">5.2 Properties of AEs</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-1-Manifold-Learning%E6%B5%81%E5%BD%A2%E5%AD%A6%E4%B9%A0"><span class="nav-text">5.2.1 Manifold Learning流形学习</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-2-2-AE%E7%9A%84%E6%80%A7%E8%B4%A8"><span class="nav-text">5.2.2 AE的性质</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-3-MANDA%E5%AF%B9%E6%8A%97%E6%A0%B7%E6%9C%AC%E6%A3%80%E6%B5%8B%E5%99%A8"><span class="nav-text">5.3 MANDA对抗样本检测器</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3-1-Manifold"><span class="nav-text">5.3.1 Manifold</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3-2-DB"><span class="nav-text">5.3.2 DB</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#5-3-3-MANDA-Manifold-DB"><span class="nav-text">5.3.3 MANDA (Manifold + DB)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#6-%E5%AE%9E%E9%AA%8C%E7%BB%93%E6%9E%9C"><span class="nav-text">6 实验结果</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#6-1-Datasets"><span class="nav-text">6.1 Datasets</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1-1-NSL-KDD"><span class="nav-text">6.1.1 NSL-KDD</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-1-2-MINST"><span class="nav-text">6.1.2 MINST</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-2-Experiment-Setting"><span class="nav-text">6.2 Experiment Setting</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-3-Evaluation-Metrics"><span class="nav-text">6.3 Evaluation Metrics</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-4-Results-of-IDS"><span class="nav-text">6.4 Results of IDS</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-4-1-Problem-space%E4%B8%AD%E7%9A%84AE%E6%94%BB%E5%87%BB"><span class="nav-text">6.4.1 Problem-space中的AE攻击</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-4-2-Detection-Performance"><span class="nav-text">6.4.2 Detection Performance</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#6-5-Result-on-MNIST"><span class="nav-text">6.5 Result on MNIST</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#6-5-1-%E7%89%B9%E5%BE%81%E6%8F%90%E5%8F%96"><span class="nav-text">6.5.1 特征提取</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#6-5-2-Detection-Performance"><span class="nav-text">6.5.2 Detection Performance</span></a></li></ol></li></ol></li></ol></div>
+            
+
+          </div>
+        </section>
+      <!--/noindex-->
+      
+
+      
+        <div class="back-to-top">
+          <i class="fa fa-arrow-up"></i>
+          
+            <span id="scrollpercent"><span>0</span>%</span>
+          
+        </div>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-user"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">kc</span>
+
+  
+</div>
+
+
+  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+        
+      </div>
+    </footer>
+
+    
+
+    
+
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+  
+
+  
+  
+    <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+  
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.1.4"></script>
+
+
+
+  
+  
+
+
+  <script type="text/javascript" src="/js/src/affix.js?v=5.1.4"></script>
+
+  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.4"></script>
+
+
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.1.4"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.4"></script>
+
+
+
+  
+
+
+  
+
+
+
+
+	
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+  
+
+  
+
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</html>
