@@ -5,7 +5,7 @@
   
 
 
-<html class="theme-next gemini use-motion" lang="en">
+<html class="theme-next gemini use-motion" lang="zh-Hans">
 <head>
   <meta charset="UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -74,7 +74,7 @@
 
 
 
-  <link rel="alternate" href="/atom.xml" title="kc的笔记本" type="application/atom+xml" />
+  <link rel="alternate" href="/atom.xml" title="Iris's Blog" type="application/atom+xml" />
 
 
 
@@ -82,11 +82,11 @@
 
 
 <meta property="og:type" content="website">
-<meta property="og:title" content="kc的笔记本">
+<meta property="og:title" content="Iris&#39;s Blog">
 <meta property="og:url" content="https://cauchy221.github.io/page/2/index.html">
-<meta property="og:site_name" content="kc的笔记本">
-<meta property="og:locale" content="en_US">
-<meta property="article:author" content="kc">
+<meta property="og:site_name" content="Iris&#39;s Blog">
+<meta property="og:locale">
+<meta property="article:author" content="Iris">
 <meta name="twitter:card" content="summary">
 
 
@@ -103,7 +103,7 @@
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     duoshuo: {
       userId: '0',
-      author: 'Author'
+      author: '博主'
     },
     algolia: {
       applicationID: '',
@@ -123,7 +123,7 @@
 
 
 
-  <title>kc的笔记本</title>
+  <title>Iris's Blog</title>
   
 
 
@@ -135,7 +135,7 @@
 
 <meta name="generator" content="Hexo 5.4.0"></head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="en">
+<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
 
   
   
@@ -154,12 +154,12 @@
     <div class="custom-logo-site-title">
       <a href="/"  class="brand" rel="start">
         <span class="logo-line-before"><i></i></span>
-        <span class="site-title">kc的笔记本</span>
+        <span class="site-title">Iris's Blog</span>
         <span class="logo-line-after"><i></i></span>
       </a>
     </div>
       
-        <p class="site-subtitle">可爱小猪</p>
+        <p class="site-subtitle">A place for personal blog and thoughts</p>
       
   </div>
 
@@ -184,7 +184,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
             
-            Home
+            首页
           </a>
         </li>
       
@@ -194,7 +194,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-user"></i> <br />
             
-            About
+            关于
           </a>
         </li>
       
@@ -204,7 +204,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
             
-            Tags
+            标签
           </a>
         </li>
       
@@ -214,7 +214,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-th"></i> <br />
             
-            Categories
+            分类
           </a>
         </li>
       
@@ -224,7 +224,7 @@
             
               <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
             
-            Archives
+            归档
           </a>
         </li>
       
@@ -270,7 +270,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kc的笔记本">
+      <meta itemprop="name" content="Iris's Blog">
     </span>
 
     
@@ -290,9 +290,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-25T18:43:42+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-25T18:43:42+08:00">
                 2021-04-25
               </time>
             
@@ -311,7 +311,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -322,7 +322,7 @@
 
                 
                 
-                  , 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -333,7 +333,7 @@
 
                 
                 
-                  , 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -376,46 +376,16 @@
       
         
           
-            <h1 id="Lecture-2-Image-Classification"><a href="#Lecture-2-Image-Classification" class="headerlink" title="Lecture 2: Image Classification"></a>Lecture 2: Image Classification</h1><h2 id="1-Problem-Semantic-Gap"><a href="#1-Problem-Semantic-Gap" class="headerlink" title="1 Problem: Semantic Gap"></a>1 Problem: Semantic Gap</h2><p>电脑看到的是像素值</p>
-<p><em>补充：对于计算机来说，图像是一个由数字组成的巨大的3维数组。在这个例子中，猫的图像大小是宽248像素，高400像素，有3个颜色通道，分别是红、绿和蓝（简称RGB）。如此，该图像就包含了248X400X3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。我们的任务就是把这些上百万的数字变成一个简单的标签，比如“猫”。</em></p>
-<h2 id="2-Challenges"><a href="#2-Challenges" class="headerlink" title="2 Challenges"></a>2 Challenges</h2><ul>
-<li>Viewpoint Variation 看猫咪的角度不同，机器可能难以识别，但人类知道是猫咪</li>
-<li>Intraclass Variation 一类物体的个体之间的外形差异很大</li>
-<li>Fine-Grained Categories 都是猫但品种不同</li>
-<li>Background Clutter 背景干扰</li>
-<li>Illumination Changes 光线干扰</li>
-<li>Deformation 形变</li>
-<li>Occlusion 遮挡</li>
-</ul>
-<h2 id="3-Support-Other-Tasks"><a href="#3-Support-Other-Tasks" class="headerlink" title="3 Support Other Tasks"></a>3 Support Other Tasks</h2><ul>
-<li>Object Detection</li>
-<li>Image Captioning</li>
-<li>Playing Go</li>
-</ul>
-<h2 id="4-Image-Classification-Datasets"><a href="#4-Image-Classification-Datasets" class="headerlink" title="4 Image Classification Datasets"></a>4 Image Classification Datasets</h2><ul>
-<li>MNIST</li>
-<li>CIFAR10</li>
-<li>CIFAR100（本课程通常使用这两个数据集）</li>
-<li>ImageNet</li>
-<li>MIT Places</li>
-<li>Omniglot (20 images per category)</li>
-</ul>
-<h2 id="5-Some-Classifier"><a href="#5-Some-Classifier" class="headerlink" title="5 Some Classifier"></a>5 Some Classifier</h2><h3 id="5-1-K-Nearest-Neighbor"><a href="#5-1-K-Nearest-Neighbor" class="headerlink" title="5.1 K-Nearest Neighbor"></a>5.1 K-Nearest Neighbor</h3><ul>
-<li><p>How fast is training: O(1)</p>
-</li>
-<li><p>How fast is testing: O(N) (In fact we can afford slow training, but we need fast testing)</p>
-</li>
-<li><p>Use different <strong>Distance Metric</strong> to calculate distances (L1 dist. or L2 dist.)</p>
-</li>
-<li><p>Change the value of <strong>K</strong> in K-Nearest Neighbors (These two are called <strong>Hyperparameters</strong>)</p>
-</li>
-<li><p>Split data into TRAIN, VALIDATION and TEST sets</p>
-</li>
-<li><p>Better idea: <strong>Cross-Validation</strong>, split data into <strong>folds</strong>, try each fold as validation and average the results (commonly used for small datasets, but not used too frequently in DL)</p>
-</li>
-</ul>
-
-          
+          Lecture 2: Image Classification1 Problem: Semantic Gap电脑看到的是像素值
+补充：对于计算机来说，图像是一个由数字组成的巨大的3维数组。在这个例子中，猫的图像大小是宽248像素，高400像素，有3个颜色通道，分别是红、绿和蓝（简称RGB）。如此，该
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/25/Lecture%202/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -475,7 +445,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kc的笔记本">
+      <meta itemprop="name" content="Iris's Blog">
     </span>
 
     
@@ -495,9 +465,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-25T17:54:32+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-25T17:54:32+08:00">
                 2021-04-25
               </time>
             
@@ -516,7 +486,7 @@
                 <i class="fa fa-folder-o"></i>
               </span>
               
-                <span class="post-meta-item-text">In</span>
+                <span class="post-meta-item-text">分类于</span>
               
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -527,7 +497,7 @@
 
                 
                 
-                  , 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -538,7 +508,7 @@
 
                 
                 
-                  , 
+                  ， 
                 
               
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
@@ -581,113 +551,18 @@
       
         
           
-            <p><a target="_blank" rel="noopener" href="https://cs231n.github.io/python-numpy-tutorial/">https://cs231n.github.io/python-numpy-tutorial/</a></p>
-<h1 id="1-Google-Colab"><a href="#1-Google-Colab" class="headerlink" title="1 Google Colab"></a>1 Google Colab</h1><ul>
-<li>Homepage: <a target="_blank" rel="noopener" href="https://colab.research.google.com/notebooks/welcome.ipynb">https://colab.research.google.com/notebooks/welcome.ipynb</a></li>
-<li>Google Drive (Already had one)</li>
-</ul>
-<h1 id="2-Python"><a href="#2-Python" class="headerlink" title="2 Python"></a>2 Python</h1><h2 id="2-1-Basic-Data-Types"><a href="#2-1-Basic-Data-Types" class="headerlink" title="2.1 Basic Data Types"></a>2.1 Basic Data Types</h2><ul>
-<li>int, float, boolean, string etc.</li>
-</ul>
-<h2 id="2-2-Containers"><a href="#2-2-Containers" class="headerlink" title="2.2 Containers"></a>2.2 Containers</h2><h3 id="2-2-1-List"><a href="#2-2-1-List" class="headerlink" title="2.2.1 List"></a>2.2.1 List</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/3.5/tutorial/datastructures.html#more-on-lists">https://docs.python.org/3.5/tutorial/datastructures.html#more-on-lists</a></p>
-<ul>
-<li>The python equivalent of an array, but is resizable and can contain elements of different types</li>
-<li>Slicing</li>
-<li>Loops</li>
-<li>If you want access to the index of each element within the body of a loop, use the built-in <code>enumerate</code> function</li>
-<li>List Comprehension</li>
-</ul>
-<h3 id="2-2-2-Dictionaries"><a href="#2-2-2-Dictionaries" class="headerlink" title="2.2.2 Dictionaries"></a>2.2.2 Dictionaries</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/3.5/library/stdtypes.html#dict">https://docs.python.org/3.5/library/stdtypes.html#dict</a></p>
-<ul>
-<li>A dictionary stores (key, value) pairs</li>
-<li>Loops</li>
-<li>If you want access to keys and their corresponding values, use the <code>items</code> method</li>
-<li>Dictionary comprehensions</li>
-</ul>
-<h3 id="2-2-3-Sets"><a href="#2-2-3-Sets" class="headerlink" title="2.2.3 Sets"></a>2.2.3 Sets</h3><p><a target="_blank" rel="noopener" href="https://docs.python.org/3.5/library/stdtypes.html#set">https://docs.python.org/3.5/library/stdtypes.html#set</a></p>
-<ul>
-<li>A set is an unordered collection of distinct elements</li>
-<li>Loops (sets are <strong>unordered</strong>)</li>
-<li>Set comprehension</li>
-</ul>
-<h3 id="2-2-4-Tuples"><a href="#2-2-4-Tuples" class="headerlink" title="2.2 4 Tuples"></a>2.2 4 Tuples</h3><ul>
-<li>A tuple is an (immutable) ordered list of values. A tuple is in many ways similar to a list; one of the most important differences is that tuples can be used as keys in dictionaries and as elements of sets, while lists cannot. Tuple is also <strong>unchangeable</strong>.</li>
-</ul>
-<h2 id="2-3-Functions"><a href="#2-3-Functions" class="headerlink" title="2.3 Functions"></a>2.3 Functions</h2><ul>
-<li>Python functions are defined using the <code>def</code> keyword</li>
-</ul>
-<h2 id="2-4-Classes"><a href="#2-4-Classes" class="headerlink" title="2.4 Classes"></a>2.4 Classes</h2><figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Greeter</span>(<span class="params"><span class="built_in">object</span></span>):</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Constructor</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">__init__</span>(<span class="params">self, name</span>):</span></span><br><span class="line">        self.name = name  <span class="comment"># Create an instance variable</span></span><br><span class="line"></span><br><span class="line">    <span class="comment"># Instance method</span></span><br><span class="line">    <span class="function"><span class="keyword">def</span> <span class="title">greet</span>(<span class="params">self, loud=<span class="literal">False</span></span>):</span></span><br><span class="line">        <span class="keyword">if</span> loud:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;HELLO, %s!&#x27;</span> % self.name.upper())</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            <span class="built_in">print</span>(<span class="string">&#x27;Hello, %s&#x27;</span> % self.name)</span><br><span class="line"></span><br><span class="line">g = Greeter(<span class="string">&#x27;Fred&#x27;</span>)  <span class="comment"># Construct an instance of the Greeter class</span></span><br><span class="line">g.greet()            <span class="comment"># Call an instance method; prints &quot;Hello, Fred&quot;</span></span><br><span class="line">g.greet(loud=<span class="literal">True</span>)   <span class="comment"># Call an instance method; prints &quot;HELLO, FRED!&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="3-Numpy"><a href="#3-Numpy" class="headerlink" title="3 Numpy"></a>3 Numpy</h1><p><a target="_blank" rel="noopener" href="http://docs.scipy.org/doc/numpy/reference/">http://docs.scipy.org/doc/numpy/reference/</a></p>
-<p>It provides a high-performance <strong>multidimensional array</strong> object, and tools for working with these arrays</p>
-<h2 id="3-1-Arrays"><a href="#3-1-Arrays" class="headerlink" title="3.1 Arrays"></a>3.1 Arrays</h2><p><a target="_blank" rel="noopener" href="http://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation">http://docs.scipy.org/doc/numpy/user/basics.creation.html#arrays-creation</a></p>
-<ul>
-<li><strong>Rank</strong>: The number of dimensions</li>
-<li><strong>Shape</strong>: A tuple of integers giving the size of the array along each dimension</li>
-</ul>
-<h2 id="3-2-Array-indexing"><a href="#3-2-Array-indexing" class="headerlink" title="3.2 Array indexing"></a>3.2 Array indexing</h2><p><a target="_blank" rel="noopener" href="http://docs.scipy.org/doc/numpy/reference/arrays.indexing.html">http://docs.scipy.org/doc/numpy/reference/arrays.indexing.html</a></p>
-<ul>
-<li>Slicing</li>
-<li>Integer array indexing</li>
-<li>Boolean array indexing</li>
-</ul>
-<h2 id="3-3-Datatypes"><a href="#3-3-Datatypes" class="headerlink" title="3.3 Datatypes"></a>3.3 Datatypes</h2><ul>
-<li>Every numpy array is a grid of elements of the same type</li>
-<li>Can be constructed explicitly or implicitly</li>
-</ul>
-<h2 id="3-4-Array-math"><a href="#3-4-Array-math" class="headerlink" title="3.4 Array math"></a>3.4 Array math</h2><ul>
-<li><code>*</code> 对应元素相乘</li>
-<li><code>dot</code> 矩阵乘法</li>
-<li><code>T</code> 矩阵转置 (the transpose of a rank 1 array does nothing)</li>
-</ul>
-<h2 id="3-5-Broadcasting"><a href="#3-5-Broadcasting" class="headerlink" title="3.5 Broadcasting"></a>3.5 Broadcasting</h2><p><a target="_blank" rel="noopener" href="http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html">http://docs.scipy.org/doc/numpy/user/basics.broadcasting.html</a></p>
-<p><a target="_blank" rel="noopener" href="http://scipy.github.io/old-wiki/pages/EricsBroadcastingDoc">http://scipy.github.io/old-wiki/pages/EricsBroadcastingDoc</a></p>
-<ul>
-<li>without broadcasting</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># We will add the vector v to each row of the matrix x,</span></span><br><span class="line"><span class="comment"># storing the result in the matrix y</span></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>], [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]])</span><br><span class="line">v = np.array([<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">vv = np.tile(v, (<span class="number">4</span>, <span class="number">1</span>))   <span class="comment"># Stack 4 copies of v on top of each other</span></span><br><span class="line"><span class="built_in">print</span>(vv)                 <span class="comment"># Prints &quot;[[1 0 1]</span></span><br><span class="line">                          <span class="comment">#          [1 0 1]</span></span><br><span class="line">                          <span class="comment">#          [1 0 1]</span></span><br><span class="line">                          <span class="comment">#          [1 0 1]]&quot;</span></span><br><span class="line">y = x + vv  <span class="comment"># Add x and vv elementwise</span></span><br><span class="line"><span class="built_in">print</span>(y)  <span class="comment"># Prints &quot;[[ 2  2  4</span></span><br><span class="line">          <span class="comment">#          [ 5  5  7]</span></span><br><span class="line">          <span class="comment">#          [ 8  8 10]</span></span><br><span class="line">          <span class="comment">#          [11 11 13]]&quot;</span></span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>using broadcasting allows us to perform this computation without actually creating multiple copies of <code>v</code></li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"></span><br><span class="line"><span class="comment"># We will add the vector v to each row of the matrix x,</span></span><br><span class="line"><span class="comment"># storing the result in the matrix y</span></span><br><span class="line">x = np.array([[<span class="number">1</span>,<span class="number">2</span>,<span class="number">3</span>], [<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>], [<span class="number">7</span>,<span class="number">8</span>,<span class="number">9</span>], [<span class="number">10</span>, <span class="number">11</span>, <span class="number">12</span>]])</span><br><span class="line">v = np.array([<span class="number">1</span>, <span class="number">0</span>, <span class="number">1</span>])</span><br><span class="line">y = x + v  <span class="comment"># Add v to each row of x using broadcasting</span></span><br><span class="line"><span class="built_in">print</span>(y)  <span class="comment"># Prints &quot;[[ 2  2  4]</span></span><br><span class="line">          <span class="comment">#          [ 5  5  7]</span></span><br><span class="line">          <span class="comment">#          [ 8  8 10]</span></span><br><span class="line">          <span class="comment">#          [11 11 13]]&quot;</span></span><br></pre></td></tr></table></figure>
-
-
-
-<h1 id="4-SciPy"><a href="#4-SciPy" class="headerlink" title="4 SciPy"></a>4 SciPy</h1><p><a target="_blank" rel="noopener" href="http://docs.scipy.org/doc/scipy/reference/index.html">http://docs.scipy.org/doc/scipy/reference/index.html</a></p>
-<p>SciPy provides a large number of functions that operate on numpy arrays and are useful for different types of scientific and engineering applications</p>
-<h2 id="4-1-Image-operations"><a href="#4-1-Image-operations" class="headerlink" title="4.1 Image operations"></a>4.1 Image operations</h2><ul>
-<li>read images from disk into numpy arrays</li>
-<li>write numpy arrays to disk as images</li>
-<li>resize images</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">from</span> scipy.misc <span class="keyword">import</span> imread, imsave, imresize</span><br><span class="line"></span><br><span class="line"><span class="comment"># Read an JPEG image into a numpy array</span></span><br><span class="line">img = imread(<span class="string">&#x27;assets/cat.jpg&#x27;</span>)</span><br><span class="line"><span class="built_in">print</span>(img.dtype, img.shape)  <span class="comment"># Prints &quot;uint8 (400, 248, 3)&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="comment"># We can tint the image by scaling each of the color channels</span></span><br><span class="line"><span class="comment"># by a different scalar constant. The image has shape (400, 248, 3);</span></span><br><span class="line"><span class="comment"># we multiply it by the array [1, 0.95, 0.9] of shape (3,);</span></span><br><span class="line"><span class="comment"># numpy broadcasting means that this leaves the red channel unchanged,</span></span><br><span class="line"><span class="comment"># and multiplies the green and blue channels by 0.95 and 0.9</span></span><br><span class="line"><span class="comment"># respectively.</span></span><br><span class="line">img_tinted = img * [<span class="number">1</span>, <span class="number">0.95</span>, <span class="number">0.9</span>]</span><br><span class="line"></span><br><span class="line"><span class="comment"># Resize the tinted image to be 300 by 300 pixels.</span></span><br><span class="line">img_tinted = imresize(img_tinted, (<span class="number">300</span>, <span class="number">300</span>))</span><br><span class="line"></span><br><span class="line"><span class="comment"># Write the tinted image back to disk</span></span><br><span class="line">imsave(<span class="string">&#x27;assets/cat_tinted.jpg&#x27;</span>, img_tinted)</span><br></pre></td></tr></table></figure>
-
-<h2 id="4-2-MATLAB-files"><a href="#4-2-MATLAB-files" class="headerlink" title="4.2 MATLAB files"></a>4.2 MATLAB files</h2><ul>
-<li><code>scipy.io.loadmat</code></li>
-<li><code>scipy.io.savemat</code></li>
-</ul>
-<h2 id="4-3-Distance-between-points"><a href="#4-3-Distance-between-points" class="headerlink" title="4.3 Distance between points"></a>4.3 Distance between points</h2><ul>
-<li>The function <code>scipy.spatial.distance.pdist</code> computes the distance between all pairs of points in a given set</li>
-<li>A similar function <code>scipy.spatial.distance.cdist</code> computes the distance between all pairs across two sets of points</li>
-</ul>
-<h1 id="5-Matplotlib"><a href="#5-Matplotlib" class="headerlink" title="5 Matplotlib"></a>5 Matplotlib</h1><p><a target="_blank" rel="noopener" href="http://matplotlib.org/">http://matplotlib.org/</a></p>
-<p>A plotting library</p>
-<h2 id="5-1-Plotting"><a href="#5-1-Plotting" class="headerlink" title="5.1 Plotting"></a>5.1 Plotting</h2><ul>
-<li>Function <code>plot</code> allows you to plot 2D data</li>
-</ul>
-<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> numpy <span class="keyword">as</span> np</span><br><span class="line"><span class="keyword">import</span> matplotlib.pyplot <span class="keyword">as</span> plt</span><br><span class="line"></span><br><span class="line"><span class="comment"># Compute the x and y coordinates for points on a sine curve</span></span><br><span class="line">x = np.arange(<span class="number">0</span>, <span class="number">3</span> * np.pi, <span class="number">0.1</span>)</span><br><span class="line">y = np.sin(x)</span><br><span class="line"></span><br><span class="line"><span class="comment"># Plot the points using matplotlib</span></span><br><span class="line">plt.plot(x, y)</span><br><span class="line">plt.show()  <span class="comment"># You must call plt.show() to make graphics appear.</span></span><br></pre></td></tr></table></figure>
-
-<h2 id="5-2-Subplots"><a href="#5-2-Subplots" class="headerlink" title="5.2 Subplots"></a>5.2 Subplots</h2><ul>
-<li>Can plot different things in the same figure using the <code>subplot</code> function</li>
-</ul>
-<h2 id="5-3-Images"><a href="#5-3-Images" class="headerlink" title="5.3 Images"></a>5.3 Images</h2><ul>
-<li>You can use the <code>imshow</code> function to show images</li>
-</ul>
-
-          
+          https://cs231n.github.io/python-numpy-tutorial/
+1 Google Colab
+Homepage: https://colab.research.google.com/notebooks/welcome.ipynb
+Google Drive (Alrea
+          ...
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/25/python%E4%B8%8E%E5%B8%B8%E8%A7%81%E5%BA%93/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -747,7 +622,7 @@
     </span>
 
     <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="kc的笔记本">
+      <meta itemprop="name" content="Iris's Blog">
     </span>
 
     
@@ -767,9 +642,9 @@
                 <i class="fa fa-calendar-o"></i>
               </span>
               
-                <span class="post-meta-item-text">Posted on</span>
+                <span class="post-meta-item-text">发表于</span>
               
-              <time title="Post created" itemprop="dateCreated datePublished" datetime="2021-04-25T17:35:35+08:00">
+              <time title="创建于" itemprop="dateCreated datePublished" datetime="2021-04-25T17:35:35+08:00">
                 2021-04-25
               </time>
             
@@ -809,9 +684,16 @@
       
         
           
-            <p>这是一个测试</p>
+          这是一个测试
 
           
+          <!--noindex-->
+          <div class="post-button text-center">
+            <a class="btn" href="/2021/04/25/1/#more" rel="contents">
+              阅读全文 &raquo;
+            </a>
+          </div>
+          <!--/noindex-->
         
       
     </div>
@@ -853,7 +735,7 @@
 
   
   <nav class="pagination">
-    <a class="extend prev" rel="prev" href="/">&lt;i class&#x3D;&quot;fa fa-angle-left&quot;&gt;&lt;&#x2F;i&gt;</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
+    <a class="extend prev" rel="prev" href="/">上一页</a><a class="page-number" href="/">1</a><span class="page-number current">2</span>
   </nav>
 
 
@@ -904,7 +786,7 @@
                 <a href="/archives/%7C%7C%20archive">
               
                   <span class="site-state-item-count">13</span>
-                  <span class="site-state-item-name">posts</span>
+                  <span class="site-state-item-name">日志</span>
                 </a>
               </div>
             
@@ -915,7 +797,7 @@
               <div class="site-state-item site-state-categories">
                 <a href="/categories/index.html">
                   <span class="site-state-item-count">11</span>
-                  <span class="site-state-item-name">categories</span>
+                  <span class="site-state-item-name">分类</span>
                 </a>
               </div>
             
@@ -926,7 +808,7 @@
               <div class="site-state-item site-state-tags">
                 <a href="/tags/index.html">
                   <span class="site-state-item-count">17</span>
-                  <span class="site-state-item-name">tags</span>
+                  <span class="site-state-item-name">标签</span>
                 </a>
               </div>
             
@@ -992,17 +874,17 @@
 
     <footer id="footer" class="footer">
       <div class="footer-inner">
-        <div class="copyright">&copy; <span itemprop="copyrightYear">2021</span>
+        <div class="copyright">&copy; 2021 &mdash; <span itemprop="copyrightYear">2022</span>
   <span class="with-love">
     <i class="fa fa-user"></i>
   </span>
-  <span class="author" itemprop="copyrightHolder">kc</span>
+  <span class="author" itemprop="copyrightHolder">Iris</span>
 
   
 </div>
 
 
-  <div class="powered-by">Powered by <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a></div>
+  <div class="powered-by">由 <a class="theme-link" target="_blank" href="https://hexo.io">Hexo</a> 强力驱动</div>
 
 
 
@@ -1171,5 +1053,5 @@
 
   
 
-<script src="/live2dw/lib/L2Dwidget.min.js?094cbace49a39548bed64abff5988b05"></script><script>L2Dwidget.init({"pluginRootPath":"live2dw/","pluginJsPath":"lib/","pluginModelPath":"assets/","tagMode":false,"model":{"jsonPath":"/live2dw/assets/hijiki.model.json"},"display":{"position":"right","width":150,"height":300},"mobile":{"show":false},"log":false});</script></body>
+</body>
 </html>

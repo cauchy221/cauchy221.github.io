@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>kc的笔记本</title>
+  <title>Iris&#39;s Blog</title>
   
-  <subtitle>可爱小猪</subtitle>
+  <subtitle>A place for personal blog and thoughts</subtitle>
   <link href="https://cauchy221.github.io/atom.xml" rel="self"/>
   
   <link href="https://cauchy221.github.io/"/>
@@ -10,7 +10,7 @@
   <id>https://cauchy221.github.io/</id>
   
   <author>
-    <name>kc</name>
+    <name>Iris</name>
     
   </author>
   
