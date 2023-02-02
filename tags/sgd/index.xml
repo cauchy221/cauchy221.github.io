@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>SGD on Iris&#39;s Blog</title>
+    <link>https://examplesite.com/tags/sgd/</link>
+    <description>Recent content in SGD on Iris&#39;s Blog</description>
+    <image>
+      <url>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Mon, 26 Apr 2021 21:58:20 +0000</lastBuildDate><atom:link href="https://examplesite.com/tags/sgd/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lecture 4:(First-Order)Optimization</title>
+      <link>https://examplesite.com/posts/lecture-4/</link>
+      <pubDate>Mon, 26 Apr 2021 21:58:20 +0000</pubDate>
+      
+      <guid>https://examplesite.com/posts/lecture-4/</guid>
+      <description>Lecture 4: (First-Order)Optimization 1 Main idea  如何找到让loss function最小的W 一个总结的还不错的blog：https://blog.csdn.net/brucewong0516/article/details/78838124  2 Gradient 2.1 What is gradient 梯度gradient: 一个向量，表示某一函数在该点的方向导数沿着该方向取得最大值，即函数在该点沿着该方向变化最快，变化率最大（为该梯度的模）
+2.2 Computing Gradient 2.2.1 Numerical gradient 就是自己取一个极小的dx，利用公式 ( f(x+dx)-f(x) )/dx计算
+2.2.2 Analytic gradient 使用微积分中的梯度计算公式
+2.2.3 Gradient check  实际训练中，我们使用第二种方法计算，但是可以用第一种方法check (debugging tool); Pytorch提供一个类似的方法: grad check  3 Gradient Descent 1 2 3 4  w = initialize_weights() for t in rangr(num_steps): dw = compute_gradient(loss_fn, data, w) w -= learning_rate * dw   3.</description>
+    </item>
+    
+  </channel>
+</rss>

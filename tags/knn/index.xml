@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>KNN on Iris&#39;s Blog</title>
+    <link>https://examplesite.com/tags/knn/</link>
+    <description>Recent content in KNN on Iris&#39;s Blog</description>
+    <image>
+      <url>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sun, 25 Apr 2021 18:43:42 +0000</lastBuildDate><atom:link href="https://examplesite.com/tags/knn/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Lecture 2:Classification</title>
+      <link>https://examplesite.com/posts/lecture-2/</link>
+      <pubDate>Sun, 25 Apr 2021 18:43:42 +0000</pubDate>
+      
+      <guid>https://examplesite.com/posts/lecture-2/</guid>
+      <description>Lecture 2: Image Classification 1 Problem: Semantic Gap 电脑看到的是像素值
+补充：对于计算机来说，图像是一个由数字组成的巨大的3维数组。在这个例子中，猫的图像大小是宽248像素，高400像素，有3个颜色通道，分别是红、绿和蓝（简称RGB）。如此，该图像就包含了248X400X3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。我们的任务就是把这些上百万的数字变成一个简单的标签，比如“猫”。
+2 Challenges  Viewpoint Variation 看猫咪的角度不同，机器可能难以识别，但人类知道是猫咪 Intraclass Variation 一类物体的个体之间的外形差异很大 Fine-Grained Categories 都是猫但品种不同 Background Clutter 背景干扰 Illumination Changes 光线干扰 Deformation 形变 Occlusion 遮挡  3 Support Other Tasks  Object Detection Image Captioning Playing Go  4 Image Classification Datasets  MNIST CIFAR10 CIFAR100（本课程通常使用这两个数据集） ImageNet MIT Places Omniglot (20 images per category)  5 Some Classifier 5.1 K-Nearest Neighbor   How fast is training: O(1)</description>
+    </item>
+    
+  </channel>
+</rss>

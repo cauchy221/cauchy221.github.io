@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>论文阅读 on Iris&#39;s Blog</title>
+    <link>https://examplesite.com/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/</link>
+    <description>Recent content in 论文阅读 on Iris&#39;s Blog</description>
+    <image>
+      <url>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 15 May 2021 10:17:07 +0000</lastBuildDate><atom:link href="https://examplesite.com/categories/%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MANDA阅读笔记</title>
+      <link>https://examplesite.com/posts/manda%E9%97%83%E5%91%B0%E7%BB%97%E6%97%87/</link>
+      <pubDate>Sat, 15 May 2021 10:17:07 +0000</pubDate>
+      
+      <guid>https://examplesite.com/posts/manda%E9%97%83%E5%91%B0%E7%BB%97%E6%97%87/</guid>
+      <description>MANDA: On Adversarial Example Detection for Network Intrusion Detection System
+1 一些后面用到的知识点 1.1 Network Intrusion Detection System (NIDS)网络入侵检测系统 1.2 Manifold Learning流形学习 流形学习（manifold learning）是一类借鉴了拓扑流行概念的降维方法，在降维时，若低维流行嵌入到高维空间中，则数据样本在高维空间的分布虽然看上去十分复杂，但在局部上仍具有欧式空间（对现实空间的规则抽象和推广）的性质。
+我们先来理解流形： 流形(manifold)是一般几何对象的总称，包括各种维度的曲线与曲面等，和一般的降维分析一样，流形学习是把一组在高维空间中的数据在低维空间中重新表示。不同之处是，在流形学习中假设：所处理的数据采样与一个潜在的流形上，或者说对于这组数据存在一个潜在的流形。
+为什么要用流行学习降维：我所能观察到的数据其实是由一个低维流形映射到高维空间上的（一个立方体可以展开为平面）。由于数据内部特征的限制，一些高维中的数据会产生维度上的冗余，实际上只需要比较低的维度就能唯一的表示。 降维的举例：一个二维的圆，在整个二维空间中除了这个圆上的点之外的点，都是浪费的，用二维空间来表示这个圆是有冗余的；但如果用极坐标来表示这个圆，就只有半径这一个参数来确定圆。
+通俗的说，流行学习可以概括为：在保持流形上点的某些几何性质特征（圆形、瑞士卷形）的情况下，找出一组对应的内蕴坐标，将流形尽量好的展开在低维平面上。
+2 总体介绍 2.1 目前已有的IDS (Intrusion Detection System) 目前已存在的IDS主要分为两类：
+（1）signature-based detection
+ 通过提取 traffic signature并将它们与之前建立好的一个 knowledge base对比进行检测 缺点：只能检测已知的攻击  （2）anomaly-based detection
+ 试图通过测量和已建立的标准 traffic model之间的偏差来检测 这个标准模型代表着正常的良性的 traffic，并用于以此评估某个 traffic的可信度 目前这个标准模型通常通过ML方法（如LSTM, meta-learning, active learning）来训练  2.2 关于MANDA 2.2.1 目前抵抗AEs的方法 主要有两个：
+（1）增强IDS模型对于对抗干扰的鲁棒性 （2）在样本进入IDS之前，先增设一个AE检测器
+但是第一种方法往往针对不同的AE，需要定制不同的IDS，导致模型通用性差。因此本文选择第二章方法。
+2.2.2 MANDA {% asset_img 2.</description>
+    </item>
+    
+    <item>
+      <title>Soteria阅读笔记</title>
+      <link>https://examplesite.com/posts/soteria%E9%97%83%E5%91%B0%E7%BB%97%E6%97%87/</link>
+      <pubDate>Wed, 28 Apr 2021 16:09:51 +0000</pubDate>
+      
+      <guid>https://examplesite.com/posts/soteria%E9%97%83%E5%91%B0%E7%BB%97%E6%97%87/</guid>
+      <description>1 一些后面用到的知识点 1.1 AE 对抗样本 1.1.1 相关论文  2013 Intriguing properties of neural networks 2017 Universal adversarial perturbations 2018 Threat of Adversarial Attacks on Deep Learning in Computer Vision: A Survey  1.1.2 定义概念 对输入样本故意添加一些人无法察觉的细微的干扰，导致模型以高置信度给出一个错误的输出：
+{% asset_img 1.1.2.png %}
+那么对于本篇论文，对抗样本的干扰就是，对软件样本进行一个小的扰动，导致分类器错误将恶意软件分类为良性。
+1.2 Malware 恶意软件 本论文的分类器一共将恶意软件分为三类：Gafgyt, Mirai, Tsunami
+这三种恶意软件都属于僵尸网络，主要针对IoT设备发起大规模DDoS攻击。
+1.3 CFG（control flow graph）控制流图 1.3.1 定义 控制流图是编译器内的一个抽象数据结构，它用图的形式表示一个程序的执行过程中会遍历到的所有路径（即经历的所有基本快），也能反映一个过程的实时执行过程。
+1.3.2 举例 {% asset_img 1.3.2-1.png %}
+{% asset_img 1.3.2-2.png %}
+本篇论文中也举例了一些CFG，例如：
+{% asset_img 1.3.2-3.png %}
+1.4 Auto-encoder 自编码器 1.</description>
+    </item>
+    
+  </channel>
+</rss>

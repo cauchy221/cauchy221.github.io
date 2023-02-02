@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Tags on Iris&#39;s Blog</title>
+    <link>https://examplesite.com/tags/</link>
+    <description>Recent content in Tags on Iris&#39;s Blog</description>
+    <image>
+      <url>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+    </image>
+    <generator>Hugo -- gohugo.io</generator>
+    <lastBuildDate>Sat, 15 May 2021 10:17:07 +0000</lastBuildDate><atom:link href="https://examplesite.com/tags/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Adversary Detection</title>
+      <link>https://examplesite.com/tags/adversary-detection/</link>
+      <pubDate>Sat, 15 May 2021 10:17:07 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/adversary-detection/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Network Intrusion</title>
+      <link>https://examplesite.com/tags/network-intrusion/</link>
+      <pubDate>Sat, 15 May 2021 10:17:07 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/network-intrusion/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>视频理解</title>
+      <link>https://examplesite.com/tags/%E8%A7%86%E9%A2%91%E7%90%86%E8%A7%A3/</link>
+      <pubDate>Tue, 11 May 2021 20:14:08 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/%E8%A7%86%E9%A2%91%E7%90%86%E8%A7%A3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Malware Classification</title>
+      <link>https://examplesite.com/tags/malware-classification/</link>
+      <pubDate>Wed, 28 Apr 2021 16:09:51 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/malware-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Optimization</title>
+      <link>https://examplesite.com/tags/optimization/</link>
+      <pubDate>Mon, 26 Apr 2021 21:58:20 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/optimization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SGD</title>
+      <link>https://examplesite.com/tags/sgd/</link>
+      <pubDate>Mon, 26 Apr 2021 21:58:20 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/sgd/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>hexo</title>
+      <link>https://examplesite.com/tags/hexo/</link>
+      <pubDate>Mon, 26 Apr 2021 21:31:07 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/hexo/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Linear Classification</title>
+      <link>https://examplesite.com/tags/linear-classification/</link>
+      <pubDate>Sun, 25 Apr 2021 19:04:04 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/linear-classification/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Loss Function</title>
+      <link>https://examplesite.com/tags/loss-function/</link>
+      <pubDate>Sun, 25 Apr 2021 19:04:04 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/loss-function/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Regularization</title>
+      <link>https://examplesite.com/tags/regularization/</link>
+      <pubDate>Sun, 25 Apr 2021 19:04:04 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/regularization/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>KNN</title>
+      <link>https://examplesite.com/tags/knn/</link>
+      <pubDate>Sun, 25 Apr 2021 18:43:42 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/knn/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Matplotlib</title>
+      <link>https://examplesite.com/tags/matplotlib/</link>
+      <pubDate>Sun, 25 Apr 2021 17:54:32 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/matplotlib/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Numpy</title>
+      <link>https://examplesite.com/tags/numpy/</link>
+      <pubDate>Sun, 25 Apr 2021 17:54:32 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/numpy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Python</title>
+      <link>https://examplesite.com/tags/python/</link>
+      <pubDate>Sun, 25 Apr 2021 17:54:32 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/python/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>SciPy</title>
+      <link>https://examplesite.com/tags/scipy/</link>
+      <pubDate>Sun, 25 Apr 2021 17:54:32 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/scipy/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>first</title>
+      <link>https://examplesite.com/tags/first/</link>
+      <pubDate>Tue, 15 Sep 2020 11:30:03 +0000</pubDate>
+      
+      <guid>https://examplesite.com/tags/first/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>
