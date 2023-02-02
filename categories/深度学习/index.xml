@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>深度学习 on Iris&#39;s Blog</title>
-    <link>https://examplesite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
+    <link>https://cauchy221.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/</link>
     <description>Recent content in 深度学习 on Iris&#39;s Blog</description>
     <image>
-      <url>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://cauchy221.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cauchy221.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 26 Apr 2021 21:58:20 +0000</lastBuildDate><atom:link href="https://examplesite.com/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Apr 2021 21:58:20 +0000</lastBuildDate><atom:link href="https://cauchy221.github.io/categories/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Lecture 4:(First-Order)Optimization</title>
-      <link>https://examplesite.com/posts/lecture-4/</link>
+      <link>https://cauchy221.github.io/posts/lecture-4/</link>
       <pubDate>Mon, 26 Apr 2021 21:58:20 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/lecture-4/</guid>
+      <guid>https://cauchy221.github.io/posts/lecture-4/</guid>
       <description>Lecture 4: (First-Order)Optimization 1 Main idea  如何找到让loss function最小的W 一个总结的还不错的blog：https://blog.csdn.net/brucewong0516/article/details/78838124  2 Gradient 2.1 What is gradient 梯度gradient: 一个向量，表示某一函数在该点的方向导数沿着该方向取得最大值，即函数在该点沿着该方向变化最快，变化率最大（为该梯度的模）
 2.2 Computing Gradient 2.2.1 Numerical gradient 就是自己取一个极小的dx，利用公式 ( f(x+dx)-f(x) )/dx计算
 2.2.2 Analytic gradient 使用微积分中的梯度计算公式
@@ -24,20 +24,20 @@
     
     <item>
       <title>Lecture 3:Linear Classification</title>
-      <link>https://examplesite.com/posts/lecture-3/</link>
+      <link>https://cauchy221.github.io/posts/lecture-3/</link>
       <pubDate>Sun, 25 Apr 2021 19:04:04 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/lecture-3/</guid>
+      <guid>https://cauchy221.github.io/posts/lecture-3/</guid>
       <description>Lecture 3: Linear Classification 1 Linear Classifier  Algebraic Viewpoint: f(x, W) = Wx + b Visual Viewpoint: linear classifier has one &amp;ldquo;template&amp;rdquo; per category Geometric Viewpoint: hyperplanes carving up a high-dimensional space  2 Loss Function It tells how good our current classifier is (low = good, high = bad)
 2.1 Multiclass SVM Loss 2.1.1 Some questions  Once that an example is correctly classified, than changing the predicted scores of that examples just a little bit don&amp;rsquo;t really effect the loss min possible loss: 0; max possible loss: infinite The classifier was randomly initialized, what loss would we expect: C - 1, C is the number of categories (Li = C - 1, L = N * Li / N = C - 1) What would happen if the sum were over all classes: add 1 What if the loss used a mean instead of a sum: losses multiplied a factor 1/(c-1)  2.</description>
     </item>
     
     <item>
       <title>Lecture 2:Classification</title>
-      <link>https://examplesite.com/posts/lecture-2/</link>
+      <link>https://cauchy221.github.io/posts/lecture-2/</link>
       <pubDate>Sun, 25 Apr 2021 18:43:42 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/lecture-2/</guid>
+      <guid>https://cauchy221.github.io/posts/lecture-2/</guid>
       <description>Lecture 2: Image Classification 1 Problem: Semantic Gap 电脑看到的是像素值
 补充：对于计算机来说，图像是一个由数字组成的巨大的3维数组。在这个例子中，猫的图像大小是宽248像素，高400像素，有3个颜色通道，分别是红、绿和蓝（简称RGB）。如此，该图像就包含了248X400X3=297600个数字，每个数字都是在范围0-255之间的整型，其中0表示全黑，255表示全白。我们的任务就是把这些上百万的数字变成一个简单的标签，比如“猫”。
 2 Challenges  Viewpoint Variation 看猫咪的角度不同，机器可能难以识别，但人类知道是猫咪 Intraclass Variation 一类物体的个体之间的外形差异很大 Fine-Grained Categories 都是猫但品种不同 Background Clutter 背景干扰 Illumination Changes 光线干扰 Deformation 形变 Occlusion 遮挡  3 Support Other Tasks  Object Detection Image Captioning Playing Go  4 Image Classification Datasets  MNIST CIFAR10 CIFAR100（本课程通常使用这两个数据集） ImageNet MIT Places Omniglot (20 images per category)  5 Some Classifier 5.1 K-Nearest Neighbor   How fast is training: O(1)</description>
@@ -45,10 +45,10 @@
     
     <item>
       <title>Colab, Python与常见库</title>
-      <link>https://examplesite.com/posts/python%E6%B6%93%E5%BA%A1%E7%88%B6%E7%91%99%E4%BD%B8%E7%B0%B1/</link>
+      <link>https://cauchy221.github.io/posts/python%E6%B6%93%E5%BA%A1%E7%88%B6%E7%91%99%E4%BD%B8%E7%B0%B1/</link>
       <pubDate>Sun, 25 Apr 2021 17:54:32 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/python%E6%B6%93%E5%BA%A1%E7%88%B6%E7%91%99%E4%BD%B8%E7%B0%B1/</guid>
+      <guid>https://cauchy221.github.io/posts/python%E6%B6%93%E5%BA%A1%E7%88%B6%E7%91%99%E4%BD%B8%E7%B0%B1/</guid>
       <description>https://cs231n.github.io/python-numpy-tutorial/
 1 Google Colab  Homepage: https://colab.research.google.com/notebooks/welcome.ipynb Google Drive (Already had one)  2 Python 2.1 Basic Data Types  int, float, boolean, string etc.  2.2 Containers 2.2.1 List https://docs.python.org/3.5/tutorial/datastructures.html#more-on-lists
  The python equivalent of an array, but is resizable and can contain elements of different types Slicing Loops If you want access to the index of each element within the body of a loop, use the built-in enumerate function List Comprehension  2.</description>

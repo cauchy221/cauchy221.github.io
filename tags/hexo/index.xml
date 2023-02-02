@@ -2,20 +2,20 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>hexo on Iris&#39;s Blog</title>
-    <link>https://examplesite.com/tags/hexo/</link>
+    <link>https://cauchy221.github.io/tags/hexo/</link>
     <description>Recent content in hexo on Iris&#39;s Blog</description>
     <image>
-      <url>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
-      <link>https://examplesite.com/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
+      <url>https://cauchy221.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</url>
+      <link>https://cauchy221.github.io/%3Clink%20or%20path%20of%20image%20for%20opengraph,%20twitter-cards%3E</link>
     </image>
     <generator>Hugo -- gohugo.io</generator>
-    <lastBuildDate>Mon, 26 Apr 2021 21:31:07 +0000</lastBuildDate><atom:link href="https://examplesite.com/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Mon, 26 Apr 2021 21:31:07 +0000</lastBuildDate><atom:link href="https://cauchy221.github.io/tags/hexo/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>hexo-images搭建hexo插入图片时遇到的坑</title>
-      <link>https://examplesite.com/posts/hexo-images/</link>
+      <link>https://cauchy221.github.io/posts/hexo-images/</link>
       <pubDate>Mon, 26 Apr 2021 21:31:07 +0000</pubDate>
       
-      <guid>https://examplesite.com/posts/hexo-images/</guid>
+      <guid>https://cauchy221.github.io/posts/hexo-images/</guid>
       <description>hexo如何插入本地图片 步骤一 插件安装与设置 安装 首先安装一个插件hexo-asset-image 在hexo目录下git bash安装：npm install https://github.com/CodeFalling/hexo-asset-image --save
 设置 注意，该插件的内容需要修改才能正常使用 将/node_modules/hexo-asset-image/index.js中的代码替换成下面的代码（注意，可以使用VS打开.js文件）
 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 20 21 22 23 24 25 26 27 28 29 30 31 32 33 34 35 36 37 38 39 40 41 42 43 44 45 46 47 48 49 50 51 52 53 54 55 56 57 58 59 60 61  &amp;#39;use strict&amp;#39;; var cheerio = require(&amp;#39;cheerio&amp;#39;); // http://stackoverflow.</description>
