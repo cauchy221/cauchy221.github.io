@@ -15,7 +15,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Hi! I am a master student at [Carnegie Mellon University](https://www.cs.cmu.edu/) (LTI, Master's of Computational Data Science), advised by [Daphne Ippolito](https://www.daphnei.com/).
+Hi! I am a master student at [Carnegie Mellon University](https://www.cs.cmu.edu/) (LTI, Master of Computational Data Science), advised by [Daphne Ippolito](https://www.daphnei.com/).
 
 My Research interests lie in these topics:
 - Enhance the ability of LLMs to follow diverse writing styles
