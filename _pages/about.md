@@ -17,7 +17,7 @@ social: true # includes social icons at the bottom of the page
 
 Hi! I am a master student at [Carnegie Mellon University](https://www.cs.cmu.edu/) (LTI, Master of Computational Data Science), advised by [Daphne Ippolito](https://www.daphnei.com/).
 
-My Research interests lie in these topics:
+My research interests lie in three topics:
 - Enhance the ability of LLMs to follow diverse writing styles
 - Understand how parameter-efficient fine-tuning (e.g. LoRA) steers the direction of LLM training
 - Improve LLMs through advanced tool-using capabilities
