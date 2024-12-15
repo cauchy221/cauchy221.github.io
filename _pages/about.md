@@ -22,3 +22,8 @@ Hi! I am a master student at [Carnegie Mellon University](https://www.cs.cmu.edu
 I am interested in making language models more **efficient** and **adaptive**, serving diverse human needs and values while operating under practical **constraints** of limited training data and computational resources.
 
 Prior to CMU, I graduated as the Outstanding Graduate of Beijing from [Beijing University of Posts and Telecommunications](https://www.bupt.edu.cn/) with a B.E. in Computer Science.
+
+<details>
+<summary style="color: grey;">More about me</summary>
+In my free time, I enjoy visiting coffee shops in Pittsburgh. I also do indoor bouldering twice a week (still V1-V2 level).
+</details>
