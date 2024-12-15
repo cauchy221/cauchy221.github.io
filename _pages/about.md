@@ -15,7 +15,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-*I am applying to PhD programs with starting time in Fall 2025.*
+*I am applying to PhD programs with starting time in Fall 2025. I'd love to chat, please reach out!*
 
 Hi! I am a master student at [Carnegie Mellon University](https://www.cs.cmu.edu/) (LTI, Master's of Computational Data Science). I am fortunate to have to opportunity to work with amazing researchers including [Daphne Ippolito](https://www.daphnei.com/), [Emma Strubell](https://strubell.github.io/), and [Graham Neubig](http://www.phontron.com/).
 
