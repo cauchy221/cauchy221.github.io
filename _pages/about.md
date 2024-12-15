@@ -20,8 +20,5 @@ social: true # includes social icons at the bottom of the page
 Hi! I am a master student at [Carnegie Mellon University](https://www.cs.cmu.edu/) (LTI, Master's of Computational Data Science). I am fortunate to have to opportunity to work with amazing researchers including [Daphne Ippolito](https://www.daphnei.com/), [Emma Strubell](https://strubell.github.io/), and [Graham Neubig](http://www.phontron.com/).
 
 I am interested in making language models more **efficient** and **adaptive**, serving diverse human needs and values while operating under practical **constraints** of limited training data and computational resources.
-<!-- - Enhance the ability of LLMs to follow diverse writing styles
-- Understand how parameter-efficient fine-tuning (e.g. LoRA) steers the direction of LLM training
-- Improve LLMs through advanced tool-using capabilities -->
 
 Prior to CMU, I graduated as the Outstanding Graduate of Beijing from [Beijing University of Posts and Telecommunications](https://www.bupt.edu.cn/) with a B.E. in Computer Science.
