@@ -15,13 +15,13 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: true # includes social icons at the bottom of the page
 ---
 
-Hi! I am a master student at [Carnegie Mellon University](https://www.cs.cmu.edu/) (LTI, Master's of Computational Data Science). I am fortunate to have to opportunity to work with amazing researchers including [Daphne Ippolito](https://www.daphnei.com/), [Emma Strubell](https://strubell.github.io/), and [Graham Neubig](http://www.phontron.com/).
+Hi! I am a first-year PhD student at Stony Brook University, advised by [Tuhin Chakrabarty](https://tuhinjubcse.github.io/).
 
-I am interested in making language models more efficient and adaptive, serving diverse human needs and values while operating under practical constraints of limited training data and computational resources. I am especially interested in making language models better in creative writing domains.
+I received my MS in computational data science from Carnegie Mellon University, where I had the amazing opportunity to work with [Daphne Ippolito](https://www.daphnei.com/). Before that, I graduated from Beijing University of Posts and Telecommunications with a B.E. in Computer Science.
 
-Prior to CMU, I graduated as the Outstanding Graduate of Beijing from [Beijing University of Posts and Telecommunications](https://www.bupt.edu.cn/) with a B.E. in Computer Science.
+I am interested in AI and humanity.
 
 <details>
 <summary style="color: grey;">More about me</summary>
-In my free time, I enjoy visiting coffee shops in Pittsburgh. I also do indoor bouldering twice a week (still V1-V2 level).
+In my free time, I often go bouldering (V3-V4).
 </details>
