@@ -35,6 +35,11 @@ layout: default
         {% if page.profile.more_info %}
           <div class="more-info">{{ page.profile.more_info }}</div>
         {% endif %}
+
+        <div class="profile-social-icons">
+          {% include social.liquid %}
+          <span class="photo-cat-inline" aria-label="photo credit">photo credit: 🐈</span>
+        </div>
       </div>
     {% endif %}
 

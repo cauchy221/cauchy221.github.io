@@ -12,7 +12,7 @@ profile:
 
 news: true # includes a list of news items
 selected_papers: false # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+social: false # includes social icons at the bottom of the page
 ---
 
 Hi! I am a first-year PhD student at Stony Brook University, advised by [Tuhin Chakrabarty](https://tuhinjubcse.github.io/).
@@ -21,7 +21,9 @@ I received my MS in computational data science from Carnegie Mellon University, 
 
 I am interested in AI and humanity.
 
-<details>
+<!-- <details>
 <summary style="color: grey;">More about me</summary>
 In my free time, I often go bouldering (V3-V4).
-</details>
+</details> -->
+
+<div class="contact-cta">If you want to chat about research/whatever, feel free to reach out.</div>
