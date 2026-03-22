@@ -64,6 +64,8 @@
       {% assign link_url = entry.doi | prepend: 'https://doi.org/' %}
     {% elsif entry.arxiv %}
       {% assign link_url = entry.arxiv | prepend: 'https://arxiv.org/abs/' %}
+    {% elsif entry.ssrn %}
+      {% assign link_url = entry.ssrn | prepend: 'https://papers.ssrn.com/sol3/papers.cfm?abstract_id=' %}
     {% elsif entry.website %}
       {% assign link_url = entry.website %}
     {% endif %}
@@ -206,6 +208,32 @@
     </div>
     <div class="periodical">
       {{ entry.note | strip }}
+    </div>
+
+    <!-- Links/Buttons -->
+    <div class="links">
+      {% if entry.arxiv %}
+        <a href="https://arxiv.org/abs/{{ entry.arxiv }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">arXiv</a>
+      {% endif %}
+      {% if entry.ssrn %}
+        <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id={{ entry.ssrn }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">SSRN</a>
+      {% endif %}
+      {% if entry.html %}
+        <a href="{{ entry.html }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">HTML</a>
+      {% endif %}
+      {% if entry.pdf %}
+        {% if entry.pdf contains '://' %}
+          <a href="{{ entry.pdf }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">PDF</a>
+        {% else %}
+          <a href="{{ entry.pdf | prepend: '/assets/pdf/' | relative_url }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">PDF</a>
+        {% endif %}
+      {% endif %}
+      {% if entry.code %}
+        <a href="{{ entry.code }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">Code</a>
+      {% endif %}
+      {% if entry.website %}
+        <a href="{{ entry.website }}" class="btn btn-sm z-depth-0" role="button" target="_blank" rel="noopener noreferrer">Website</a>
+      {% endif %}
     </div>
 
     {% if site.enable_publication_badges %}
