@@ -1,0 +1,74 @@
+# ---------------------------------------------------------------------------
+# Press coverage, grouped by paper.
+#
+# `key` MUST match the BibTeX key of the paper in _bibliography/papers.bib.
+# That link is what lets one entry render in two places automatically:
+#   * /media/          -> the full list, grouped by paper
+#   * /publications/   -> an "In the news:" line under that paper
+#
+# To add coverage: append an item to the right paper's `coverage:` list.
+# To add a paper: add a new top-level block with its bib key, title and link.
+# Keep `coverage` newest-first (it is also sorted by date at render time).
+#
+# Fields per item:
+#   outlet    (required) name of the outlet, shown on both pages
+#   headline  (required) article title, or a short phrase for non-article items
+#   url       (required) link to the coverage
+#   date      (required) YYYY-MM-DD; only month + year are displayed
+#   byline    (optional) reporter's name
+#   note      (optional) one line of extra context
+# ---------------------------------------------------------------------------
+
+- key: chakrabarty2026generative
+  title: "Generative AI floods and dilutes the market for books"
+  link: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=7159278
+  coverage:
+    - outlet: The Wall Street Journal
+      headline: "AI Has Plunged the Book Publishing Industry Into Utter Chaos"
+      byline: Anna Silman
+      url: https://www.wsj.com/arts-culture/books/generative-ai-book-publishing-be79a287
+      date: 2026-08-17
+
+    - outlet: Inc.
+      headline: "New Research Says the Biggest Risk to the Book Market Isn't AI, but Dilution"
+      byline: Soren Kaplan
+      url: https://www.inc.com/soren-kaplan/new-research-says-the-biggest-risk-to-the-book-market-isnt-ai-but-dilution/91384517
+      date: 2026-08-04
+
+    # Exact day not published by the outlet; only "August 2026" is displayed.
+    - outlet: Business Insider
+      headline: "Evidence of unfair use: AI books squeeze human authors out of the market"
+      url: https://www.businessinsider.com/ai-books-anthropic-training-human-authors-market-amazon-research-2026-8
+      date: 2026-08-01
+
+    - outlet: The New York Times
+      headline: "How A.I. Books Sneak Their Way Into Stores"
+      byline: Alexandra Alter
+      url: https://www.nytimes.com/2026/07/28/books/ai-bookselling-amazon.html
+      date: 2026-07-28
+
+    - outlet: The Atlantic
+      headline: "Is This What Comes After AI Slop?"
+      byline: Will Oremus
+      url: https://www.theatlantic.com/technology/2026/07/daggermouth-novel-bestseller-ai/688067/
+      date: 2026-07-27
+
+- key: liu2025alignment
+  title: "Alignment Whack-a-Mole: Finetuning Activates Verbatim Recall of Copyrighted Books in Large Language Models"
+  link: https://arxiv.org/abs/2603.20957
+  coverage:
+    - outlet: SSRN
+      headline: "Top Papers on AI in Law (Q1 2026)"
+      url: https://blog.ssrn.com/2026/04/27/top-papers-on-ai-in-law-q1-2026/
+      date: 2026-04-27
+      note: Selected to the quarterly list.
+
+    - outlet: The Telegraph
+      headline: "AI accused of unjust exploitation as bots reprint entire books"
+      url: https://www.telegraph.co.uk/business/2026/04/02/ai-accused-unjust-exploitation-bots-reprint-entire-books/
+      date: 2026-04-02
+
+    - outlet: Hacker News
+      headline: "Front page"
+      url: https://news.ycombinator.com/item?id=47957627
+      date: 2026-04-01

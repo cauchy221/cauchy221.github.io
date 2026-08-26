@@ -15,7 +15,7 @@ selected_papers: false # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
 ---
 
-Hi! I am a first-year PhD student at Stony Brook University, advised by [Tuhin Chakrabarty](https://tuhinjubcse.github.io/).
+Hi! I am a second-year PhD student at Stony Brook University, advised by [Tuhin Chakrabarty](https://tuhinjubcse.github.io/).
 
 I received my MS in computational data science from Carnegie Mellon University, where I had the amazing opportunity to work with [Daphne Ippolito](https://www.daphnei.com/). Before that, I graduated from Beijing University of Posts and Telecommunications with a B.E. in Computer Science.
 

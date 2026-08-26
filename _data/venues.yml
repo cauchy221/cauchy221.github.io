@@ -1,9 +1,12 @@
-"AJP":
-  url: https://aapt.scitation.org/journal/ajp
-  color: "#00369f"
+# Venue badges shown next to each paper. The `abbr` field in papers.bib picks
+# the badge; entries listed here also get a link. Leave `color` unset to use
+# the site theme color, which adapts to light/dark mode.
 
-"PhysRev":
-  url: https://journals.aps.org/
+"COLM":
+  url: https://colmweb.org/
 
-"Vision":
-  color: "#009f36"
+"INLG":
+  url: https://aclanthology.org/venues/inlg/
+
+"Preprint":
+  color: "#6c757d"
